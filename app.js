@@ -9,6 +9,10 @@ app.use(bodyParser.json());
 //Routes
 const users = require("./routes/api/users");
 app.use("/api/users", users);
+const photos = require("./routes/api/photos");
+app.use("/api/photos", photos);
+const journeys = require("./routes/api/journeys");
+app.use("/api/journeys", journeys);
 
 
 

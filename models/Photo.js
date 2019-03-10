@@ -1,0 +1,39 @@
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+
+const PhotoSchema = new Schema({
+  city: {
+    type: String,
+    required: true
+  },
+  province: {
+    type: String
+  },
+  country: {
+    type: String
+  },
+  latitude: {
+    type: Number,
+    required: true
+  },
+  longitude: {
+    type: Number,
+    required: true
+  },
+  photoDateTime: {
+    type: Date,
+    required: true
+  },
+  description: {
+    type: String
+  },
+  jounreyId: {
+    type: Number,
+    required: true,
+    index: true
+  },
+});
+
+
+module.exports = Photo = mongoose.model('users', PhotoSchema);
