@@ -1,0 +1,82 @@
+#splash-nav{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+#splash-nav button{
+  width: 120px;
+  height: 60px;
+  background: white;
+  border: 1px solid black;
+  font-size: 16px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+
+#form-top{
+  background-color: #eaf3f7;
+  width: 550px;
+  margin: -20px -20px 0;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+#form-container{
+  margin: 0 auto;
+  margin-top: 150px;
+  width: 500px;
+  border: 1px solid grey;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.session-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.session-form input{
+  margin-top: 10px;
+  border: 1px solid grey;
+  border-radius: 4px;
+  height: 35px;
+  width: 360px;
+  padding: 5px 5px 5px 10px;
+  outline: none;
+} 
+
+.button{
+  height: 60px;
+  width: 200px;
+  margin-top: 30px;
+  padding: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  background: #7f1111;
+}
+
+.session-form input:focus{
+  border-color: rgb(34, 187, 34);
+}
+
+::placeholder{
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.session-form .input-halfline{
+  width: 167px;
+  margin: 0 5px;
+}

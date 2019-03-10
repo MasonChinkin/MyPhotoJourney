@@ -59,44 +59,44 @@ class SignupForm extends React.Component {
 
   render() {
     return (
-      <div className="login-form-container">
-        <form onSubmit={this.handleSubmit}>
-          <div className="login-form">
-            <br/>
-              <input type="text"
+      <>
+        <div id="form-top"> 
+          <img src="./myphotojourney_logo_light_background.png" alt="MyPhotoJourney logo" height="100"/>
+        </div>
+        <form className="session-form" onSubmit={this.handleSubmit}>
+              <div>
+                <input type="text"
+                  className="input-halfline"
+                  value={this.state.first_name}
+                  onChange={this.update('first_name')}
+                  placeholder="First Name"
+                />
+                <input type="text"
+                  className="input-halfline"
+                  value={this.state.last_name}
+                  onChange={this.update('last_name')}
+                  placeholder="Last Name"
+                />
+              </div>
+              <input  type="text"
                 value={this.state.email}
                 onChange={this.update('email')}
                 placeholder="Email"
               />
-            <br/>
-              <input type="text"
-                value={this.state.first_name}
-                onChange={this.update('first_name')}
-                placeholder="First Name"
-              />
-              <input type="text"
-                value={this.state.last_name}
-                onChange={this.update('last_name')}
-                placeholder="Last Name"
-              />
-            <br/>
               <input type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
                 placeholder="Password"
               />
-            <br/>
               <input type="password"
                 value={this.state.password2}
                 onChange={this.update('password2')}
                 placeholder="Confirm Password"
               />
-            <br/>
-            <input type="submit" value="Submit" />
+            <input class="button" type="submit" value="Create an Account" />
             {this.renderErrors()}
-          </div>
         </form>
-      </div>
+      </>
     );
   }
 }

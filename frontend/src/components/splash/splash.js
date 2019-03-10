@@ -1,6 +1,7 @@
 import React from 'react';
 import LoginFormContainer from '../session/login_form_container';
 import SignupFormContainer from '../session/signup_form_container';
+import '../../styles/splash.css';
 
 class SplashPage extends React.Component {
 
@@ -34,9 +35,12 @@ class SplashPage extends React.Component {
     render() {
         return (
             <div>
-                <h1>Flex Project</h1>
-                <button onClick={this.toggleForm}>{this.state.form === "signup" ? "Sign In" : "Sign Up"}</button>
-                {this.loginOrSignup()}
+                <div id='splash-nav'>
+                    <button onClick={this.toggleForm}>{this.state.form === "signup" ? "Sign In" : "Sign Up"}</button>
+                </div>
+                <div id='form-container'>
+                    {this.loginOrSignup()}
+                </div>
             </div>
         )
     }

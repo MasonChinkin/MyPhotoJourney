@@ -61,23 +61,20 @@ class LoginForm extends React.Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <div>
+        <h1>Log in to MyPhotoJourney</h1>
+        <form className="session-form" onSubmit={this.handleSubmit}>
               <input type="text"
                 value={this.state.email}
                 onChange={this.update('email')}
                 placeholder="Email"
               />
-            <br/>
               <input type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
                 placeholder="Password"
               />
-            <br/>
-            <input type="submit" value="Submit" />
+            <input class="button" type="submit" value="Submit" />
             {this.renderErrors()}
-          </div>
         </form>
       </div>
     );

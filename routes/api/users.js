@@ -42,12 +42,14 @@ router.post('/register', (req, res) => {
                         if(err) throw err;
                         newUser.password = hash;
                         newUser.save()
-                            .then(user => res.json(user))
+                            .then(user => {
+                                createLoginResponse(user, res);
+                            })
                             .catch(err => console.log(err));
                     });
                 });
             }
-        });
+        }); 
 });
 
 router.post('/login', (req, res) => {
@@ -68,18 +70,7 @@ router.post('/login', (req, res) => {
             bcrypt.compare(password, user.password)
                 .then(isMatch => {
                     if(isMatch) {
-                        const payload = {id: user.id, name: user.name};
-                        jwt.sign(
-                            payload,
-                            keys.secretOrKey,
-                            {expiresIn: 3600},
-                            (err, token) => {
-                                res.json({
-                                    success: true,
-                                    token: 'Bearer ' + token
-                                });
-                            });
-                        
+                        createLoginResponse(user, res);
                         } else {
                             return res.status(400).json({password: 'Incorrect password'});
                         }
@@ -88,6 +79,19 @@ router.post('/login', (req, res) => {
 });
 
 
+const createLoginResponse = (user, res) => {
+    const payload = {id: user.id, name: user.name};
+    jwt.sign(
+        payload,
+        keys.secretOrKey,
+        {expiresIn: 3600},
+        (err, token) => {
+            res.json({
+                success: true,
+                token: 'Bearer ' + token
+            });
+        });
+}
     
 
 module.exports = router;
