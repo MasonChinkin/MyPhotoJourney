@@ -15,7 +15,7 @@ const Auth = ({ component: Component, path, loggedIn, exact}) => (
 const Protected = ({ component: Component, loggedIn, ...rest }) => (
     <Route 
         {...rest}
-        rende={props => 
+        render={props => 
             loggedIn ? (
                 <Component {...props} />
             ) : (
