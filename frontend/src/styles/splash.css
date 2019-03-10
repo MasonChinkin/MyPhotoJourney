@@ -1,17 +1,35 @@
+main{
+  background-image: url(./background_image.png);
+  padding-top: 250px;
+  height: 1000px;
+  width: 100%;
+}
+
+body{
+  margin: 0;
+}
+
 #splash-nav{
+  position: fixed;
   display: flex;
+  width: 100%;
+  height: 100px;
+  top: 0;
   align-items: center;
   justify-content: flex-end;
+  background: #eaf3f7;
 }
 
 #splash-nav button{
+  position: relative;
+  right: 30px;
   width: 120px;
   height: 60px;
-  background: white;
-  border: 1px solid black;
   font-size: 16px;
-  border-radius: 4px;
+  border-radius: 6px;
   font-weight: bold;
+  border: 1px solid transparent;
+  outline: none;
 }
 
 
@@ -28,15 +46,22 @@
 
 #form-container{
   margin: 0 auto;
-  margin-top: 150px;
   width: 500px;
   border: 1px solid grey;
-  border-radius: 4px;
+  border-radius: 6px;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
   overflow: hidden;
+  background: white;
+}
+
+#form-inputs{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
 }
 
 .session-form{
@@ -46,7 +71,7 @@
   margin-top: 20px;
 }
 
-.session-form input{
+input{
   margin-top: 10px;
   border: 1px solid grey;
   border-radius: 4px;
@@ -59,7 +84,6 @@
 .button{
   height: 60px;
   width: 200px;
-  margin-top: 30px;
   padding: 10px;
   font-size: 15px;
   font-weight: bold;

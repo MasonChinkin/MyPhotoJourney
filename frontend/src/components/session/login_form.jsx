@@ -61,8 +61,11 @@ class LoginForm extends React.Component {
   render() {
     return (
       <div>
-        <h1>Log in to MyPhotoJourney</h1>
+        <div id="form-top"> 
+          <img src="./myphotojourney_logo_for_light_background.png" alt="MyPhotoJourney logo" height="150"/>
+        </div>
         <form className="session-form" onSubmit={this.handleSubmit}>
+            <div id='form-inputs'>
               <input type="text"
                 value={this.state.email}
                 onChange={this.update('email')}
@@ -73,7 +76,8 @@ class LoginForm extends React.Component {
                 onChange={this.update('password')}
                 placeholder="Password"
               />
-            <input class="button" type="submit" value="Submit" />
+            </div>
+            <input className="button" type="submit" value="Submit" />
             {this.renderErrors()}
         </form>
       </div>

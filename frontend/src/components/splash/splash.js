@@ -34,14 +34,16 @@ class SplashPage extends React.Component {
 
     render() {
         return (
-            <div>
+            <>
                 <div id='splash-nav'>
-                    <button onClick={this.toggleForm}>{this.state.form === "signup" ? "Sign In" : "Sign Up"}</button>
+                    <button className="button" onClick={this.toggleForm}>{this.state.form === "signup" ? "Sign In" : "Sign Up"}</button>
                 </div>
-                <div id='form-container'>
-                    {this.loginOrSignup()}
-                </div>
-            </div>
+                <main>
+                    <div id='form-container'>
+                        {this.loginOrSignup()}
+                    </div>
+                </main>
+            </>
         )
     }
 }

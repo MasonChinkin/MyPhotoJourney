@@ -61,9 +61,10 @@ class SignupForm extends React.Component {
     return (
       <>
         <div id="form-top"> 
-          <img src="./myphotojourney_logo_light_background.png" alt="MyPhotoJourney logo" height="100"/>
+          <img src="./myphotojourney_logo_for_light_background.png" alt="MyPhotoJourney logo" height="150"/>
         </div>
         <form className="session-form" onSubmit={this.handleSubmit}>
+            <div id="form-inputs">
               <div>
                 <input type="text"
                   className="input-halfline"
@@ -93,7 +94,8 @@ class SignupForm extends React.Component {
                 onChange={this.update('password2')}
                 placeholder="Confirm Password"
               />
-            <input class="button" type="submit" value="Create an Account" />
+            </div>
+            <input className="button" type="submit" value="Create an Account" />
             {this.renderErrors()}
         </form>
       </>
