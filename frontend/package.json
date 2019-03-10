@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "jwt-decode": "^2.2.0",
+    "node-sass": "^4.11.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-redux": "^6.0.1",
