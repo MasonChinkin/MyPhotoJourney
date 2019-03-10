@@ -20,4 +20,4 @@ const JourneySchema = new Schema({
 });
 
 
-module.exports = Journey = mongoose.model('users', JourneySchema);
+module.exports = Journey = mongoose.model('journeys' , JourneySchema);
