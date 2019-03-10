@@ -29,11 +29,11 @@ const PhotoSchema = new Schema({
     type: String
   },
   jounreyId: {
-    type: Number,
+    type: Schema.Types.ObjectId,
+    ref: "journeys",
     required: true,
     index: true
   },
 });
-
 
 module.exports = Photo = mongoose.model('users', PhotoSchema);

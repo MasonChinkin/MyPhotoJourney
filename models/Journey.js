@@ -12,7 +12,8 @@ const JourneySchema = new Schema({
     type: String
   },
   userId: {
-    type: Number,
+    type: Schema.Types.ObjectId,
+    ref: "users",
     required: true,
     index: true
   },
