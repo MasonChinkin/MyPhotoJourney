@@ -9,3 +9,5 @@ class MainPage extends React.Component {
         )
     }
 }
+
+export default MainPage;
