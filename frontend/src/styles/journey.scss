@@ -1,0 +1,33 @@
+.journey {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background: rgb(217, 240, 180);
+  font-family: $fonts;
+
+  &>* {
+    margin-top: 30px;
+  }
+
+  &>h1 {
+    font-size: 36px;
+  }
+}
+
+.share {
+  display: flex;
+  justify-content: center;
+
+  & input {
+    width: 300;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  & button {
+    margin-left: 20px;
+    width: auto;
+    padding: 1rem;
+  }
+}
