@@ -34,12 +34,12 @@ class JourneyMap extends Component {
     const h = 600;
     // const active = d3.select(null)
 
-    console.log(MapUtils.getScale(this.state.data.photos));
+    let { photos } = this.state.data;
 
     //define projection
     const projection = d3.geoEquirectangular()
-      .scale(MapUtils.getScale(this.state.data.photos))
-      .center(MapUtils.getCenterLatLong(this.state.data.photos));
+      .scale(MapUtils.getScale(photos))
+      .center(MapUtils.getCenterLatLong(photos))
 
     //define drag behavior
     const zoom = d3.zoom()
@@ -92,7 +92,7 @@ class JourneyMap extends Component {
 
     //draw line
     map.append('path')
-      .datum(this.state.data.photos)
+      .datum(photos)
       .attr('fill', 'none')
       .attr('stroke', 'blue')
       .attr('stroke-width', 1.5)
@@ -100,7 +100,7 @@ class JourneyMap extends Component {
 
     //bubbles for visited cities
     map.selectAll('circle')
-      .data(this.state.data.photos)
+      .data(photos)
       .enter()
       .append('circle')
       .attr('cx', d => projection([d.longitude, d.latitude])[0])
