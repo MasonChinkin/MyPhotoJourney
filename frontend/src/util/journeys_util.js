@@ -1,9 +1,10 @@
 import axios from 'axios';
 
-export const signup = (userData) => {
-  return axios.post('/api/users/register', userData);
+export const fetchJourney = id => {
+  return axios.get(`/api/journeys/${id}`);
 };
 
-export const login = (userData) => {
-  return axios.post('/api/users/login', userData);
+// journeyPayload includes photos
+export const postJourney = journeyPayload => {
+  return axios.post(`/api/journeys`, journeyPayload);
 };
