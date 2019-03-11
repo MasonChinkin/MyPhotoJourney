@@ -70,21 +70,21 @@ class LoginForm extends React.Component {
             <div id='login-form-inputs'>
               <input type="text"
                 required={true}
-                autocomplete="off"
+                autoComplete="off"
                 value={this.state.email}
                 onChange={this.update('email')}
                 placeholder="Email"
               />
               <input type="password"
                 required={true}
-                autocomplete="off"
+                autoComplete="off"
                 value={this.state.password}
                 onChange={this.update('password')}
                 placeholder="Password"
               />
             </div>
             {this.renderErrors()}
-            <input className="button" type="submit" value="Submit" />
+            <input className="button" type="submit" value="Log In" />
         </form>
       </div>
     );
