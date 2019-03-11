@@ -23,7 +23,8 @@
   font-size: 16px;
   border-radius: 6px;
   font-weight: bold;
-
+  color: white;
+  background: $secondary-cta;
 }
 
 
@@ -60,21 +61,31 @@
     padding: 5px 5px 5px 10px;
     outline: none;
   } 
-}
-
-#form-inputs{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 30px;
-}
-
-#login-form-inputs{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 74px;
-  margin-top: 60px;
+  #form-inputs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  
+  #login-form-inputs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 74px;
+    margin-top: 60px;
+  }
+  .input-halfline{
+    width: 167px;
+    margin: 0 5px;
+  }
+  .submit{
+    width: 200px;
+    height: 60px;
+    color: white;
+    background: $secondary-cta;
+  }
+  
 }
 
 .session-form{
@@ -86,10 +97,7 @@
 
 
 
-.submit{
-  width: 200px;
-  height: 60px;
-}
+
 
 ::placeholder{
   font-size: 14px;
@@ -105,10 +113,6 @@ input:focus{
   background: $secondary-cta-highlight;
 }
 
-.session-form .input-halfline{
-  width: 167px;
-  margin: 0 5px;
-}
 
 
 .error-container{

@@ -18,16 +18,6 @@
   transition-duration: 1500ms;
 }
 
-.button{
-  padding: 10px;
-  font-size: 15px;
-  font-weight: bold;
-  color: white;
-  background: $secondary-cta;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-box-sizing: border-box;
-  cursor: pointer;
+.half{
+  width: 50%;
 }
