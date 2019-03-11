@@ -15,19 +15,17 @@ router.post('/journeys',
     // }
 
     const newJourney = new Journey({
-      text: req.body.text,
+      text: req.body.text,    
       user: req.user.id
     });
 
     newJourney.save();
 
-    Object.values(req.body.photos).each(photo => {
+    Object.values(req.body.photos).forEach(photo => {
       const newPhoto = new Photo({
         city: photo.city,
-        province: photo.province,
+        region: photo.province || null,
         country: photo.country,
-        latitude: photo.latitude,
-        longitude: photo.longitude,
         photoDateTime: photo.photoDateTime,
         description: photo.description,
         journeyId: req.journey.id

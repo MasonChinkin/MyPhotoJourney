@@ -1,0 +1,212 @@
+[
+  {
+    "city": "Jerusalem",
+    "country": "Israel",
+    "memory": "Perfect sweet potato soup to get over a cold.",
+    "stay_length": 3,
+    "city_country": "Jerusalem, Israel",
+    "lat": 31.778345,
+    "lon": 35.225079,
+    "pic_link": "https://masonchinkin.github.io/images/europe-trip-map/Jerusalem.jpg"
+  },
+  {
+    "city": "Tel Aviv",
+    "country": "Israel",
+    "memory": "Moroccan donuts at the farmers market",
+    "stay_length": 3,
+    "city_country": "Tel Aviv, Israel",
+    "lat": 32.080481,
+    "lon": 34.780527,
+    "pic_link": "https://masonchinkin.github.io/images/europe-trip-map/Tel-Aviv.jpg"
+  },
+  {
+    "city": "Istanbul",
+    "country": "Turkey",
+    "memory": "Climbing up to a mosque to see all of Istanbul.",
+    "stay_length": 5,
+    "city_country": "Istanbul, Turkey",
+    "lat": 41.009633,
+    "lon": 28.965165,
+    "pic_link": "https://masonchinkin.github.io/images/europe-trip-map/Istanbul.jpg"
+  },
+  {
+    "city": "Melnik",
+    "country": "Bulgaria",
+    "memory": "Hiking an abandoned trail above Melnik.",
+    "stay_length": 2,
+    "city_country": "Melnik, Bulgaria",
+    "lat": 41.522942,
+    "lon": 23.393246,
+    "pic_link": "https://masonchinkin.github.io/images/europe-trip-map/Melnik.jpg"
+  },
+  {
+    "city": "Rila",
+    "country": "Bulgaria",
+    "memory": "Walking along the river outside the monestary.",
+    "stay_length": 1,
+    "city_country": "Rila, Bulgaria",
+    "lat": 42.110586,
+    "lon": 23.239945,
+    "pic_link": "https://masonchinkin.github.io/images/europe-trip-map/Rila.jpg"
+  },
+  {
+    "city": "Sofia",
+    "country": "Bulgaria",
+    "memory": "Seeing a racuous Roma wedding parade.",
+    "stay_length": 2,
+    "city_country": "Sofia, Bulgaria",
+    "lat": 42.697863,
+    "lon": 23.322179,
+    "pic_link": "https://masonchinkin.github.io/images/europe-trip-map/Sofia.jpg"
+  },
+  {
+    "city": "Skopje",
+    "country": "Macedonia",
+    "memory": "A hellish 9pm to 8am bus ride to Kotor.",
+    "stay_length": 1,
+    "city_country": "Skopje, Macedonia",
+    "lat": 41.996092,
+    "lon": 21.43165,
+    "pic_link": "https://masonchinkin.github.io/images/europe-trip-map/Skopje.jpg"
+  },
+  {
+    "city": "Kotor",
+    "country": "Montenegro",
+    "memory": "Insanely clear water in the Blue Cave",
+    "stay_length": 2,
+    "city_country": "Kotor , Montenegro",
+    "lat": 42.424249,
+    "lon": 18.771267,
+    "pic_link": "https://masonchinkin.github.io/images/europe-trip-map/Kotor.jpg"
+  },
+  {
+    "city": "Dubrovnik",
+    "country": "Croatia",
+    "memory": "100+ degrees with no wind because of stunning city walls.",
+    "stay_length": 3,
+    "city_country": "Dubrovnik, Croatia",
+    "lat": 42.650042,
+    "lon": 18.089918,
+    "pic_link": "https://masonchinkin.github.io/images/europe-trip-map/Dubrovnik.jpg"
+  },
+  {
+    "city": "Split",
+    "country": "Croatia",
+    "memory": "Rickety bell tower stairs us a panic attack.",
+    "stay_length": 2,
+    "city_country": "Split, Croatia",
+    "lat": 43.511556,
+    "lon": 16.43968,
+    "pic_link": "https://masonchinkin.github.io/images/europe-trip-map/Split.jpg"
+  },
+  {
+    "city": "Vis",
+    "country": "Croatia",
+    "memory": "Watching the sunset from a beach cabana.",
+    "stay_length": 4,
+    "city_country": "Vis, Croatia",
+    "lat": 43.043421,
+    "lon": 16.165466,
+    "pic_link": "https://masonchinkin.github.io/images/europe-trip-map/Vis.jpg"
+  },
+  {
+    "city": "Zadar",
+    "country": "Croatia",
+    "memory": "Cool Roman museum.",
+    "stay_length": 2,
+    "city_country": "Zadar, Croatia",
+    "lat": 44.11877,
+    "lon": 15.232032,
+    "pic_link": "https://masonchinkin.github.io/images/europe-trip-map/Zadar.jpg"
+  },
+  {
+    "city": "Plitvice",
+    "country": "Croatia",
+    "memory": "Waterfalls everywhere!",
+    "stay_length": 2,
+    "city_country": "Plitvice, Croatia",
+    "lat": 44.88056,
+    "lon": 15.61611,
+    "pic_link": "https://masonchinkin.github.io/images/europe-trip-map/Plitvice.jpg"
+  },
+  {
+    "city": "Zagreb",
+    "country": "Croatia",
+    "memory": "A glorious nap while waiting for a bus.",
+    "stay_length": 1,
+    "city_country": "Zagreb, Croatia",
+    "lat": 45.813177,
+    "lon": 15.977048,
+    "pic_link": "https://masonchinkin.github.io/images/europe-trip-map/Zagreb.jpg"
+  },
+  {
+    "city": "Budapest",
+    "country": "Hungary",
+    "memory": "Dinner in a family's backyard with other tourists.",
+    "stay_length": 3,
+    "city_country": "Budapest, Hungary",
+    "lat": 47.498382,
+    "lon": 19.040471,
+    "pic_link": "https://masonchinkin.github.io/images/europe-trip-map/Budapest.jpg"
+  },
+  {
+    "city": "Vienna",
+    "country": "Austria",
+    "memory": "Unique and powerful holocaust memorial.",
+    "stay_length": 3,
+    "city_country": "Vienna, Austria",
+    "lat": 48.208354,
+    "lon": 16.372504,
+    "pic_link": "https://masonchinkin.github.io/images/europe-trip-map/Vienna.jpg"
+  },
+  {
+    "city": "Venice",
+    "country": "Italy",
+    "memory": "Learned about sustainability of tourism.",
+    "stay_length": 3,
+    "city_country": "Venice, Italy",
+    "lat": 45.437191,
+    "lon": 12.33459,
+    "pic_link": "https://masonchinkin.github.io/images/europe-trip-map/Venice.jpg"
+  },
+  {
+    "city": "Florence",
+    "country": "Italy",
+    "memory": "Nostalgia for my semester abroad.",
+    "stay_length": 5,
+    "city_country": "Florence, Italy",
+    "lat": 43.769871,
+    "lon": 11.255576,
+    "pic_link": "https://masonchinkin.github.io/images/europe-trip-map/Florence.jpg"
+  },
+  {
+    "city": "Rome",
+    "country": "Italy",
+    "memory": "We are getting tired. But also cacio e pepe is life.",
+    "stay_length": 4,
+    "city_country": "Rome, Italy",
+    "lat": 41.894802,
+    "lon": 12.485338,
+    "pic_link": "https://masonchinkin.github.io/images/europe-trip-map/Rome.jpg"
+  },
+  {
+    "city": "Sorrento",
+    "country": "Italy",
+    "memory": "Elisha was blown away by Pompei (too soon?).",
+    "stay_length": 3,
+    "city_country": "Sorrento, Italy",
+    "lat": 40.624906,
+    "lon": 14.374836,
+    "pic_link": "https://masonchinkin.github.io/images/europe-trip-map/Sorrento.jpg"
+  },
+  {
+    "city": "Barcelona",
+    "country": "Spain",
+    "memory": "The Sagrada Familia is stunning.",
+    "stay_length": 3,
+    "city_country": "Barcelona, Spain",
+    "lat": 41.382894,
+    "lon": 2.177432,
+    "pic_link": "https://masonchinkin.github.io/images/europe-trip-map/Barcelona.jpg"
+  }
+]
