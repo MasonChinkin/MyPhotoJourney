@@ -8,7 +8,7 @@ class Profile extends React.Component{
     render(){
         if(this.props.journeys.length === 0){
             return(
-                <Link className="button create" to="/upload">Create your first journey!</Link>
+                <Link className="button create" to="/journeys/new">Create your first journey!</Link>
             )
         } else{
             return(
@@ -20,7 +20,7 @@ class Profile extends React.Component{
                         </ul>
                     </div>
                     <div className="flex column center half">
-                        <Link className="button create" to="/upload">Make a new journey!</Link>
+                        <Link className="button create" to="/journeys/new">Make a new journey!</Link>
                     </div>
                 </div>
             )
