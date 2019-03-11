@@ -29,7 +29,7 @@ const PhotoSchema = new Schema({
   description: {
     type: String
   },
-  jounreyId: {
+  journeyId: {
     type: Schema.Types.ObjectId,
     ref: "journeys",
     required: true,

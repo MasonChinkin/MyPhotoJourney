@@ -5,6 +5,7 @@ import NavbarContainer from './nav/navbar_container';
 import Splash from './splash/splash';
 import ProfileContainer from './profile/profile_container';
 import "./App.scss";
+import NewJourneyForm from './journey_form/new_journey_form';
 import Journeys from './journey/Journey';
 
 const App = () => {
@@ -16,8 +17,9 @@ const App = () => {
             <Switch>
                 <AuthRoute exact path="/" component={Splash} />
                 <ProtectedRoute exact path="/profile" component={ProfileContainer} />
+                <ProtectedRoute exact path="/journeys/new" component={NewJourneyForm} />
             </Switch>
-            <Route path="/journeys" component={Journeys}></Route>
+            <Route exact path="/journeys" component={Journeys}></Route>
         </>
     )
 };
