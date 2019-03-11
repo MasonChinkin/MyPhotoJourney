@@ -26,10 +26,9 @@ router.post('/',
       userId: req.body.user.id
     });
 
-    // newJourney.save();
+    newJourney.save();
     let newPhotos = [];
-    
-    debugger;
+        
     Object.values(req.body.photos).forEach( async (photo) => {
 
       const { errors, isValid } = validatePhotoInput(photo)
@@ -39,9 +38,11 @@ router.post('/',
 
       let options = {city: photo.city, country: photo.country};
       let data = await geocoder.geocode(options)
+      if (data.length === 0) {
+        errors.location = "Enter a valid city/country location";
+        return res.status(400).json(errors);
+      }
       const firstResult = data[0];
-
-      debugger;
 
       const newPhoto = new Photo({
         city: photo.city,
@@ -54,10 +55,8 @@ router.post('/',
         journeyId: newJourney.id
       });
 
-      debugger;
       newPhoto.save();
       newPhotos.push(newPhoto);
-      debugger;
       if (newPhotos.length === Object.values(req.body.photos).length) {
         return res.status(200).json({newPhotos});
     }});
