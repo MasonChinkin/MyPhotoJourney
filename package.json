@@ -18,10 +18,12 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "concurrently": "^4.1.0",
+    "country-data": "0.0.31",
     "express": "^4.16.4",
     "jsonwebtoken": "^8.5.0",
     "jwt-decode": "^2.2.0",
     "mongoose": "^5.4.18",
+    "node-geocoder": "^3.22.0",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "validator": "^10.11.0"

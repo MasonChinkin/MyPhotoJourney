@@ -1,0 +1,50 @@
+.create{
+  background-color: $primary-cta;
+  text-decoration: none;
+  width: 400px;
+  height: 200px;
+  margin: 0 auto;
+  font-size: 50px;
+  padding: 10px 40px;
+  margin-top: 300px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  line-height: 60px;
+}
+
+.create:hover{
+  background-color: $primary-cta-highlight;
+}
+
+.journey-list{
+  width: 50%;
+  margin-top: 150px;
+  padding-left: 40px;
+  div{ 
+    display: flex;
+    align-items: center;
+  }
+  h2{
+    font-size: 60px;
+    font-weight: bold;
+  }
+  i{
+    cursor: pointer;
+  }
+  ul{
+    margin-top: 30px;
+  }
+  a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    padding: 10px 0px;
+    font-size: 25px;
+    width: 700px;   
+  }
+  span:last-child{
+    padding-left: 20px;
+  }
+}

@@ -1,0 +1,23 @@
+.flex{
+  display: flex;
+}
+
+.center{
+  justify-content: center;
+  align-items: center;
+}
+
+.column{
+  flex-direction: column;
+}
+
+
+.grow{
+  max-height: 1000px;
+  transition: max-height;
+  transition-duration: 1500ms;
+}
+
+.half{
+  width: 50%;
+}

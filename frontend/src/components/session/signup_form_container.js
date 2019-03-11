@@ -12,7 +12,7 @@ const msp = (state) => {
 const mdp = (dispatch) => {
   return {
     signup: user => dispatch(signup(user))
-  }
-}
+  };
+};
 
 export default connect(msp, mdp)(SignupForm);

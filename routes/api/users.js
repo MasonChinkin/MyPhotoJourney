@@ -12,7 +12,8 @@ router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
 router.get("/current", passport.authenticate('jwt', {session: false}), (req, res) => {
     res.json({
         id: req.user.id,
-        handle: req.user.handle,
+        first_name: req.user.first_name,
+        last_name: req.user.last_name,
         email: req.user.email
     });
 });
@@ -30,7 +31,8 @@ router.post('/register', (req, res) => {
                 return res.status(400).json({email: "A user has already registered with this email"});
             } else {
                 const newUser = new User({
-                    username: req.body.username,
+                    first_name: req.body.first_name,
+                    last_name: req.body.last_name,
                     email: req.body.email,
                     password: req.body.password
                 });
@@ -40,12 +42,14 @@ router.post('/register', (req, res) => {
                         if(err) throw err;
                         newUser.password = hash;
                         newUser.save()
-                            .then(user => res.json(user))
+                            .then(user => {
+                                createLoginResponse(user, res);
+                            })
                             .catch(err => console.log(err));
                     });
                 });
             }
-        });
+        }); 
 });
 
 router.post('/login', (req, res) => {
@@ -66,18 +70,7 @@ router.post('/login', (req, res) => {
             bcrypt.compare(password, user.password)
                 .then(isMatch => {
                     if(isMatch) {
-                        const payload = {id: user.id, name: user.name};
-                        jwt.sign(
-                            payload,
-                            keys.secretOrKey,
-                            {expiresIn: 3600},
-                            (err, token) => {
-                                res.json({
-                                    success: true,
-                                    token: 'Bearer ' + token
-                                });
-                            });
-                        
+                        createLoginResponse(user, res);
                         } else {
                             return res.status(400).json({password: 'Incorrect password'});
                         }
@@ -86,6 +79,19 @@ router.post('/login', (req, res) => {
 });
 
 
+const createLoginResponse = (user, res) => {
+    const payload = {id: user.id, name: user.name};
+    jwt.sign(
+        payload,
+        keys.secretOrKey,
+        {expiresIn: 3600},
+        (err, token) => {
+            res.json({
+                success: true,
+                token: 'Bearer ' + token
+            });
+        });
+}
     
 
 module.exports = router;

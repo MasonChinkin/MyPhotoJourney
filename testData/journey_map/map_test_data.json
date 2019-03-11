@@ -1,0 +1,191 @@
+[
+  {
+    "city": "Jerusalem",
+    "country": "Israel",
+    "description": "Perfect sweet potato soup to get over a cold.",
+    "city_country": "Jerusalem, Israel",
+    "latitude": 31.778345,
+    "longitude": 35.225079,
+    "photoUrl": "https://masonchinkin.github.io/images/europe-trip-map/Jerusalem.jpg"
+  },
+  {
+    "city": "Tel Aviv",
+    "country": "Israel",
+    "description": "Moroccan donuts at the farmers market",
+    "city_country": "Tel Aviv, Israel",
+    "latitude": 32.080481,
+    "longitude": 34.780527,
+    "photoUrl": "https://masonchinkin.github.io/images/europe-trip-map/Tel-Aviv.jpg"
+  },
+  {
+    "city": "Istanbul",
+    "country": "Turkey",
+    "description": "Climbing up to a mosque to see all of Istanbul.",
+    "city_country": "Istanbul, Turkey",
+    "latitude": 41.009633,
+    "longitude": 28.965165,
+    "photoUrl": "https://masonchinkin.github.io/images/europe-trip-map/Istanbul.jpg"
+  },
+  {
+    "city": "Melnik",
+    "country": "Bulgaria",
+    "description": "Hiking an abandoned trail above Melnik.",
+    "city_country": "Melnik, Bulgaria",
+    "latitude": 41.522942,
+    "longitude": 23.393246,
+    "photoUrl": "https://masonchinkin.github.io/images/europe-trip-map/Melnik.jpg"
+  },
+  {
+    "city": "Rila",
+    "country": "Bulgaria",
+    "description": "Walking alongitudeg the river outside the monestary.",
+    "city_country": "Rila, Bulgaria",
+    "latitude": 42.110586,
+    "longitude": 23.239945,
+    "photoUrl": "https://masonchinkin.github.io/images/europe-trip-map/Rila.jpg"
+  },
+  {
+    "city": "Sofia",
+    "country": "Bulgaria",
+    "description": "Seeing a racuous Roma wedding parade.",
+    "city_country": "Sofia, Bulgaria",
+    "latitude": 42.697863,
+    "longitude": 23.322179,
+    "photoUrl": "https://masonchinkin.github.io/images/europe-trip-map/Sofia.jpg"
+  },
+  {
+    "city": "Skopje",
+    "country": "Macedonia",
+    "description": "A hellish 9pm to 8am bus ride to Kotor.",
+    "city_country": "Skopje, Macedonia",
+    "latitude": 41.996092,
+    "longitude": 21.43165,
+    "photoUrl": "https://masonchinkin.github.io/images/europe-trip-map/Skopje.jpg"
+  },
+  {
+    "city": "Kotor",
+    "country": "Montenegro",
+    "description": "Insanely clear water in the Blue Cave",
+    "city_country": "Kotor , Montenegro",
+    "latitude": 42.424249,
+    "longitude": 18.771267,
+    "photoUrl": "https://masonchinkin.github.io/images/europe-trip-map/Kotor.jpg"
+  },
+  {
+    "city": "Dubrovnik",
+    "country": "Croatia",
+    "description": "100+ degrees with no wind because of stunning city walls.",
+    "city_country": "Dubrovnik, Croatia",
+    "latitude": 42.650042,
+    "longitude": 18.089918,
+    "photoUrl": "https://masonchinkin.github.io/images/europe-trip-map/Dubrovnik.jpg"
+  },
+  {
+    "city": "Split",
+    "country": "Croatia",
+    "description": "Rickety bell tower stairs us a panic attack.",
+    "city_country": "Split, Croatia",
+    "latitude": 43.511556,
+    "longitude": 16.43968,
+    "photoUrl": "https://masonchinkin.github.io/images/europe-trip-map/Split.jpg"
+  },
+  {
+    "city": "Vis",
+    "country": "Croatia",
+    "description": "Watching the sunset from a beach cabana.",
+    "city_country": "Vis, Croatia",
+    "latitude": 43.043421,
+    "longitude": 16.165466,
+    "photoUrl": "https://masonchinkin.github.io/images/europe-trip-map/Vis.jpg"
+  },
+  {
+    "city": "Zadar",
+    "country": "Croatia",
+    "description": "Cool Roman museum.",
+    "city_country": "Zadar, Croatia",
+    "latitude": 44.11877,
+    "longitude": 15.232032,
+    "photoUrl": "https://masonchinkin.github.io/images/europe-trip-map/Zadar.jpg"
+  },
+  {
+    "city": "Plitvice",
+    "country": "Croatia",
+    "description": "Waterfalls everywhere!",
+    "city_country": "Plitvice, Croatia",
+    "latitude": 44.88056,
+    "longitude": 15.61611,
+    "photoUrl": "https://masonchinkin.github.io/images/europe-trip-map/Plitvice.jpg"
+  },
+  {
+    "city": "Zagreb",
+    "country": "Croatia",
+    "description": "A glorious nap while waiting for a bus.",
+    "city_country": "Zagreb, Croatia",
+    "latitude": 45.813177,
+    "longitude": 15.977048,
+    "photoUrl": "https://masonchinkin.github.io/images/europe-trip-map/Zagreb.jpg"
+  },
+  {
+    "city": "Budapest",
+    "country": "Hungary",
+    "description": "Dinner in a family's backyard with other tourists.",
+    "city_country": "Budapest, Hungary",
+    "latitude": 47.498382,
+    "longitude": 19.040471,
+    "photoUrl": "https://masonchinkin.github.io/images/europe-trip-map/Budapest.jpg"
+  },
+  {
+    "city": "Vienna",
+    "country": "Austria",
+    "description": "Unique and powerful holocaust memorial.",
+    "city_country": "Vienna, Austria",
+    "latitude": 48.208354,
+    "longitude": 16.372504,
+    "photoUrl": "https://masonchinkin.github.io/images/europe-trip-map/Vienna.jpg"
+  },
+  {
+    "city": "Venice",
+    "country": "Italy",
+    "description": "Learned about sustainability of tourism.",
+    "city_country": "Venice, Italy",
+    "latitude": 45.437191,
+    "longitude": 12.33459,
+    "photoUrl": "https://masonchinkin.github.io/images/europe-trip-map/Venice.jpg"
+  },
+  {
+    "city": "Florence",
+    "country": "Italy",
+    "description": "Nostalgia for my semester abroad.",
+    "city_country": "Florence, Italy",
+    "latitude": 43.769871,
+    "longitude": 11.255576,
+    "photoUrl": "https://masonchinkin.github.io/images/europe-trip-map/Florence.jpg"
+  },
+  {
+    "city": "Rome",
+    "country": "Italy",
+    "description": "We are getting tired. But also cacio e pepe is life.",
+    "city_country": "Rome, Italy",
+    "latitude": 41.894802,
+    "longitude": 12.485338,
+    "photoUrl": "https://masonchinkin.github.io/images/europe-trip-map/Rome.jpg"
+  },
+  {
+    "city": "Sorrento",
+    "country": "Italy",
+    "description": "Elisha was blown away by Pompei (too soon?).",
+    "city_country": "Sorrento, Italy",
+    "latitude": 40.624906,
+    "longitude": 14.374836,
+    "photoUrl": "https://masonchinkin.github.io/images/europe-trip-map/Sorrento.jpg"
+  },
+  {
+    "city": "Barcelongitudea",
+    "country": "Spain",
+    "description": "The Sagrada Familia is stunning.",
+    "city_country": "Barcelongitudea, Spain",
+    "latitude": 41.382894,
+    "longitude": 2.177432,
+    "photoUrl": "https://masonchinkin.github.io/images/europe-trip-map/Barcelongitudea.jpg"
+  }
+]

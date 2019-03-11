@@ -48,36 +48,43 @@ class LoginForm extends React.Component {
   // Render the session errors if there are any
   renderErrors() {
     return(
-      <ul>
-        {Object.keys(this.state.errors).map((error, i) => (
-          <li key={`error-${i}`}>
-            {this.state.errors[error]}
-          </li>
-        ))}
-      </ul>
+      <div className={`login-error error-container ${this.state.errors ? "grow" : ""}`}>
+          <ul>
+          {Object.keys(this.state.errors).map((error, i) => (
+            <li key={`error-${i}`}>
+              {this.state.errors[error]}
+            </li>
+          ))}
+        </ul>
+      </div>
     );
   }
 
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <div>
+        <div id="form-top"> 
+          <img src="./myphotojourney_logo_for_light_background.png" alt="MyPhotoJourney logo" height="150"/>
+        </div>
+        <form className="session-form" onSubmit={this.handleSubmit}>
+            <div id='login-form-inputs'>
               <input type="text"
+                required={true}
+                autoComplete="off"
                 value={this.state.email}
                 onChange={this.update('email')}
                 placeholder="Email"
               />
-            <br/>
               <input type="password"
+                required={true}
+                autoComplete="off"
                 value={this.state.password}
                 onChange={this.update('password')}
                 placeholder="Password"
               />
-            <br/>
-            <input type="submit" value="Submit" />
+            </div>
             {this.renderErrors()}
-          </div>
+            <input className="button submit" type="submit" value="Log In" />
         </form>
       </div>
     );

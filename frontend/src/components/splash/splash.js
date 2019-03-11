@@ -6,7 +6,7 @@ class SplashPage extends React.Component {
 
     constructor(props){
         super(props);
-        this.state = {form: "signup"};
+        this.state = this.props.location.state || {form: "signup"};
         this.loginOrSignup = this.loginOrSignup.bind(this);
         this.toggleForm = this.toggleForm.bind(this);
     }
@@ -32,12 +32,17 @@ class SplashPage extends React.Component {
     }
 
     render() {
+   
         return (
-            <div>
-                <h1>Flex Project</h1>
-                <button onClick={this.toggleForm}>{this.state.form === "signup" ? "Sign In" : "Sign Up"}</button>
-                {this.loginOrSignup()}
-            </div>
+            <main id="main-splash">
+                <div id='splash-nav'>
+                    <img src="./myphotojourney_logo_for_dark_background.png" alt="MyPhotoJourney logo" height="100"/>
+                    <button className="button" onClick={this.toggleForm}>{this.state.form === "signup" ? "Sign In" : "Sign Up"}</button>
+                </div>
+                <div id='form-container'>
+                    {this.loginOrSignup()}
+                </div>
+            </main>
         )
     }
 }

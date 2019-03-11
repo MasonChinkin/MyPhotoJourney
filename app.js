@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
-const db = require('./config/keys').MongoURI;
+const db = require('./config/keys').MongoUri;
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -9,8 +9,22 @@ app.use(bodyParser.json());
 //Routes
 const users = require("./routes/api/users");
 app.use("/api/users", users);
+const journeys = require("./routes/api/journeys");
+app.use("/api/journeys", journeys);
 
+//TESTING DATA
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
+const photos = require('./testData/journey_map/map_test_data.json');
+const map = require('./testData/journey_map/world.json');
+app.get("/journeys", function (req, res, next) {
+  res.send({ photos, map });
+});
+//^^^TESTING DATA
 
 const passport = require('passport');
 app.use(passport.initialize());
