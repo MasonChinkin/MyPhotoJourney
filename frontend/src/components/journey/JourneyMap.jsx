@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as d3 from 'd3';
+import * as MapUtils from '../../util/map_util';
 
 class JourneyMap extends Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class JourneyMap extends Component {
       Accept: "application/json"
     });
 
-    fetch("http://localhost:5000/journey", {
+    fetch("http://localhost:5000/journeys", {
       headers: myHeaders,
     })
       .then(response => {
@@ -28,33 +29,29 @@ class JourneyMap extends Component {
   }
 
   componentDidUpdate() {
-    /* jshint asi: true, esversion: 6, unused: true, -W008, -W069, -W030 */
-    //asi=semicolon, esversion=const, W008=leading decimal, W069=ex. d['year'] instead of d.year, W030= jshint expects assignment/function from ex. margin.bottom
-
     //Width and height
-    const w = 1200
-    const h = 600
+    const w = 1200;
+    const h = 600;
     // const active = d3.select(null)
+
+    console.log(MapUtils.getScale(this.state.data.photos));
 
     //define projection
     const projection = d3.geoEquirectangular()
-      .scale(900)
-      .translate([250, 975])
-
-    //chloropleth from COLORBREWER
-    //const colors = d3.scaleOrdinal(d3.schemeCategory20)
+      .scale(MapUtils.getScale(this.state.data.photos))
+      .center(MapUtils.getCenterLatLong(this.state.data.photos));
 
     //define drag behavior
     const zoom = d3.zoom()
       .scaleExtent([0.5, 8])
       .on('zoom', d => {
-        map.style('stroke-width', 1 / d3.event.transform.k + 'px')
-        map.attr('transform', d3.event.transform)
-      })
+        map.style('stroke-width', 1 / d3.event.transform.k + 'px');
+        map.attr('transform', d3.event.transform);
+      });
 
     // define path
     const path = d3.geoPath()
-      .projection(projection)
+      .projection(projection);
 
     //create SVG
     const svg = d3.select(this.refs.anchor)
@@ -63,10 +60,10 @@ class JourneyMap extends Component {
       .attr('height', h)
       .style('background', '#a6d0ef')
       .style('border-style', 'solid')
-      .style('border-color', 'grey')
+      .style('border-color', 'grey');
 
     //create container for all pannable/zoomable elements
-    const map = svg.append('g')
+    const map = svg.append('g');
 
     svg.call(zoom)
 
@@ -89,9 +86,9 @@ class JourneyMap extends Component {
 
     //define travel line
     const line = d3.line()
-      .x(d => projection([d.lon, d.lat])[0])
-      .y(d => projection([d.lon, d.lat])[1])
-      .curve(d3.curveCardinal.tension(0.4))
+      .x(d => projection([d.longitude, d.latitude])[0])
+      .y(d => projection([d.longitude, d.latitude])[1])
+      .curve(d3.curveCardinal.tension(0.4));
 
     //draw line
     map.append('path')
@@ -99,23 +96,22 @@ class JourneyMap extends Component {
       .attr('fill', 'none')
       .attr('stroke', 'blue')
       .attr('stroke-width', 1.5)
-      .attr('d', line)
+      .attr('d', line);
 
     //bubbles for visited cities
     map.selectAll('circle')
       .data(this.state.data.photos)
       .enter()
       .append('circle')
-      .attr('cx', d => projection([d.lon, d.lat])[0])
-      .attr('cy', d => projection([d.lon, d.lat])[1])
+      .attr('cx', d => projection([d.longitude, d.latitude])[0])
+      .attr('cy', d => projection([d.longitude, d.latitude])[1])
       .attr('r', 4)
-      .attr('fill', 'black')
+      .attr('fill', 'black');
   }
 
   render() {
     const { data } = this.state;
     if (data === null) return null;
-    // const photos = this.state.data.photos.map(photo => <p>{photo.memory}</p>)
     return <div ref="anchor" />;
   }
 }

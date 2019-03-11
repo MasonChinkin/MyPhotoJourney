@@ -4,7 +4,7 @@ const app = express();
 const db = require('./config/keys').MongoUri;
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());   
+app.use(bodyParser.json());
 
 //Routes
 const users = require("./routes/api/users");
@@ -21,7 +21,7 @@ app.use(function (req, res, next) {
 
 const photos = require('./testData/journey_map/map_test_data.json');
 const map = require('./testData/journey_map/world.json');
-app.get("/journey", function (req, res, next) {
+app.get("/journeys", function (req, res, next) {
   res.send({ photos, map });
 });
 //^^^TESTING DATA
