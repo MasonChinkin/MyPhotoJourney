@@ -33,16 +33,15 @@ class SplashPage extends React.Component {
 
     render() {
         return (
-            <>
+            <main id="main-splash">
                 <div id='splash-nav'>
+                    <img src="./myphotojourney_logo_for_dark_background.png" alt="MyPhotoJourney logo" height="100"/>
                     <button className="button" onClick={this.toggleForm}>{this.state.form === "signup" ? "Sign In" : "Sign Up"}</button>
                 </div>
-                <main id="main-splash">
-                    <div id='form-container'>
-                        {this.loginOrSignup()}
-                    </div>
-                </main>
-            </>
+                <div id='form-container'>
+                    {this.loginOrSignup()}
+                </div>
+            </main>
         )
     }
 }
