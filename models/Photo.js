@@ -35,6 +35,10 @@ const PhotoSchema = new Schema({
     required: true,
     index: true
   },
+  photoUrl: {
+    type: String,
+    required: true
+  }
 });
 
 module.exports = Photo = mongoose.model('photos', PhotoSchema);
