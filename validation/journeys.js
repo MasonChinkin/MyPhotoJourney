@@ -1,28 +1,27 @@
-const passport = require('passport');
-const validatePhotoInput = require('./photos');
 const Validator = require('validator');
+const User = require('../models/User');
 
-module.exports = function validateJourneyInput(data) {
+module.exports = async function validateJourneyInput(data) {
   let errors = {};
 
-  if (Validator.isEmpty(data.name)) {
+  if (Validator.isEmpty(data.journey.name)) {
     errors.name = "Name field is required";
   }
   if (!data.user) {
     errors.user = "Journey must belong to a user";
   }
+  try {
+    const user = await User.findById(data.user.id)
+  } catch(err) {
+    errors.user = "User id is invalid";
+  }
 
-  Object.values(data.photos).forEach( function(photo) {
-    let photoInfo = validatePhotoInput(photo);
-    if(!photoInfo.isValid) {
-      errors.photos = photoInfo.errors;
-    } else {
-      
-    }
-  })
+  if (Object.values(data.photos).length === 0) {
+    errors.photos = "Journey must contain photos"
+  }
 
   return {
     errors,
-    isValid: Object.keys(errors) === 0,
+    isValid: Object.keys(errors).length === 0,
   }
 }

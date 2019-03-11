@@ -2,42 +2,69 @@ const express = require("express");
 const router = express.Router();
 const passport = require('passport');
 const Journey = require('../../models/Journey');
+const Photo = require('../../models/Photo');
+const validateJourneyInput = require('../../validation/journeys');
+const validatePhotoInput = require('../../validation/photos');
+const NodeGeocoder = require('node-geocoder');
+const geocoder = NodeGeocoder({provider: "openstreetmap"});
 
 router.get("/test", (req, res) => res.json({ msg: "This is the journeys route" }));
 
-router.post('/journeys',
-  passport.authenticate('jwt', { session: false }),
-  (req, res) => {
-    // const { errors, isValid } = validatePostInput(req.body);
+router.post('/',
+  // passport.authenticate('jwt', { session: false }),
+  async (req, res) => {
 
-    // if (!isValid) {
-    //   return res.status(400).json(errors);
-    // }
+    const { errors, isValid } = await validateJourneyInput(req.body)    
+    
+    if (!isValid) {
+      return res.status(400).json(errors);
+    }
 
     const newJourney = new Journey({
-      text: req.body.text,    
-      user: req.user.id
+      name: req.body.journey.name,
+      description: req.body.description,    
+      userId: req.body.user.id
     });
 
-    newJourney.save();
+    // newJourney.save();
+    let newPhotos = [];
+    
+    debugger;
+    Object.values(req.body.photos).forEach( async (photo) => {
 
-    Object.values(req.body.photos).forEach(photo => {
+      const { errors, isValid } = validatePhotoInput(photo)
+      if(!isValid) {
+        return res.status(400).json({photos: errors});
+      }
+
+      let options = {city: photo.city, country: photo.country};
+      let data = await geocoder.geocode(options)
+      const firstResult = data[0];
+
+      debugger;
+
       const newPhoto = new Photo({
         city: photo.city,
         region: photo.province || null,
         country: photo.country,
-        photoDateTime: photo.photoDateTime,
+        photoDateTime: new Date(photo.photoDateTime),
         description: photo.description,
-        journeyId: req.journey.id
+        latitude: firstResult.latitude,
+        longitude: firstResult.longitude,
+        journeyId: newJourney.id
       });
 
-      newPhoto
-        .save();
-    });
+      debugger;
+      newPhoto.save();
+      newPhotos.push(newPhoto);
+      debugger;
+      if (newPhotos.length === Object.values(req.body.photos).length) {
+        return res.status(200).json({newPhotos});
+    }});
   }
 );
 
-router.get('/journeys/:journey_id',
+router.get('/:journey_id',
   (req, res) => {
     Promise.all([
       Journey.findById(req.params.journey_id),

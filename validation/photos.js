@@ -4,42 +4,24 @@ const geocoder = NodeGeocoder({ provider: 'openstreetmap' });
 
 module.exports = function validatePhotoInput(data) {
   let errors = {};
-  let geodata = {};
 
   if (Validator.isEmpty(data.city)) {
     errors.city = "City field is required";
-    return ({
-      errors,
-      isValid: false,
-    });
+  }
+  if (Validator.isEmpty(data.country)) {
+    errors.country = "Country field is required";
+  }
+  if(data.photoDateTime === undefined) {
+    errors.dateTime = "Date/Time is required";
   }
 
-  let options = {city: data.city}
-  if (data.country) {
-    options.country = data.country;
+  const dateObj = new Date(data.photoDateTime);
+  if (isNaN(dateObj.getTime())) {
+    errors.dateTime = "Enter a valid date"
   }
-
-  geocoder.geocode(options)
-    .then(function(res) {
-      if (res.length === 0) {
-        errors.city = "Enter a valid city";
-      } else {
-        let firstResult = res[0];
-        geodata.longitude = firstResult.longitude;
-        geodata.latitude = firstResult.latitude;
-        if (!data.country) {
-          geodata.country = firstResult.country;
-        }
-      }
-
-    })
-    .catch(function(err) {
-      errors.api = err
-    });
 
   return({
     errors,
-    geodata,
     isValid: Object.keys(errors).length === 0,
   });
 
