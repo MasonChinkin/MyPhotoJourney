@@ -15,7 +15,7 @@ const s3 = new aws.S3();
 const upload = multer({
   storage: multerS3({
     s3: s3,
-    bucket: "my-photo-journey-dev",
+    bucket: keys.S3Bucket,
     key: (req, file, cb) => {
       cb(null, Date.now().toString());
     }

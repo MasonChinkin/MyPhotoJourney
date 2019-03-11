@@ -13,7 +13,7 @@ async function getPhotos(journeyId = 1552) {
     const s3 = new aws.S3();
     const response = await s3
       .listObjectsV2({
-        Bucket: "my-photo-journey-dev",
+        Bucket: keys.S3Bucket,
         Prefix: `${journeyId}`
       })
       .promise();
