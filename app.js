@@ -12,7 +12,19 @@ app.use("/api/users", users);
 const journeys = require("./routes/api/journeys");
 app.use("/api/journeys", journeys);
 
+//TESTING DATA
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
+const photos = require('./testData/journey_map/map_test_data.json');
+const map = require('./testData/journey_map/world.json');
+app.get("/journey", function (req, res, next) {
+  res.send({ photos, map });
+});
+//^^^TESTING DATA
 
 const passport = require('passport');
 app.use(passport.initialize());
