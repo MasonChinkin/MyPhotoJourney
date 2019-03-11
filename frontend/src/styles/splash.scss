@@ -51,6 +51,15 @@
   overflow: hidden;
   background: white;
   box-shadow: 8px 10px 5px 0px rgba(0,0,0,0.19);
+  input{
+    margin-top: 10px;
+    border: 1px solid grey;
+    border-radius: 4px;
+    height: 35px;
+    width: 360px;
+    padding: 5px 5px 5px 10px;
+    outline: none;
+  } 
 }
 
 #form-inputs{
@@ -75,16 +84,7 @@
   margin-top: 20px;
 }
 
-input{
-  margin-top: 10px;
-  border: 1px solid grey;
-  border-radius: 4px;
-  height: 35px;
-  width: 360px;
-  padding: 5px 5px 5px 10px;
-  outline: none;
 
-} 
 
 .submit{
   width: 200px;
