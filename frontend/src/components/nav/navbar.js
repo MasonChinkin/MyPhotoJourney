@@ -32,7 +32,7 @@ class NavBar extends React.Component {
   render() {
       return (
         <div id="navbar">
-            <img src="./myphotojourney_logo_for_light_background.png" alt="MyPhotoJourney Logo" height="100" />
+            <Link to="/"><img src="./myphotojourney_logo_for_light_background.png" alt="MyPhotoJourney Logo" height="100" /></Link>
             {this.renderButtons()}
         </div>
       );

@@ -1,0 +1,46 @@
+#new-journey-form{
+  margin-top: 150px;
+  display: flex;
+  flex-direction: column; 
+  h2{
+    font-size: 20px;
+    font-weight: bold;
+  }
+  input:last-child{
+    margin-top: 40px;
+    width: 300px;
+    height: 150px;
+    font-size: 30px;
+  }
+}
+
+#journey-name{
+  width: 400px;
+  height: 50px;
+  margin-top: 10px;
+  margin-bottom: 40px;
+  border-style: none;
+  border: 1px solid lightgray;
+  border-radius: 4px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+#journey-description{
+  width: 400px;
+  height:  200px;
+  margin-top: 10px;
+  border: 1px solid lightgray;
+  border-radius: 4px;
+  resize: none;
+  outline: none;
+  box-sizing: border-box;
+}
+
+#journey-description:focus, #journey-name:focus, #journey-description:hover, #journey-name:hover{
+  border: 2px solid $primary-cta-highlight;
+}
+
+#journey-description{
+
+}
