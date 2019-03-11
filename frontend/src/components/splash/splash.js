@@ -6,7 +6,7 @@ class SplashPage extends React.Component {
 
     constructor(props){
         super(props);
-        this.state = {form: "signup"};
+        this.state = this.props.location.state || {form: "signup"};
         this.loginOrSignup = this.loginOrSignup.bind(this);
         this.toggleForm = this.toggleForm.bind(this);
     }
@@ -32,6 +32,7 @@ class SplashPage extends React.Component {
     }
 
     render() {
+   
         return (
             <main id="main-splash">
                 <div id='splash-nav'>
