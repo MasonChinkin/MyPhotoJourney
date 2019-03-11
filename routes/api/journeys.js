@@ -15,7 +15,7 @@ router.post('/journeys',
     // }
 
     const newJourney = new Journey({
-      text: req.body.text,
+      text: req.body.text,    
       user: req.user.id
     });
 
