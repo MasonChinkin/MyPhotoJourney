@@ -47,13 +47,15 @@ class SignupForm extends React.Component {
 
   renderErrors() {
     return(
-      <ul>
+      <div className={`error-container ${this.state.errors ? "grow" : ""}`}>
+        <ul>
         {Object.keys(this.state.errors).map((error, i) => (
           <li key={`error-${i}`}>
             {this.state.errors[error]}
           </li>
         ))}
       </ul>
+     </div>
     );
   }
 
@@ -68,12 +70,14 @@ class SignupForm extends React.Component {
               <div>
                 <input type="text"
                   className="input-halfline"
+                  required={true}
                   value={this.state.first_name}
                   onChange={this.update('first_name')}
                   placeholder="First Name"
                 />
                 <input type="text"
                   className="input-halfline"
+                  required={true}
                   value={this.state.last_name}
                   onChange={this.update('last_name')}
                   placeholder="Last Name"
@@ -81,22 +85,25 @@ class SignupForm extends React.Component {
               </div>
               <input  type="text"
                 value={this.state.email}
+                required={true}
                 onChange={this.update('email')}
                 placeholder="Email"
               />
               <input type="password"
                 value={this.state.password}
+                required={true}
                 onChange={this.update('password')}
                 placeholder="Password"
               />
               <input type="password"
                 value={this.state.password2}
+                required={true}
                 onChange={this.update('password2')}
                 placeholder="Confirm Password"
               />
             </div>
-            <input className="button" type="submit" value="Create an Account" />
             {this.renderErrors()}
+            <input className="button" type="submit" value="Create an Account" />
         </form>
       </>
     );
