@@ -23,13 +23,13 @@ router.post('/journeys',
 
     Object.entries(req.body.photos).each(photo => {
       const newPhoto = new Photo({
-        city: req.body.city,
-        province: req.body.province,
-        country: req.body.country,
-        latitude: req.body.latitude,
-        longitude: req.body.longitude,
-        photoDateTime: req.body.photoDateTime,
-        description: req.body.description,
+        city: photo.city,
+        province: photo.province,
+        country: photo.country,
+        latitude: photo.latitude,
+        longitude: photo.longitude,
+        photoDateTime: photo.photoDateTime,
+        description: photo.description,
         journeyId: req.journey.id
       });
 
