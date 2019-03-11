@@ -21,7 +21,7 @@ router.post('/journeys',
 
     newJourney.save();
 
-    Object.entries(req.body.photos).each(photo => {
+    Object.values(req.body.photos).each(photo => {
       const newPhoto = new Photo({
         city: photo.city,
         province: photo.province,
