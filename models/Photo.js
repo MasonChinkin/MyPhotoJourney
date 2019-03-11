@@ -7,11 +7,12 @@ const PhotoSchema = new Schema({
     type: String,
     required: true
   },
-  province: {
+  region: {
     type: String
   },
   country: {
-    type: String
+    type: String,
+    required: true
   },
   latitude: {
     type: Number,
@@ -28,12 +29,16 @@ const PhotoSchema = new Schema({
   description: {
     type: String
   },
-  jounreyId: {
+  journeyId: {
     type: Schema.Types.ObjectId,
     ref: "journeys",
     required: true,
     index: true
   },
+  photoUrl: {
+    type: String,
+    required: true
+  }
 });
 
 module.exports = Photo = mongoose.model('photos', PhotoSchema);
