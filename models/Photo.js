@@ -7,11 +7,12 @@ const PhotoSchema = new Schema({
     type: String,
     required: true
   },
-  province: {
+  region: {
     type: String
   },
   country: {
-    type: String
+    type: String,
+    required: true
   },
   latitude: {
     type: Number,
