@@ -25,10 +25,9 @@ router.post('/',
 
 router.get('/journey/:journey_id',
   (req, res) => {
-    Photo
-      .find({ journeyId: req.params.journey_id })
-      .sort({ photoDateTime: 1 }) // sorted oldest to newest
-      .then(photos => res.json(photos))
+    Journey
+      .findById(req.params.journey_id)
+      .then(journey => res.json(journey))
       .catch(err => res.status(400).json(err));
   }
 );
