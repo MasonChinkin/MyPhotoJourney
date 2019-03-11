@@ -5,10 +5,12 @@ const geocoder = NodeGeocoder({ provider: 'openstreetmap' });
 module.exports = function validatePhotoInput(data) {
   let errors = {};
 
-  if (Validator.isEmpty(data.city)) {
+  debugger;
+
+  if (data.city === undefined || Validator.isEmpty(data.city)) {
     errors.city = "City field is required";
   }
-  if (Validator.isEmpty(data.country)) {
+  if (data.country === undefined || Validator.isEmpty(data.country)) {
     errors.country = "Country field is required";
   }
   if(data.photoDateTime === undefined) {

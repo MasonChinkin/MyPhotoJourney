@@ -11,7 +11,7 @@ const geocoder = NodeGeocoder({provider: "openstreetmap"});
 router.get("/test", (req, res) => res.json({ msg: "This is the journeys route" }));
 
 router.post('/',
-  passport.authenticate('jwt', { session: false }),
+  // passport.authenticate('jwt', { session: false }),
   async (req, res) => {
 
     const { errors, isValid } = await validateJourneyInput(req.body)    

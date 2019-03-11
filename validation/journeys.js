@@ -4,7 +4,9 @@ const User = require('../models/User');
 module.exports = async function validateJourneyInput(data) {
   let errors = {};
 
-  if (Validator.isEmpty(data.journey.name)) {
+  debugger;
+
+  if (data.journey.name === undefined || Validator.isEmpty(data.journey.name)) {
     errors.name = "Name field is required";
   }
   if (!data.user) {
