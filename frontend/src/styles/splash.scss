@@ -13,7 +13,8 @@
   top: 0;
   align-items: center;
   justify-content: flex-end;
-  background: #eaf3f7;
+  background: $light-background;
+  box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.19);
 }
 
 #splash-nav button{
@@ -29,7 +30,7 @@
 
 
 #form-top{
-  background-color: #eaf3f7;
+  background-color: $light-background;
   width: 550px;
   margin: -20px -20px 0;
   height: 120px;
@@ -50,6 +51,7 @@
   padding: 20px;
   overflow: hidden;
   background: white;
+  box-shadow: 8px 10px 5px 0px rgba(0,0,0,0.19);
 }
 
 #form-inputs{
@@ -57,6 +59,14 @@
   flex-direction: column;
   align-items: center;
   margin-bottom: 30px;
+}
+
+#login-form-inputs{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 74px;
+  margin-top: 60px;
 }
 
 .session-form{
@@ -74,10 +84,16 @@ input{
   width: 360px;
   padding: 5px 5px 5px 10px;
   outline: none;
-  input:focus{
-    border-color: $secondary-cta;
-  }
+
 } 
+
+::placeholder{
+  font-size: 14px;
+  font-weight: 400;
+}
+input:focus{
+  border-color: $secondary-cta;
+}
 
 .button{
   height: 60px;
@@ -86,17 +102,29 @@ input{
   font-size: 15px;
   font-weight: bold;
   color: white;
-  background: #7f1111;
+  background: $secondary-cta;
+  cursor: pointer;
 }
-
-.session-form 
-
-::placeholder{
-  font-size: 14px;
-  font-weight: 400;
+.button:hover{
+  background: $secondary-cta-highlight;
 }
 
 .session-form .input-halfline{
   width: 167px;
   margin: 0 5px;
+}
+
+
+.error-container{
+  max-height: 0;
+  ul{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  li{
+    font-weight: bold;
+    color: $secondary-cta;
+    margin: 5px 0;
+  }
 }
