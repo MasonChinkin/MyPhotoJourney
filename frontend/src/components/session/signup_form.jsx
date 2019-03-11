@@ -103,7 +103,7 @@ class SignupForm extends React.Component {
               />
             </div>
             {this.renderErrors()}
-            <input className="button" type="submit" value="Create an Account" />
+            <input className="button submit" type="submit" value="Create an Account" />
         </form>
       </>
     );
