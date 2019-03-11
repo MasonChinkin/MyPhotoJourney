@@ -18,5 +18,6 @@ const App = () => {
             <Route path={`/journeys`} component={Journey} />
         </>
     );
+}
 
-    export default App;
+export default App;
