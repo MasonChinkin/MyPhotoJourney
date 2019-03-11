@@ -1,12 +1,8 @@
-main{
+#main-splash{
   background-image: url(./background_image.png);
   padding-top: 250px;
   height: 1000px;
   width: 100%;
-}
-
-body{
-  margin: 0;
 }
 
 #splash-nav{
@@ -28,8 +24,7 @@ body{
   font-size: 16px;
   border-radius: 6px;
   font-weight: bold;
-  border: 1px solid transparent;
-  outline: none;
+
 }
 
 
@@ -79,6 +74,9 @@ input{
   width: 360px;
   padding: 5px 5px 5px 10px;
   outline: none;
+  input:focus{
+    border-color: $secondary-cta;
+  }
 } 
 
 .button{
@@ -91,9 +89,7 @@ input{
   background: #7f1111;
 }
 
-.session-form input:focus{
-  border-color: rgb(34, 187, 34);
-}
+.session-form 
 
 ::placeholder{
   font-size: 14px;
