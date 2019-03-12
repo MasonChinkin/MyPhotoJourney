@@ -15,18 +15,16 @@ router.get("/test", (req, res) =>
 router.post(
   "/",
   upload.single("image"),
-  // passport.authenticate("jwt", { session: false }),
+  passport.authenticate("jwt", { session: false }),
   async (req, res) => {
     console.log(req.body, req.file.location);
-    // let photo = req.body.photo;
-    // let journey = req.body.journey;
 
     if (req.body.journeyId === undefined) {
       return res
         .status(400)
         .json({ journey: "Photo must be attached to a journey" });
     }
-    // photo.journeyId = journey.id;
+
     let photo = {};
     photo.city = req.body.city;
     photo.country = req.body.country;
@@ -40,19 +38,6 @@ router.post(
     if (!isValid) {
       return res.status(400).json({ photos: errors });
     }
-
-    // const singleUpload = upload.single("image");
-
-    // // const uploadReq = req.body.aws;
-
-    // await singleUpload(req, res, err => {
-    //   if (err) {
-    //     return res.status(400).json(err);
-    //   } else {
-    //     photo.url = req.file.key;
-    //     // return res.json({ imageUrl: req.file.key });
-    //   }
-    // });
 
     let options = { city: photo.city, country: photo.country };
     let data = await geocoder.geocode(options);
