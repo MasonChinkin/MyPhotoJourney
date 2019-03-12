@@ -1,5 +1,5 @@
 import React from "react";
-import PhotoUploadForm from "../photo_upload_form/photo_upload_form";
+import PhotoUploadFormContainer from "../photo_upload_form/photo_upload_form_container";
 
 class NewJourneyForm extends React.Component {
   constructor(props) {
@@ -10,6 +10,7 @@ class NewJourneyForm extends React.Component {
       files: []
     };
     this.handleFile = this.handleFile.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(field) {
@@ -20,7 +21,13 @@ class NewJourneyForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    //do upload things
+    const newJourney = {
+      name: this.state.name,
+    }
+    if (this.state.description !== "") {
+      newJourney.description = this.state.description
+    }
+    this.props.createJourney({journey: newJourney, user: this.props.currUser});
   }
 
   handleFile(e) {
@@ -79,7 +86,7 @@ class NewJourneyForm extends React.Component {
         </form>
         <div className="photoPreview flex">
           {this.state.files.map((file, idx) => {
-            return <PhotoUploadForm key={idx} file={file} />;
+            return <PhotoUploadFormContainer key={idx} file={file} />;
           })}
         </div>
       </div>

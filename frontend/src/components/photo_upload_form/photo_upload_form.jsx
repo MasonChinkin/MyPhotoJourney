@@ -9,6 +9,7 @@ class PhotoUploadForm extends React.Component {
       description: "",
       date: ""
     };
+    this.handleUpload = this.handleUpload.bind(this);
   }
 
   handleInput(field) {
@@ -19,7 +20,14 @@ class PhotoUploadForm extends React.Component {
 
   handleUpload(e) {
     e.preventDefault();
-    //do upload things
+    let newPhoto = {city: this.state.city, 
+      country: this.state.country, 
+      date: this.state.date, 
+      file: this.props.file}
+    if(this.state.description !== "") {
+      newPhoto.description = this.state.description;
+    }
+    this.props.createPhoto(newPhoto);
   }
 
   render() {

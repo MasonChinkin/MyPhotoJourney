@@ -32,8 +32,8 @@ app.get("/journeys", function (req, res, next) {
 //^^^TESTING DATA
 
 // TESTING AWS
-const fileRoutes = require("./routes/api/image-upload");
-app.use("/api", fileRoutes);
+// const fileRoutes = require("./routes/api/image-upload");
+// app.use("/api", fileRoutes);
 // TESTING AWS
 
 const passport = require("passport");

@@ -6,12 +6,14 @@ const Photo = require('../../models/Photo');
 const validatePhotoInput = require('../../validation/photos');
 const NodeGeocoder = require('node-geocoder');
 const geocoder = NodeGeocoder({provider: "openstreetmap"});
+const singleUpload = require('./image-upload');
 
 router.get("/test", (req, res) => res.json({ msg: "This is the photos  route" }));
 
 router.post("/", 
-  // passport.authenticate('jwt', { session: false }),
+  passport.authenticate('jwt', { session: false }),
   async (req, res) => {
+    debugger;
 
     let photo = req.body.photo
     let journey = req.body.journey
@@ -25,6 +27,14 @@ router.post("/",
     if(!isValid) {
       return res.status(400).json({photos: errors});
     }
+
+    // singleUpload(req, res, err => {
+    //   if(err) {
+    //     return res.status(400).json(err)
+    //   } else {
+    //     return res.json({ imageUrl: req.file.key });
+    //   }
+    // });
 
     let options = {city: photo.city, country: photo.country};
     let data = await geocoder.geocode(options)

@@ -12,6 +12,7 @@ router.get("/test", (req, res) => res.json({ msg: "This is the journeys route" }
 router.post('/',
   // passport.authenticate('jwt', { session: false }),
   async (req, res) => {
+    debugger;
 
     const { errors, isValid } = await validateJourneyInput(req.body)    
     
