@@ -1,17 +1,19 @@
 #navbar{
-  height: 100px;
+  height: 70px;
   display: flex;
   align-items: center;
   align-content: center;
   justify-content: space-between;
+  background: #d9f0b4;
   padding: 0 20px;
   .logo{
-    width: 200px;
-    height: 100px;
+    width: 170px;
+    height: 50px;
   }
   button, a{
-    width: 120px;
+    width: 90px;
     height: 60px;
-
+    font-size: 13px;
+    padding: 3px;
   }
 }
