@@ -6,7 +6,6 @@
   margin: 0 auto;
   font-size: 50px;
   padding: 10px 40px;
-  margin-top: 300px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -21,7 +20,8 @@
 .journey-list{
   width: 50%;
   margin-top: 150px;
-  padding-left: 40px;
+  margin-left: 40px;
+  padding: 50px 50px;
   div{ 
     display: flex;
     align-items: center;
@@ -29,9 +29,11 @@
   h2{
     font-size: 60px;
     font-weight: bold;
+    border-bottom: 1px solid black;
   }
   i{
     cursor: pointer;
+    margin-right: -60px;
   }
   ul{
     margin-top: 30px;
@@ -40,11 +42,15 @@
     text-decoration: none;
     color: black;
     font-weight: bold;
-    padding: 10px 0px;
+    padding: 15px 0px;
     font-size: 25px;
-    width: 700px;   
+    width: 700px;
+  }
+  a:hover{
+    background-color: #c9ea95;
   }
   span:last-child{
     padding-left: 20px;
   }
+  
 }

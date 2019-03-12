@@ -1,5 +1,5 @@
-const express = require('express');
-const mongoose = require('mongoose');
+const express = require("express");
+const mongoose = require("mongoose");
 const app = express();
 const db = require('./config/keys_dev').MongoUri;
 const bodyParser = require('body-parser');
@@ -13,9 +13,12 @@ const journeys = require("./routes/api/journeys");
 app.use("/api/journeys", journeys);
 
 //TESTING DATA
-app.use(function (req, res, next) {
+app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
   next();
 });
 
@@ -26,10 +29,14 @@ app.get("/journeys", function (req, res, next) {
 });
 //^^^TESTING DATA
 
-const passport = require('passport');
-app.use(passport.initialize());
-require('./config/passport')(passport);
+// TESTING AWS
+const fileRoutes = require("./routes/api/image-upload");
+app.use("/api", fileRoutes);
+// TESTING AWS
 
+const passport = require("passport");
+app.use(passport.initialize());
+require("./config/passport")(passport);
 
 mongoose
   .connect(db, { useNewUrlParser: true })
