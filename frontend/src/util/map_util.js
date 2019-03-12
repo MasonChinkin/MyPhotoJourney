@@ -32,7 +32,6 @@ export const bubbleMouseOver = function (d) {
     .attr('r', 12)
 
   const photo = document.getElementsByClassName(`${d.city}`)[0]
-  console.log('circle', photo.getBoundingClientRect());
   const leftPos = photo.getBoundingClientRect().left
   const topPos = photo.getBoundingClientRect().top
 
