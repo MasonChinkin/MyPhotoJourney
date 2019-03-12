@@ -21,6 +21,6 @@ export const requestJourney = id => dispatch => (
 
 export const createJourney = JourneyPayload => dispatch => (
   JourneysUtils.postJourney(JourneyPayload)
-    .then(journeyPayload => dispatch(receiveJourney(journeyPayload)))
+    .then(journeyPayload => dispatch(receiveJourney({journey: journeyPayload.data})))
     .catch(err => dispatch(receiveErrors(err.response.data)))
 );

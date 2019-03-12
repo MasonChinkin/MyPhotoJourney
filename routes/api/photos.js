@@ -11,9 +11,8 @@ const singleUpload = require('./image-upload');
 router.get("/test", (req, res) => res.json({ msg: "This is the photos  route" }));
 
 router.post("/", 
-  passport.authenticate('jwt', { session: false }),
+  // passport.authenticate('jwt', { session: false }),
   async (req, res) => {
-    debugger;
 
     let photo = req.body.photo
     let journey = req.body.journey

@@ -22,14 +22,18 @@ router.post('/',
 
     const newJourney = new Journey({
       name: req.body.journey.name,
-      description: req.body.description,    
       userId: req.body.user.id
     });
+
+    if (req.body.description) {
+      newJourney.description = req.body.journey.description;
+    }
 
     newJourney.save(function(err, newJourney) {
       if(err) {
         return res.status(400).json(err);
       } else {
+        debugger;
         return res.status(200).json(newJourney);
       }
     }); 

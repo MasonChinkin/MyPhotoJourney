@@ -11,7 +11,11 @@ const PhotosReducer = (state = {}, action) => {
     case PhotoActions.RECEIVE_PHOTOS:
       return action.photos;
     case JourneyActions.RECEIVE_JOURNEY:
-      return action.journeyPayload.photos;
+      if (action.journeyPayload.photos !== undefined) {
+        return action.journeyPayload.photos;
+      } else {
+        return state;
+      }
     default:
       return state;
   }
