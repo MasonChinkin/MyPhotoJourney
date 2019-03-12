@@ -3,9 +3,9 @@ import * as JourneysUtils from '../util/journeys_util';
 export const RECEIVE_JOURNEY = "RECEIVE_JOURNEY";
 export const RECEIVE_JOURNEY_ERRORS = "RECEIVE_JOURNEY_ERRORS";
 
-export const receiveJourney = journeyPayLoad => ({
+export const receiveJourney = journeyPayload => ({
   type: RECEIVE_JOURNEY,
-  journeyPayLoad
+  journeyPayload
 });
 
 export const receiveErrors = errs => ({

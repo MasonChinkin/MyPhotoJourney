@@ -15,6 +15,9 @@ router.post("/",
 
     let photo = req.body.photo
     let journey = req.body.journey
+    if (journey === undefined || journey.id === undefined) {
+      return res.status(400).json({journey: "Photo must be attached to a journey"});
+    }
     photo.journeyId = journey.id; 
 
     const { errors, isValid } = await validatePhotoInput(photo)
@@ -34,6 +37,7 @@ router.post("/",
     const firstResult = data[0];
 
     const newPhoto = new Photo({
+      photoUrl: photo.url,
       city: photo.city,
       region: photo.province || null,
       country: photo.country,
