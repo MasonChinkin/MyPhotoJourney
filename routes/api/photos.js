@@ -18,15 +18,22 @@ router.post(
   // passport.authenticate("jwt", { session: false }),
   async (req, res) => {
     console.log(req.body, req.file.location);
-    let photo = req.body.photo;
-    let journey = req.body.journey;
+    // let photo = req.body.photo;
+    // let journey = req.body.journey;
 
-    if (journey === undefined || journey.id === undefined) {
+    if (req.body.journeyId === undefined) {
       return res
         .status(400)
         .json({ journey: "Photo must be attached to a journey" });
     }
-    photo.journeyId = journey.id;
+    // photo.journeyId = journey.id;
+    let photo = {};
+    photo.city = req.body.city;
+    photo.country = req.body.country;
+    photo.date = req.body.date;
+    photo.journeyId = req.body.journeyId;
+    photo.description = req.body.description;
+    photo.url = req.file.location;
 
     const { errors, isValid } = await validatePhotoInput(photo);
 
@@ -66,7 +73,7 @@ router.post(
       description: photo.description,
       latitude: firstResult.latitude,
       longitude: firstResult.longitude,
-      journeyId: journey.id
+      journeyId: photo.journeyId
     });
 
     newPhoto.save(function(err, newPhoto) {

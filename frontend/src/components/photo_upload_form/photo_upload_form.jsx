@@ -24,11 +24,10 @@ class PhotoUploadForm extends React.Component {
     let newPhoto = {
       city: this.state.city,
       country: this.state.country,
-      date: this.state.date
+      date: this.state.date,
+      description: this.state.description
     };
-    if (this.state.description !== "") {
-      newPhoto.description = this.state.description;
-    }
+
     formData.append("image", this.props.file);
     const photoPayload = {};
     photoPayload.photo = newPhoto;
