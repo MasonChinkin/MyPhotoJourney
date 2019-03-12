@@ -1,17 +1,30 @@
-.create{
+
+.profile-content {
+  display: flex;
+  justify-content: space-around;
+  height: 100%;
+}
+
+.create {
   background-color: $primary-cta;
   text-decoration: none;
-  width: 400px;
+  width: 75%;
   height: 200px;
   margin: 0 auto;
-  font-size: 50px;
+  font-size: 45px;
   padding: 10px 40px;
-  margin-top: 300px;
   display: flex;
   justify-content: center;
-  flex-direction: column;
   text-align: center;
   line-height: 60px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+
+  &:active {
+    position: relative;
+    top: 4px;
+    left: 4px;
+    box-shadow: none;
+  }
 }
 
 .create:hover{
@@ -19,32 +32,86 @@
 }
 
 .journey-list{
-  width: 50%;
-  margin-top: 150px;
-  padding-left: 40px;
+  width: 45%;
+  margin-top: 140px;
+  margin-left: 30px;
+  padding: 25px;
+  overflow: hidden;
+  padding-right: 17px;
+  box-sizing: content-box;
+  position: relative;
+  ul{
+    height: 100%;
+    position: absolute;
+    overflow-y: scroll;
+    top: 100px;
+    left: 20px;
+    right: -17px;
+  }
   div{ 
     display: flex;
     align-items: center;
   }
   h2{
-    font-size: 60px;
+    font-size: 45px;
+    color: white;
     font-weight: bold;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid white;
   }
-  i{
-    cursor: pointer;
-  }
-  ul{
-    margin-top: 30px;
-  }
+}
+
+.journey-list-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+
   a{
     text-decoration: none;
-    color: black;
-    font-weight: bold;
-    padding: 10px 0px;
-    font-size: 25px;
-    width: 700px;   
+    padding: 15px;
+    font-size: 20px;
+    width: 90%;
+    background: $primary-cta;
+    border-radius: 5px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    color: white;
+
+    &:active {
+      position: relative;
+      top: 4px;
+      left: 4px;
+      box-shadow: none;
+    }
+
+    &:hover{
+      background-color: $primary-cta-highlight;
+    }
   }
+
+  
   span:last-child{
     padding-left: 20px;
+  }
+
+  & i {
+    cursor: pointer;
+    color: white;
+  }
+}
+
+.new-journey {
+  margin-right: 40px;
+  width: 35%;
+}
+
+.make-new-journey {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &>a {
+    width: 500px;
   }
 }

@@ -6,6 +6,8 @@ import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './util/session_api_utils';
 import { logout, signup, login } from './actions/session_actions';
 import axios from 'axios';
+import * as JourneyActions from "./actions/journey_actions";
+import * as PhotoActions from "./actions/photo_actions";
 
 document.addEventListener('DOMContentLoaded', () => {
     let store;
@@ -13,6 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
         setAuthToken(localStorage.jwtToken);
         const decodedUser = jwt_decode(localStorage.jwtToken);
         const preloadedState = {
+            entities: {
+                journeys: decodedUser.journeys
+            },
             session: {
                 isAuthenticated: true,
                 user: decodedUser
@@ -27,12 +32,13 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         store = configureStore({});
     }
-    window.axios = axios;
     window.logout = logout;
     window.login = login;
     window.signup = signup;
     window.getState = store.getState;
     window.dispatch = store.dispatch;
+    window.JourneyActions = JourneyActions;
+    window.PhotoActions = PhotoActions;
     const root = document.getElementById('root');
     ReactDOM.render(<Root store={store} />, root);
 })

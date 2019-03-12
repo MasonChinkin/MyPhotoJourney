@@ -4,7 +4,6 @@ export const fetchJourney = id => {
   return axios.get(`/api/journeys/${id}`);
 };
 
-// journeyPayload includes photos
-export const postJourney = journeyPayload => {
-  return axios.post(`/api/journeys`, journeyPayload);
+export const postJourney = journey => {
+  return axios.post(`/api/journeys`, journey);
 };

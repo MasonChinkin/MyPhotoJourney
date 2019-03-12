@@ -1,13 +1,8 @@
-import { RECEIVE_JOURNEY } from "../actions/journey_actions";
+import { combineReducers } from 'redux';
+import journeys from './journeys_reducer';
+import photos from './photos_reducer';
 
-const EntitiesReducer = (state = {}, action) => {
-  Object.freeze(state);
-  switch (action.type) {
-    case RECEIVE_JOURNEY:
-      return action.journeyPayload;
-    default:
-      return state;
-  }
-};
-
-export default EntitiesReducer;
+export default combineReducers({
+  journeys,
+  photos,
+})

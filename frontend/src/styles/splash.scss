@@ -1,5 +1,5 @@
 #main-splash{
-  background-image: url(./background_image.png);
+  background-image: url(./splash_background.png);
   background-size: cover; 
   height: 1000px;
   width: 100%;
@@ -32,16 +32,20 @@
   background-color: $light-background;
   width: 550px;
   margin: -20px -20px 0;
+  padding: 20px;
   height: 120px;
   display: flex;
   justify-content: center;
   align-items: center;
 
+  & img {
+    width: 100%;
+  }
 }
 
 #form-container{
   margin: 0 auto;
-  width: 500px;
+  width: 550px;
   margin-top: 150px;
   border: 1px solid grey;
   border-radius: 6px;
@@ -85,7 +89,9 @@
     color: white;
     background: $secondary-cta;
   }
-  
+  input:focus{
+    border-color: $secondary-cta;
+  }
 }
 
 .session-form{
@@ -103,9 +109,7 @@
   font-size: 14px;
   font-weight: 400;
 }
-input:focus{
-  border-color: $secondary-cta;
-}
+
 
 
 

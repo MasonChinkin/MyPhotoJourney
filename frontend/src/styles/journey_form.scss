@@ -1,24 +1,82 @@
-#new-journey-form{
-  margin-top: 150px;
+.create-journey {
   display: flex;
-  flex-direction: column; 
-  h2{
-    font-size: 20px;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  min-height: calc(100vh - 70px);
+
+  h1 {
+    padding-top: 20px;
+    font-size: 40px;
     font-weight: bold;
-  }
-  input:last-child{
-    margin-top: 40px;
-    width: 300px;
-    height: 150px;
-    font-size: 30px;
   }
 }
 
-#journey-name{
-  width: 400px;
+#form-div{
+  margin-top: 200px;
+}
+
+#new-journey-form {
+  margin-top: 30px;
+  display: flex;
+  width: 50vw;
+  max-width: 850px;
+  flex-direction: column;
+
+  .form-fields {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  h2 {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .submit-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .upload-photos {
+      font-size: 30px;
+      font-weight: 600;
+      padding: 0px 40px;
+      height: 60px;
+      width: 300px;
+      background-color: $primary-cta;
+      border: none !important;
+      box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+      cursor: pointer;
+      color: white;
+      text-decoration: none;
+      text-align: center;
+      border-radius: 4px;
+
+      &:hover {
+        background-color: $primary-cta-highlight;
+      }
+
+      &:active {
+        position: relative;
+        top: 4px;
+        left: 4px;
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+#journey-name {
+  width: 300px;
   height: 50px;
+  font-size: 16px;
+  line-height: 24px;
+  padding-left: 10px;
   margin-top: 10px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   border-style: none;
   border: 1px solid lightgray;
   border-radius: 4px;
@@ -26,10 +84,14 @@
   box-sizing: border-box;
 }
 
-#journey-description{
-  width: 400px;
-  height:  200px;
+#journey-description {
+  padding: 5px 10px;
+  width: 300px;
+  height: 50px;
+  font-size: 16px;
+  line-height: 24px;
   margin-top: 10px;
+  margin-bottom: 20px;
   border: 1px solid lightgray;
   border-radius: 4px;
   resize: none;
@@ -37,10 +99,9 @@
   box-sizing: border-box;
 }
 
-#journey-description:focus, #journey-name:focus, #journey-description:hover, #journey-name:hover{
+#journey-description:focus,
+#journey-name:focus,
+#journey-description:hover,
+#journey-name:hover {
   border: 2px solid $primary-cta-highlight;
-}
-
-#journey-description{
-
 }
