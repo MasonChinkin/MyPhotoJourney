@@ -25,50 +25,52 @@ class PhotoUploadForm extends React.Component {
   render() {
     console.log(this.props.file);
     return (
-      <div className="center flex column">
-        <img src={this.props.file.preview} style={{ width: "250px" }} />
-        <label>
-          City
+      <div className="photo-form">
+        <div className="photo-img">
+          <img src={this.props.file.preview} />
+        </div>
+        <div className="photo-data">
+          <div className="photo-labels">
+            <label>City</label>
+            <label>Country</label>
+            <label>Description</label>
+            <label>Date</label>
+          </div>
+          <div className="photo-inputs">
+            <input
+              type="text"
+              value={this.state.city}
+              placeholder="Enter the city"
+              onChange={this.handleInput("city")}
+            />
+            <input
+              type="text"
+              value={this.state.country}
+              placeholder="Enter the country"
+              onChange={this.handleInput("country")}
+            />
+            <input
+              type="text"
+              value={this.state.description}
+              placeholder="Enter the description"
+              onChange={this.handleInput("description")}
+            />
+            <input
+              type="text"
+              value={this.state.date}
+              placeholder="Enter the date"
+              onChange={this.handleInput("date")}
+            />
+          </div>
+        </div>
+        <div className="photo-button">
           <input
-            type="text"
-            value={this.state.city}
-            placeholder="Enter the city"
-            onChange={this.handleInput("city")}
+            className="button"
+            type="submit"
+            value="Add Photo to Journey"
+            onClick={this.handleUpload}
           />
-        </label>
-        <label>
-          Country
-          <input
-            type="text"
-            value={this.state.country}
-            placeholder="Enter the country"
-            onChange={this.handleInput("country")}
-          />
-        </label>
-        <label>
-          Description
-          <input
-            type="text"
-            value={this.state.description}
-            placeholder="Enter the description"
-            onChange={this.handleInput("description")}
-          />
-        </label>
-        <label>
-          Date
-          <input
-            type="text"
-            value={this.state.date}
-            placeholder="Enter the date"
-            onChange={this.handleInput("date")}
-          />
-        </label>
-        <input
-          className="button"
-          type="submit"
-          value="upload this photo"
-          onClick={this.handleUpload}
-        />
+        </div>
       </div>
     );
   }
