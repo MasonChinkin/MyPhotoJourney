@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #d9f0b4;
+  color: white;
   min-height: calc(100vh - 70px);
 
   h1 {
@@ -43,10 +43,24 @@
       height: 60px;
       width: 300px;
       background-color: $primary-cta;
+      border: none !important;
+      box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+      cursor: pointer;
       color: white;
       text-decoration: none;
       text-align: center;
       border-radius: 4px;
+
+      &:hover {
+        background-color: $primary-cta-highlight;
+      }
+
+      &:active {
+        position: relative;
+        top: 4px;
+        left: 4px;
+        box-shadow: none;
+      }
     }
   }
 }
