@@ -13,7 +13,7 @@ const mSTP = state => {
 const mDTP = dispatch => {
   return {
     createPhoto: photo => {
-      dispatch(PhotoActions.createPhoto(photo));
+      return dispatch(PhotoActions.createPhoto(photo));
     }
   };
 };

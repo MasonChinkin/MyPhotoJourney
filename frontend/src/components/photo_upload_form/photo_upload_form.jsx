@@ -7,7 +7,8 @@ class PhotoUploadForm extends React.Component {
       city: "",
       country: "",
       description: "",
-      date: ""
+      date: "",
+      submitted: false,
     };
     this.handleUpload = this.handleUpload.bind(this);
   }
@@ -29,10 +30,31 @@ class PhotoUploadForm extends React.Component {
     formData.append("date", this.state.date);
     formData.append("journeyId", this.props.journeyId);
 
-    this.props.createPhoto(formData);
+    this.props.createPhoto(formData).then( () => {this.setState({submitted: true})})
   }
 
   render() {
+    let photoSubmitButton;
+    if(this.state.submitted) {
+      photoSubmitButton = (
+        <input
+          className="button disabledButton"
+          type="submit"
+          value="Photo Uploaded!"
+
+          disabled
+        />
+      )
+    } else {
+      photoSubmitButton = (
+        <input
+          className="button"
+          type="submit"
+          value="Upload Photo!"
+          onClick={this.handleUpload}
+        />
+      )
+    }
     return (
       <div className="photo-form">
         <div className="photo-img">
@@ -73,12 +95,7 @@ class PhotoUploadForm extends React.Component {
           </div>
         </div>
         <div className="photo-button">
-          <input
-            className="button"
-            type="submit"
-            value="Add Photo to Journey"
-            onClick={this.handleUpload}
-          />
+          {photoSubmitButton}
         </div>
       </div>
     );

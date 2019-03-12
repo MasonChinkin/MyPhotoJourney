@@ -5,7 +5,7 @@ export const RECEIVE_PHOTOS = "RECEIVE_PHOTOS";
 export const RECEIVE_PHOTO_ERRORS = "RECEIVE_PHOTO_ERRORS";
 
 export const createPhoto = (photo) => dispatch => {
-  PhotoUtil.postPhoto(photo)
+  return PhotoUtil.postPhoto(photo)
     .then((res) => {dispatch(receivePhoto(res))})
     .catch((err) => {dispatch(receivePhotoErrors(err.response.data))})
 }
