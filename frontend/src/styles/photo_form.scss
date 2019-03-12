@@ -1,0 +1,53 @@
+.photo-preview {
+  margin-top: 40px;
+  max-width: 850px;
+  max-height: 50vh;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+
+  .photo-form {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .photo-img {
+      padding-bottom: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      img {
+        max-height: 250px;
+        max-width: 250px;
+        vertical-align: bottom;
+      }
+    }
+
+    .photo-data {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+
+      .photo-labels,
+      .photo-inputs {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        line-height: 24px;
+        font-size: 16px;
+      }
+      .photo-inputs {
+        min-width: 160px;
+      }
+    }
+
+    .photo-button {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
