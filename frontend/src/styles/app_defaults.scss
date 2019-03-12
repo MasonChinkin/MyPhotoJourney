@@ -11,3 +11,8 @@
   background: $secondary-cta;
   cursor: pointer;
 }
+
+.disabledButton{
+  cursor: auto;
+  opacity: .75;
+}

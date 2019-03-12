@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import * as d3 from 'd3';
 import * as MapUtils from '../../util/map_util';
 
 class JourneyMap extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      data: null
-    }
+    this.state = { data: null };
   }
 
   componentWillMount() {
@@ -26,6 +25,8 @@ class JourneyMap extends Component {
         console.log(data);
         this.setState({ data });
       });
+
+    // this.props.requestJourney(this.props.match.params.journey_id);
   }
 
   componentDidUpdate() {
@@ -129,4 +130,4 @@ class JourneyMap extends Component {
   }
 }
 
-export default JourneyMap;
+export default withRouter(JourneyMap);
