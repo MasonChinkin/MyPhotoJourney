@@ -13,10 +13,8 @@ router.get("/test", (req, res) =>
 
 router.post(
   "/",
-  // passport.authenticate('jwt', { session: false }),
+  passport.authenticate("jwt", { session: false }),
   async (req, res) => {
-    debugger;
-
     const { errors, isValid } = await validateJourneyInput(req.body);
 
     if (!isValid) {
@@ -36,7 +34,6 @@ router.post(
       if (err) {
         return res.status(400).json(err);
       } else {
-        debugger;
         return res.status(200).json(newJourney);
       }
     });
