@@ -1,6 +1,8 @@
+
 .profile-content {
   display: flex;
   justify-content: space-around;
+  height: 100%;
 }
 
 .create {
@@ -31,11 +33,21 @@
 
 .journey-list{
   width: 45%;
-  margin-top: 125px;
+  margin-top: 140px;
   margin-left: 30px;
   padding: 25px;
-  overflow: scroll;
-
+  overflow: hidden;
+  padding-right: 17px;
+  box-sizing: content-box;
+  position: relative;
+  ul{
+    height: 100%;
+    position: absolute;
+    overflow-y: scroll;
+    top: 100px;
+    left: 20px;
+    right: -17px;
+  }
   div{ 
     display: flex;
     align-items: center;
