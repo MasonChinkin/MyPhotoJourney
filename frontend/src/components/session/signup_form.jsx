@@ -63,7 +63,7 @@ class SignupForm extends React.Component {
     return (
       <>
         <div id="form-top"> 
-          <img src="./myphotojourney_logo_for_light_background.png" alt="MyPhotoJourney logo" height="150"/>
+          <img src="./myphotojourney_logo_for_light_background.png" alt="MyPhotoJourney logo" height="140" width="525"/>
         </div>
         <form className="session-form" onSubmit={this.handleSubmit}>
             <div id="form-inputs">

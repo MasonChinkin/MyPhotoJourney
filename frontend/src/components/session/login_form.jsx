@@ -98,7 +98,7 @@ class LoginForm extends React.Component {
     return (
       <div>
         <div id="form-top">
-          <img src="./myphotojourney_logo_for_light_background.png" alt="MyPhotoJourney logo" height="150" />
+          <img src="./myphotojourney_logo_for_light_background.png" alt="MyPhotoJourney logo" height="150" width="525" />
         </div>
         <form className="session-form" onSubmit={this.handleSubmit}>
           <div id='login-form-inputs'>
