@@ -27,7 +27,7 @@ class NewJourneyForm extends React.Component {
     if (this.state.description !== "") {
       newJourney.description = this.state.description
     }
-    this.props.createJourney({journey: newJourney, user: this.props.currUser});
+    this.props.createJourney({ journey: newJourney, user: this.props.currUser });
   }
 
   handleFile(e) {
@@ -50,8 +50,8 @@ class NewJourneyForm extends React.Component {
 
   render() {
     return (
-      <div className="create-journey">
-        <div>
+      <div className="create-journey background">
+        <div id="form-div">
           <h1>Create a Photo Journey</h1>
         </div>
         <form id="new-journey-form" onSubmit={this.handleSubmit}>

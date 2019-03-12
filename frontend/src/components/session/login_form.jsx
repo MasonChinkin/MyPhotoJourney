@@ -14,6 +14,8 @@ class LoginForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
+    this.demoSignin = this.demoSignin.bind(this);
+    this.setIntervalX = this.setIntervalX.bind(this);
   }
 
   // Once the user has been authenticated, redirect to the Tweets page
@@ -23,7 +25,7 @@ class LoginForm extends React.Component {
     }
 
     // Set or clear errors
-    this.setState({errors: nextProps.errors})
+    this.setState({ errors: nextProps.errors })
   }
 
   // Handle field updates (called in the render method)
@@ -31,6 +33,38 @@ class LoginForm extends React.Component {
     return e => this.setState({
       [field]: e.currentTarget.value
     });
+  }
+
+  demoSignin(e) {
+    let email = "captain.marvel@gmail.com".split('');
+    let password = "password".split('');
+    let speed = 60;
+
+    // stop demo from triggering sign in
+    e.preventDefault();
+
+    this.setIntervalX(() => this.fillField("email", email), speed, email.length)
+      .then(() => (this.setIntervalX(() => this.fillField("password", password), speed, password.length)))
+      .then(() => this.handleSubmit(e));
+  }
+
+  setIntervalX(callback, delay, repetitions) {
+    return new Promise(resolve => {
+      var x = 0;
+      var intervalID = window.setInterval(function () {
+
+        callback();
+
+        if (++x === repetitions) {
+          window.clearInterval(intervalID);
+          resolve();
+        }
+      }, delay);
+    });
+  }
+
+  fillField(field, value) {
+    this.setState({ [field]: this.state[field] + value.shift() });
   }
 
   // Handle form submission
@@ -42,14 +76,14 @@ class LoginForm extends React.Component {
       password: this.state.password
     };
 
-    this.props.login(user); 
+    this.props.login(user);
   }
 
   // Render the session errors if there are any
   renderErrors() {
-    return(
+    return (
       <div className={`login-error error-container ${this.state.errors ? "grow" : ""}`}>
-          <ul>
+        <ul>
           {Object.keys(this.state.errors).map((error, i) => (
             <li key={`error-${i}`}>
               {this.state.errors[error]}
@@ -63,28 +97,29 @@ class LoginForm extends React.Component {
   render() {
     return (
       <div>
-        <div id="form-top"> 
-          <img src="./myphotojourney_logo_for_light_background.png" alt="MyPhotoJourney logo" height="150"/>
+        <div id="form-top">
+          <img src="./myphotojourney_logo_for_light_background.png" alt="MyPhotoJourney logo" height="150" width="525" />
         </div>
         <form className="session-form" onSubmit={this.handleSubmit}>
-            <div id='login-form-inputs'>
-              <input type="text"
-                required={true}
-                autoComplete="off"
-                value={this.state.email}
-                onChange={this.update('email')}
-                placeholder="Email"
-              />
-              <input type="password"
-                required={true}
-                autoComplete="off"
-                value={this.state.password}
-                onChange={this.update('password')}
-                placeholder="Password"
-              />
-            </div>
-            {this.renderErrors()}
-            <input className="button submit" type="submit" value="Log In" />
+          <div id='login-form-inputs'>
+            <input type="text"
+              required={true}
+              autoComplete="off"
+              value={this.state.email}
+              onChange={this.update('email')}
+              placeholder="Email"
+            />
+            <input type="password"
+              required={true}
+              autoComplete="off"
+              value={this.state.password}
+              onChange={this.update('password')}
+              placeholder="Password"
+            />
+          </div>
+          {this.renderErrors()}
+          <input className="button submit" type="submit" value="Log In" />
+          <input className="button submit" type="submit" onClick={this.demoSignin} value=" Demo Account" />
         </form>
       </div>
     );
