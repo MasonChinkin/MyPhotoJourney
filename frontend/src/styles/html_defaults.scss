@@ -1,7 +1,15 @@
-
+html{
+  height: 100%;
+}
 body{
   font-family: $fonts;
+  height: 100%;
 }
+
+#root{
+  height: 100%;
+}
+
 
 button{
   font-family: $fonts;

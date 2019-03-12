@@ -3,12 +3,11 @@ const router = express.Router();
 
 const upload = require("../../services/file-upload");
 
-const singleUpload = upload.single("image");
+// const singleUpload = upload.single("image");
 
-router.post("/image-upload", (req, res) => {
-  singleUpload(req, res, err => {
-    return res.json({ imageUrl: req.file.key });
-  });
+router.post("/image-upload", upload.single("image"), (req, res, err) => {
+  console.log(req.body);
+  return res.json({ imageUrl: req.file });
 });
 
-module.exports = singleUpload;
+module.exports = router;

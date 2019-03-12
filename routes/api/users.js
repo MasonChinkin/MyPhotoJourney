@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const User = require('../../models/User');
+const Journey = require('../../models/Journey')
 const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys_dev');
 const passport = require('passport');
@@ -66,7 +67,6 @@ router.post('/login', (req, res) => {
             if(!user){
                 return res.status(404).json({email: 'This user does not exist'});
             }
-
             bcrypt.compare(password, user.password)
                 .then(isMatch => {
                     if(isMatch) {
@@ -79,8 +79,13 @@ router.post('/login', (req, res) => {
 });
 
 
-const createLoginResponse = (user, res) => {
-    const payload = {id: user.id, name: user.name};
+async function createLoginResponse(user, res){
+    const journeyArray = await Journey.find({userId: user.id});
+    const journeys = {};
+    journeyArray.forEach(journey => {
+        journeys[journey._id] = journey;
+    });
+    const payload = {id: user.id, name: user.name, journeys: journeys};
     jwt.sign(
         payload,
         keys.secretOrKey,

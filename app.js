@@ -1,8 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
-const db = require('./config/keys_dev').MongoUri;
-const bodyParser = require('body-parser');
+const db = require("./config/keys_dev").MongoUri;
+const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -24,16 +24,16 @@ app.use(function(req, res, next) {
   next();
 });
 
-const photos = require('./testData/journey_map/map_test_data.json');
-const map = require('./testData/journey_map/world.json');
-app.get("/journeys", function (req, res, next) {
+const photos = require("./testData/journey_map/map_test_data.json");
+const map = require("./testData/journey_map/world.json");
+app.get("/journeys", function(req, res, next) {
   res.send({ photos, map });
 });
 //^^^TESTING DATA
 
 // TESTING AWS
-// const fileRoutes = require("./routes/api/image-upload");
-// app.use("/api", fileRoutes);
+const fileRoutes = require("./routes/api/image-upload");
+app.use("/api", fileRoutes);
 // TESTING AWS
 
 const passport = require("passport");

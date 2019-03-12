@@ -1,7 +1,7 @@
-const NodeGeocoder = require('node-geocoder');
-const Validator = require('validator');
+const NodeGeocoder = require("node-geocoder");
+const Validator = require("validator");
 const Journey = require("../models/Journey");
-const geocoder = NodeGeocoder({ provider: 'openstreetmap' });
+const geocoder = NodeGeocoder({ provider: "openstreetmap" });
 
 module.exports = async function validatePhotoInput(data) {
   let errors = {};
@@ -12,24 +12,23 @@ module.exports = async function validatePhotoInput(data) {
   if (data.country === undefined || Validator.isEmpty(data.country)) {
     errors.country = "Country field is required";
   }
-  if(data.photoDateTime === undefined) {
+  if (data.date === undefined) {
     errors.dateTime = "Date/Time is required";
   }
-  const dateObj = new Date(data.photoDateTime);
+
+  const dateObj = new Date(data.date);
   if (isNaN(dateObj.getTime())) {
-    errors.dateTime = "Enter a valid date"
+    errors.dateTime = "Enter a valid date";
   }
 
   try {
-    const journey = await Journey.findById(data.journeyId); 
-  } catch(err) {
-    errors.journey = "Journey id is invalid"
+    const journey = await Journey.findById(data.journeyId);
+  } catch (err) {
+    errors.journey = "Journey id is invalid";
   }
 
-  return({
+  return {
     errors,
-    isValid: Object.keys(errors).length === 0,
-  });
-
-}
-
+    isValid: Object.keys(errors).length === 0
+  };
+};
