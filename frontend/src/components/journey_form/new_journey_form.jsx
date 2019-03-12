@@ -7,7 +7,8 @@ class NewJourneyForm extends React.Component {
     this.state = {
       name: "",
       description: "",
-      files: []
+      files: [],
+      uploadPhotos: false
     };
     this.handleFile = this.handleFile.bind(this);
     this.handleSubmitJourney = this.handleSubmitJourney.bind(this);
@@ -99,6 +100,7 @@ class NewJourneyForm extends React.Component {
           e.preventDefault();
           const upload = document.getElementById("photo-upload");
           upload.click();
+          this.setState({ uploadPhotos: true });
         }}
       />
     ) : (
@@ -108,6 +110,20 @@ class NewJourneyForm extends React.Component {
         value="Save &amp; Continue"
         onClick={this.handleSubmitJourney}
       />
+    );
+
+    let completeJourneyButton = this.state.uploadPhotos ? (
+      <div className="complete-journey">
+        <h2>Finished uploading photos?</h2>
+        <input
+          className="finalize-journey"
+          type="submit"
+          value="Map my Journey"
+          onClick={this.handleCompleteJourney}
+        />
+      </div>
+    ) : (
+      <></>
     );
 
     return (
@@ -136,15 +152,7 @@ class NewJourneyForm extends React.Component {
             return <PhotoUploadFormContainer key={idx} file={file} />;
           })}
         </div>
-        <div className="complete-journey">
-          <h2>Finished uploading photos?</h2>
-          <input
-            className="finalize-journey"
-            type="submit"
-            value="Map my Journey"
-            onClick={this.handleCompleteJourney}
-          />
-        </div>
+        {completeJourneyButton}
       </div>
     );
   }
