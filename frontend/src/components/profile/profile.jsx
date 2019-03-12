@@ -12,7 +12,7 @@ class Profile extends React.Component{
             )
         } else{
             return(
-                <div className="flex">
+                <div className="flex background">
                     <div className="journey-list">
                         <h2>My Journeys</h2>
                         <ul>
