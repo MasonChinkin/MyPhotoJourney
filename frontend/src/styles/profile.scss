@@ -1,16 +1,28 @@
-.create{
+.profile-content {
+  display: flex;
+  justify-content: space-around;
+}
+
+.create {
   background-color: $primary-cta;
   text-decoration: none;
-  width: 400px;
+  width: 75%;
   height: 200px;
   margin: 0 auto;
-  font-size: 50px;
+  font-size: 45px;
   padding: 10px 40px;
   display: flex;
   justify-content: center;
-  flex-direction: column;
   text-align: center;
   line-height: 60px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+
+  &:active {
+    position: relative;
+    top: 4px;
+    left: 4px;
+    box-shadow: none;
+  }
 }
 
 .create:hover{
@@ -18,39 +30,64 @@
 }
 
 .journey-list{
-  width: 50%;
-  margin-top: 150px;
-  margin-left: 40px;
-  padding: 50px 50px;
+  width: 45%;
+  margin-top: 125px;
+  margin-left: 30px;
+  padding: 25px;
+
   div{ 
     display: flex;
     align-items: center;
   }
   h2{
-    font-size: 60px;
+    font-size: 45px;
+    color: white;
     font-weight: bold;
-    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid white;
   }
-  i{
-    cursor: pointer;
-    margin-right: -60px;
-  }
-  ul{
-    margin-top: 30px;
-  }
+}
+
+.journey-list-item {
+  display: flex;
+  justify-content: space-between;
+
   a{
     text-decoration: none;
-    color: black;
-    font-weight: bold;
-    padding: 15px 0px;
-    font-size: 25px;
-    width: 700px;
+    padding: 15px;
+    font-size: 20px;
+    width: 90%;
+    background: $primary-cta;
+    border-radius: 5px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    color: white;
+
+    &:active {
+      position: relative;
+      top: 4px;
+      left: 4px;
+      box-shadow: none;
+    }
+
+    &:hover{
+      background-color: $primary-cta-highlight;
+    }
   }
-  a:hover{
-    background-color: #c9ea95;
-  }
+
+  
   span:last-child{
     padding-left: 20px;
   }
-  
+
+  & i {
+    cursor: pointer;
+    color: white;
+  }
+}
+
+.new-journey {
+  margin-right: 40px;
+  width: 35%;
 }

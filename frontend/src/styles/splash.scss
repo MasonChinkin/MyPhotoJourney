@@ -1,5 +1,5 @@
 #main-splash{
-  background-image: url(./background_image.png);
+  background-image: url(./splash_background.png);
   background-size: cover; 
   height: 1000px;
   width: 100%;
@@ -32,11 +32,15 @@
   background-color: $light-background;
   width: 550px;
   margin: -20px -20px 0;
+  padding: 20px;
   height: 120px;
   display: flex;
   justify-content: center;
   align-items: center;
 
+  & img {
+    width: 100%;
+  }
 }
 
 #form-container{

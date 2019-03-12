@@ -1,14 +1,14 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-export default ({journey}) => {
+export default ({ journey }) => {
   return (
-    <div>
+    <div className="journey-list-item">
       <Link to={journey.url}>
         <span>{journey.name}</span>
         <span>{journey.description}</span>
       </Link>
-      <i className="fa fa-clipboard fa-2x" aria-hidden="true"></i>
+      <i className="fa fa-clipboard" />
     </div>
   )
 }
