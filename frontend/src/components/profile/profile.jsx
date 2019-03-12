@@ -16,7 +16,7 @@ class Profile extends React.Component{
                     <div className="journey-list">
                         <h2>My Journeys</h2>
                         <ul>
-                            {this.props.journeys.map(journey => <JourneyListItem journey={journey} />)}
+                            {this.props.journeys.map(journey => <JourneyListItem key={journey._id} journey={journey} />)}
                         </ul>
                     </div>
                     <div className="flex column center half">

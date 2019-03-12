@@ -24,7 +24,7 @@ export const signup = user => dispatch => (
 export const login = user => dispatch => (
     APIUtil.login(user).then(res => {
         const decoded = decodeLogin(res);
-        dispatch(receiveCurrentUser(decoded))
+        dispatch(receiveCurrentUser(decoded));
     })
     .catch(err => {
         dispatch(receiveErrors(err.response.data));
