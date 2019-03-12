@@ -6,10 +6,14 @@ class Profile extends React.Component {
 
 
     render() {
-        let journeys = this.props.journeys.map(journey => <JourneyListItem journey={journey} />)
+        let journeys = this.props.journeys.map(journey => <JourneyListItem key={journey._id} journey={journey} />)
+        console.log(this.props);
+
         if (this.props.journeys.length === 0) {
             return (
-                <Link className="button create" to="/journeys/new">Create your first journey!</Link>
+                <div className="make-new-journey background">
+                    <Link className="button create" to="/journeys/new">Make your first journey!</Link>
+                </div>
             )
         } else {
             return (

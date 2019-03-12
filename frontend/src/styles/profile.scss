@@ -34,6 +34,7 @@
   margin-top: 125px;
   margin-left: 30px;
   padding: 25px;
+  overflow: scroll;
 
   div{ 
     display: flex;
@@ -90,4 +91,14 @@
 .new-journey {
   margin-right: 40px;
   width: 35%;
+}
+
+.make-new-journey {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &>a {
+    width: 500px;
+  }
 }
