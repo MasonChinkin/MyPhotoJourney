@@ -77,9 +77,11 @@ class NewJourneyForm extends React.Component {
             }}
           />
         </form>
-        {this.state.files.map((file, idx) => {
-          return <PhotoUploadForm key={idx} file={file} />;
-        })}
+        <div className="photoPreview flex">
+          {this.state.files.map((file, idx) => {
+            return <PhotoUploadForm key={idx} file={file} />;
+          })}
+        </div>
       </div>
     );
   }
