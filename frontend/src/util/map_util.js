@@ -23,3 +23,46 @@ export const getScale = photos => {
 
   return d3.max([longDiff, latDiff]) * 30;
 }
+
+export const bubbleMouseOver = function (d) {
+  d3.select(this)
+    .transition('orangeHover')
+    .duration(75)
+    .attr('fill', 'orange')
+    .attr('r', 12)
+
+  const photo = document.getElementsByClassName(`${d.city}`)[0]
+  console.log('circle', photo.getBoundingClientRect());
+  const leftPos = photo.getBoundingClientRect().left
+  const topPos = photo.getBoundingClientRect().top
+
+  //Update the tooltip position and value
+  d3.select('#tooltip')
+    .style('left', (leftPos - 150) + 'px')
+    .style('top', (topPos + 10) + 'px')
+    .select('#city')
+    .text(d.city)
+
+  d3.select('#tooltip')
+    .select('#description')
+    .text(d.description)
+
+  d3.select('#tooltip')
+    .select('#pic')
+    .attr('src', d.photoUrl)
+
+  //Show the tooltip
+  d3.select('#tooltip').classed('hidden', false)
+}
+
+//properties of mouseout
+export const bubbleMouseOut = function (d) {
+  d3.select(this)
+    .transition('orangeHover')
+    .duration(250)
+    .attr('fill', 'black')
+    .attr('r', 4)
+
+  //Hide the tooltip
+  d3.select('#tooltip').classed('hidden', true)
+}

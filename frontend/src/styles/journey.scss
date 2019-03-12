@@ -6,7 +6,11 @@
   background: rgb(217, 240, 180);
   font-family: $fonts;
 
-  &>* {
+  &>h1 {
+    margin-top: 30px;
+  }
+
+  &>.share {
     margin-top: 30px;
   }
 
@@ -30,4 +34,40 @@
     width: auto;
     padding: 1rem;
   }
+}
+
+#tooltip {
+    position: fixed;
+    visibility: visible;
+    width: 300px;
+    height: auto;
+    transition: 0.5s all ease-out;
+    transform:scaleY(1);
+    transform-origin: top;
+    padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+    overflow: hidden;
+
+    &>* {
+      margin-bottom: 10px;
+    }
+
+    &>*:last-child {
+      margin-bottom: 0;
+    }
+
+    & img {
+      width: 100%
+    }
+}
+
+#tooltip.hidden {
+    visibility: hidden;
+    transform:scaleY(0);
+    border-radius: 50%;
+    transform-origin: top;
+    transition: visibility 0s 0.3s,all 0.3s;
 }

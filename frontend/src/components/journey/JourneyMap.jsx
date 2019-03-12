@@ -106,13 +106,26 @@ class JourneyMap extends Component {
       .attr('cx', d => projection([d.longitude, d.latitude])[0])
       .attr('cy', d => projection([d.longitude, d.latitude])[1])
       .attr('r', 4)
-      .attr('fill', 'black');
+      .attr('class', d => d.city)
+      .attr('fill', 'black')
+      .on('mouseover', MapUtils.bubbleMouseOver)
+      .on('mouseout', MapUtils.bubbleMouseOut);
   }
 
   render() {
     const { data } = this.state;
     if (data === null) return null;
-    return <div ref="anchor" />;
+    return (
+      <>
+        <div ref="anchor" />
+        <div id="tooltip" className="hidden">
+          <h1 id="city">placeholder</h1>
+          <img id="pic" alt="" />
+          <p id="description">placeholder</p>
+          {/* <p id="date">placeholder</p> */}
+        </div>
+      </>
+    );
   }
 }
 
