@@ -30,7 +30,11 @@ class PhotoUploadForm extends React.Component {
     formData.append("date", this.state.date);
     formData.append("journeyId", this.props.journeyId);
 
-    this.props.createPhoto(formData).then( () => {this.setState({submitted: true})})
+    this.props.createPhoto(formData).then( () => {
+      if(Object.keys(this.props.errors).length === 0) {
+        this.setState({submitted: true});
+      }
+    })
   }
 
   render() {
@@ -41,7 +45,6 @@ class PhotoUploadForm extends React.Component {
           className="button disabledButton"
           type="submit"
           value="Photo Uploaded!"
-
           disabled
         />
       )

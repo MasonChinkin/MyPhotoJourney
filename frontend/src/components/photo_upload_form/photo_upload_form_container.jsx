@@ -6,7 +6,8 @@ const mSTP = state => {
   return {
     photos: state.entities.photos,
     journeyId: state.ui.currentJourneyId,
-    currUser: state.session.user
+    currUser: state.session.user,
+    errors: state.errors.photos
   };
 };
 
