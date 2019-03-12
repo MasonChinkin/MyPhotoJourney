@@ -5,7 +5,7 @@ const initialState = { currentJourneyId: null };
 export default function(state = initialState, action) {
   switch (action.type) {
     case RECEIVE_CURRENT_JOURNEY:
-      return { currentJourneyId: action.journey.id };
+      return { currentJourneyId: action.journeyPayload.journey._id };
     default:
       return state;
   }
