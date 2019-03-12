@@ -6,17 +6,16 @@ class PhotoUploadForm extends React.Component {
     this.state = {
       city: "",
       country: "",
-      region: "",
       description: "",
       date: ""
     };
   }
 
-  // handleChange(field) {
-  //   return e => {
-  //     this.setState({ [field]: e.target.value });
-  //   };
-  // }
+  handleInput(field) {
+    return e => {
+      this.setState({ [field]: e.target.value });
+    };
+  }
 
   handleUpload(e) {
     e.preventDefault();
@@ -34,6 +33,7 @@ class PhotoUploadForm extends React.Component {
             type="text"
             value={this.state.city}
             placeholder="Enter the city"
+            onChange={this.handleInput("city")}
           />
         </label>
         <label>
@@ -42,14 +42,7 @@ class PhotoUploadForm extends React.Component {
             type="text"
             value={this.state.country}
             placeholder="Enter the country"
-          />
-        </label>
-        <label>
-          Region
-          <input
-            type="text"
-            value={this.state.region}
-            placeholder="Enter the region"
+            onChange={this.handleInput("country")}
           />
         </label>
         <label>
@@ -58,6 +51,7 @@ class PhotoUploadForm extends React.Component {
             type="text"
             value={this.state.description}
             placeholder="Enter the description"
+            onChange={this.handleInput("description")}
           />
         </label>
         <label>
@@ -66,6 +60,7 @@ class PhotoUploadForm extends React.Component {
             type="text"
             value={this.state.date}
             placeholder="Enter the date"
+            onChange={this.handleInput("date")}
           />
         </label>
         <input
