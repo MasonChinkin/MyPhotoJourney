@@ -7,7 +7,7 @@ const mSTP = state => {
     journeys: state.entities.journeys,
     photos: state.entities.photos,
     currUser: state.session.user,
-    journeyId: state.ui.currentJourneyId
+    currentJourneyId: state.ui.currentJourneyId
   };
 };
 

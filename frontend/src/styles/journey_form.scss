@@ -110,3 +110,28 @@
 #journey-name:hover {
   border: 2px solid $primary-cta-highlight;
 }
+
+.complete-journey {
+  .finalize-journey {
+    font-size: 30px;
+    font-weight: 600;
+    padding: 0px 40px;
+    height: 60px;
+    width: 300px;
+    background-color: $primary-cta;
+    border: none !important;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 4px;
+  }
+
+  h2 {
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    margin-top: 20px;
+  }
+}
