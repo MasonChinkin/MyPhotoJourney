@@ -11,6 +11,8 @@ const users = require("./routes/api/users");
 app.use("/api/users", users);
 const journeys = require("./routes/api/journeys");
 app.use("/api/journeys", journeys);
+const userPhotos = require("./routes/api/photos");
+app.use("/api/photos", userPhotos);
 
 //TESTING DATA
 app.use(function(req, res, next) {

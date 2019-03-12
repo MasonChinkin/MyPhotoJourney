@@ -27,7 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         store = configureStore({});
     }
-    window.axios = axios;
     window.logout = logout;
     window.login = login;
     window.signup = signup;
