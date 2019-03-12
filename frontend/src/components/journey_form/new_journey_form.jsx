@@ -27,6 +27,7 @@ class NewJourneyForm extends React.Component {
     if (this.state.description !== "") {
       newJourney.description = this.state.description
     }
+
     this.props.createJourney({ journey: newJourney, user: this.props.currUser });
   }
 

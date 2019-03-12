@@ -19,6 +19,7 @@ const App = () => {
                 <ProtectedRoute exact path="/profile" component={ProfileContainer} />
                 <ProtectedRoute exact path="/journeys/new" component={NewJourneyFormContainer} />
             </Switch>
+            {/* <Route exact path="/journeys/:journey_id" component={Journeys}></Route> */}
             <Route exact path="/journeys" component={Journeys}></Route>
         </>
     )
