@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default ({ journey }) => {
   return (
-    <div>
+    <div className="journey-list-item">
       <Link to={`/journeys/${journey._id}`}>
         <span>{journey.name}</span>
       </Link>
