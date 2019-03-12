@@ -85,7 +85,9 @@
     color: white;
     background: $secondary-cta;
   }
-  
+  input:focus{
+    border-color: $secondary-cta;
+  }
 }
 
 .session-form{
@@ -103,9 +105,7 @@
   font-size: 14px;
   font-weight: 400;
 }
-input:focus{
-  border-color: $secondary-cta;
-}
+
 
 
 
