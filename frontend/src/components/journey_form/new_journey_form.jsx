@@ -30,7 +30,6 @@ class NewJourneyForm extends React.Component {
     upload.map(file => {
       const reader = new FileReader();
       reader.onloadend = () => {
-        console.log(reader.result);
         files.push({ preview: reader.result, file: file });
         if (files.length === upload.length) {
           this.setState({ files: files });
