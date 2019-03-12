@@ -6,7 +6,7 @@ const Photo = require("../../models/Photo");
 const validatePhotoInput = require("../../validation/photos");
 const NodeGeocoder = require("node-geocoder");
 const geocoder = NodeGeocoder({ provider: "openstreetmap" });
-const singleUpload = require("./image-upload");
+const upload = require("../../services/file-upload");
 
 router.get("/test", (req, res) =>
   res.json({ msg: "This is the photos  route" })
@@ -14,9 +14,10 @@ router.get("/test", (req, res) =>
 
 router.post(
   "/",
-  passport.authenticate("jwt", { session: false }),
+  upload.single("image"),
+  // passport.authenticate("jwt", { session: false }),
   async (req, res) => {
-    console.log(req.body);
+    console.log(req.body, req.file.location);
     let photo = req.body.photo;
     let journey = req.body.journey;
 
@@ -33,11 +34,16 @@ router.post(
       return res.status(400).json({ photos: errors });
     }
 
-    // singleUpload(req, res, err => {
-    //   if(err) {
-    //     return res.status(400).json(err)
+    // const singleUpload = upload.single("image");
+
+    // // const uploadReq = req.body.aws;
+
+    // await singleUpload(req, res, err => {
+    //   if (err) {
+    //     return res.status(400).json(err);
     //   } else {
-    //     return res.json({ imageUrl: req.file.key });
+    //     photo.url = req.file.key;
+    //     // return res.json({ imageUrl: req.file.key });
     //   }
     // });
 
