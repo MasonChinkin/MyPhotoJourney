@@ -10,7 +10,7 @@ class NewJourneyForm extends React.Component {
       files: []
     };
     this.handleFile = this.handleFile.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubmitJourney = this.handleSubmitJourney.bind(this);
   }
 
   handleChange(field) {
@@ -19,22 +19,25 @@ class NewJourneyForm extends React.Component {
     };
   }
 
-  handleSubmit(e) {
+  handleSubmitJourney(e) {
     e.preventDefault();
     const newJourney = {
-      name: this.state.name,
-    }
+      name: this.state.name
+    };
     if (this.state.description !== "") {
-      newJourney.description = this.state.description
+      newJourney.description = this.state.description;
     }
-    this.props.createJourney({ journey: newJourney, user: this.props.currUser });
+    this.props.createJourney({
+      journey: newJourney,
+      user: this.props.currUser
+    });
   }
 
   handleFile(e) {
     const upload = Array.from(e.currentTarget.files);
     const files = [];
 
-    upload.map(file => {
+    upload.forEach(file => {
       const reader = new FileReader();
       reader.onloadend = () => {
         files.push({ preview: reader.result, file: file });
@@ -49,51 +52,79 @@ class NewJourneyForm extends React.Component {
   }
 
   render() {
+    let nameInput, descriptionInput;
+    if (this.props.journeyId) {
+      nameInput = (
+        <div>
+          <h2>Journey name: {this.state.name}</h2>
+          <h2>Description: {this.state.description}</h2>
+        </div>
+      );
+      descriptionInput = <></>;
+    } else {
+      nameInput = (
+        <>
+          <h2>Name</h2>
+          <input
+            id="journey-name"
+            type="text"
+            value={this.state.name}
+            onChange={this.handleChange("name")}
+          />
+        </>
+      );
+      descriptionInput = (
+        <>
+          <h2>Description</h2>
+          <textarea
+            id="journey-description"
+            value={this.state.description}
+            onChange={this.handleChange("description")}
+          />
+        </>
+      );
+    }
+    let journeyButton = this.props.journeyId ? (
+      <input
+        className="upload-photos"
+        type="submit"
+        value="Upload Photos"
+        onClick={e => {
+          e.preventDefault();
+          const upload = document.getElementById("photo-upload");
+          upload.click();
+        }}
+      />
+    ) : (
+      <input
+        className="upload-photos"
+        type="submit"
+        value="Save &amp; Continue"
+        onClick={this.handleSubmitJourney}
+      />
+    );
+
     return (
       <div className="create-journey background">
         <div id="form-div">
           <h1>Create a Photo Journey</h1>
         </div>
-        <form id="new-journey-form" onSubmit={this.handleSubmit}>
+        <div id="new-journey-form">
           <div className="form-fields">
-            <div>
-              <h2>Name</h2>
-              <input
-                id="journey-name"
-                type="text"
-                value={this.state.name}
-                onChange={this.handleChange("name")}
-              />
-            </div>
-            <div>
-              <h2>Description</h2>
-              <textarea
-                id="journey-description"
-                value={this.state.description}
-                onChange={this.handleChange("description")}
-              />
-            </div>
+            <div>{nameInput}</div>
+            <div>{descriptionInput}</div>
           </div>
           <div className="submit-button">
             <input
               type="file"
               id="photo-upload"
-              style={{ display: "none" }}
               multiple
               accept="image/*"
               onChange={this.handleFile}
             />
-            <input
-              className="upload-photos"
-              type="submit"
-              value="Upload Photos"
-              onClick={() => {
-                const upload = document.getElementById("photo-upload");
-                upload.click();
-              }}
-            />
+            {journeyButton}
           </div>
-        </form>
+        </div>
         <div className="photo-preview">
           {this.state.files.map((file, idx) => {
             return <PhotoUploadFormContainer key={idx} file={file} />;

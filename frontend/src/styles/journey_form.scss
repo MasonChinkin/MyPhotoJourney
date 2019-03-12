@@ -12,7 +12,7 @@
   }
 }
 
-#form-div{
+#form-div {
   margin-top: 200px;
 }
 
@@ -32,6 +32,7 @@
   h2 {
     font-size: 20px;
     font-weight: bold;
+    padding-bottom: 10px;
   }
 
   .submit-button {
@@ -39,6 +40,10 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
+    #photo-upload {
+      display: none;
+    }
 
     .upload-photos {
       font-size: 30px;
