@@ -77,7 +77,7 @@ class NewJourneyForm extends React.Component {
               onChange={this.handleFile}
             />
             <input
-              className="button create upload-photos"
+              className="upload-photos"
               type="submit"
               value="Upload Photos"
               onClick={() => {
@@ -87,7 +87,7 @@ class NewJourneyForm extends React.Component {
             />
           </div>
         </form>
-        <div className="photoPreview">
+        <div className="photo-preview">
           {this.state.files.map((file, idx) => {
             return <PhotoUploadForm key={idx} file={file} />;
           })}
