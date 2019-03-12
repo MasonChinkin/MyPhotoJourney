@@ -23,18 +23,23 @@ class NewJourneyForm extends React.Component {
     //do upload things
   }
 
-  renderPhotoForms() {
-    if (this.state.files.length === 0) {
-      return <></>;
-    } else {
-      return this.state.files.map((file, idx) => {
-        return <PhotoUploadForm key={idx} file={file} />;
-      });
-    }
-  }
-
   handleFile(e) {
-    this.setState({ files: Array.from(e.currentTarget.files) });
+    const upload = Array.from(e.currentTarget.files);
+    const files = [];
+
+    upload.map(file => {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        console.log(reader.result);
+        files.push({ preview: reader.result, file: file });
+        if (files.length === upload.length) {
+          this.setState({ files: files });
+        }
+      };
+      if (file) {
+        reader.readAsDataURL(file);
+      }
+    });
   }
 
   render() {
@@ -72,7 +77,9 @@ class NewJourneyForm extends React.Component {
             }}
           />
         </form>
-        {this.renderPhotoForms()}
+        {this.state.files.map((file, idx) => {
+          return <PhotoUploadForm key={idx} file={file} />;
+        })}
       </div>
     );
   }
