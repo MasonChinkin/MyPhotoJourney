@@ -20,14 +20,20 @@ class PhotoUploadForm extends React.Component {
 
   handleUpload(e) {
     e.preventDefault();
-    let newPhoto = {city: this.state.city, 
-      country: this.state.country, 
-      date: this.state.date, 
-      file: this.props.file}
-    if(this.state.description !== "") {
+    const formData = new FormData();
+    let newPhoto = {
+      city: this.state.city,
+      country: this.state.country,
+      date: this.state.date,
+      file: this.props.file
+    };
+    if (this.state.description !== "") {
       newPhoto.description = this.state.description;
     }
-    this.props.createPhoto(newPhoto);
+    formData.append("image", this.props.file);
+    formData.append("photo", newPhoto);
+    formData.append("journey", { id: this.props.journeyId });
+    this.props.createPhoto(formData);
   }
 
   render() {
