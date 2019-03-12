@@ -50,7 +50,7 @@ class NewJourneyForm extends React.Component {
 
   render() {
     return (
-      <div className="create-journey">
+      <div className="create-journey background">
         <div id="form-div">
           <h1>Create a Photo Journey</h1>
         </div>
