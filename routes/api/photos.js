@@ -13,7 +13,7 @@ router.get("/test", (req, res) => res.json({ msg: "This is the photos  route" })
 router.post("/", 
   // passport.authenticate('jwt', { session: false }),
   async (req, res) => {
-
+    debugger;
     let photo = req.body.photo
     let journey = req.body.journey
     if (journey === undefined || journey.id === undefined) {
