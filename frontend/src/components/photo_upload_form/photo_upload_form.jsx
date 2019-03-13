@@ -62,6 +62,7 @@ class PhotoUploadForm extends React.Component {
         />
       );
     }
+    console.log(this.state.date)
     return (
       <div className="photo-form">
         <div className="photo-img">
@@ -100,7 +101,7 @@ class PhotoUploadForm extends React.Component {
                   onChange={this.handleInput("description")}
                 />
                 <input
-                  type="text"
+                  type="date"
                   value={this.state.date}
                   placeholder="Enter the date"
                   onChange={this.handleInput("date")}
