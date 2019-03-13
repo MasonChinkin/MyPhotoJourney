@@ -25,7 +25,6 @@ We conceived, designed, and built this app in less than 4 days, and plan on retu
 * [Highlights](https://github.com/MasonChinkin/MyPhotoJourney/blob/master/README.md#highlights)
   * [Storing uploaded photos on AWS](https://github.com/MasonChinkin/MyPhotoJourney/blob/master/README.md#Storing-uploaded-photos-on-AWS)
   * [Making a journey](https://github.com/MasonChinkin/MyPhotoJourney/blob/master/README.md#Making-a-journey)
-  * [d3.js Map](https://github.com/MasonChinkin/MyPhotoJourney/blob/master/README.md#d3.js-Map)
   
 ## Features
 
