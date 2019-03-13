@@ -32,8 +32,8 @@ class PhotoUploadForm extends React.Component {
     formData.append("journeyId", this.props.journeyId);
 
     this.props.createPhoto(formData).then( () => {
-      if(Object.keys(this.props.errors).length === 0) {
-        this.setState({submitted: true});
+      if(Object.values(this.props.errors).length === 0) {
+        this.setState({submitted: true, errors: {}});
       } else {
         this.setState({errors: this.props.errors})
       }
@@ -41,7 +41,6 @@ class PhotoUploadForm extends React.Component {
   }
 
   render() {
-    console.log(this.state.errors)
     let photoSubmitButton;
     if(this.state.submitted) {
       photoSubmitButton = (
@@ -100,6 +99,16 @@ class PhotoUploadForm extends React.Component {
               onChange={this.handleInput("date")}
             />
           </div>
+        </div>
+        <div style={{
+          "color": "red",
+          "display": "flex",
+          "flexDirection": "column",
+          "justifyContent": "center",
+          "fontSize": "12px"}}>
+        {Object.values(this.state.errors).map( (error) => {
+          return(<div style={{"marginBottom": "5px"}}>{error}</div>);
+        })}
         </div>
         <div className="photo-button">
           {photoSubmitButton}
