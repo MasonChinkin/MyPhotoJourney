@@ -1,4 +1,5 @@
 import React from "react";
+import Loader from 'react-loader-spinner';
 
 class PhotoUploadForm extends React.Component {
   constructor(props) {
@@ -8,7 +9,7 @@ class PhotoUploadForm extends React.Component {
       country: "",
       description: "",
       date: "",
-      submitted: false,
+      status: "ready",
       errors: {}
     };
     this.handleUpload = this.handleUpload.bind(this);
@@ -22,6 +23,7 @@ class PhotoUploadForm extends React.Component {
 
   handleUpload(e) {
     e.preventDefault();
+    this.setState({status: "loading"})
     const formData = new FormData();
 
     formData.append("image", this.props.file.file);
@@ -33,9 +35,9 @@ class PhotoUploadForm extends React.Component {
 
     this.props.createPhoto(formData).then(() => {
       if (Object.values(this.props.errors).length === 0) {
-        this.setState({ submitted: true, errors: {} });
+        this.setState({ status: "submitted", errors: {} });
       } else {
-        this.setState({ errors: this.props.errors });
+        this.setState({ status: "ready", errors: this.props.errors });
       }
     });
   }
@@ -43,7 +45,7 @@ class PhotoUploadForm extends React.Component {
   render() {
     console.log(this.props.file.file);
     let photoSubmitButton;
-    if (this.state.submitted) {
+    if (this.state.status === "submitted") {
       photoSubmitButton = (
         <input
           className="button disabledButton"
@@ -52,7 +54,7 @@ class PhotoUploadForm extends React.Component {
           disabled
         />
       );
-    } else {
+    } else if (this.state.status === "ready") {
       photoSubmitButton = (
         <input
           className="button"
@@ -60,8 +62,17 @@ class PhotoUploadForm extends React.Component {
           value="Upload Photo!"
           onClick={this.handleUpload}
         />
-      );
-    }
+      )
+      } else if (this.state.status === "loading") {
+        photoSubmitButton = (
+          <Loader
+            color="#000000"
+            height={20}
+            width={100}
+            />
+        )
+      }
+    
     console.log(this.state.date)
     return (
       <div className="photo-form">
