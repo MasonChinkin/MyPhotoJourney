@@ -5,11 +5,10 @@ export const RECEIVE_CURRENT_JOURNEY = "RECEIVE_CURRENT_JOURNEY";
 export const RECEIVE_JOURNEY_ERRORS = "RECEIVE_JOURNEY_ERRORS";
 
 export const receiveJourney = journeyPayload => {
-  // debugger
   return {
     type: RECEIVE_JOURNEY,
     journeyPayload
-  }
+  };
 };
 
 export const receiveCurrentJourney = journeyPayload => ({
@@ -26,10 +25,9 @@ export const requestJourney = id => dispatch => {
   return JourneysUtils.fetchJourney(id)
     .then(journeyPayload => dispatch(receiveJourney(journeyPayload)))
     .catch(err => {
-      debugger
       dispatch(receiveErrors(err.response.data));
-    })
-}
+    });
+};
 
 export const createJourney = JourneyPayload => dispatch =>
   JourneysUtils.postJourney(JourneyPayload)
