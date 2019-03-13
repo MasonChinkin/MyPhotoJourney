@@ -20,6 +20,7 @@
     width: 80px;
     transition: max-height, ease-in-out, 300ms;
     margin-bottom: -100px;
+    border-radius: 4px;
 
     & h1 {
         visibility: hidden;
@@ -53,6 +54,8 @@
     width: 80px;
     transition: max-height, ease-in-out, 300ms;
     margin-bottom: -100px;
+    border-radius: 4px;
+    
     & h1 {
         visibility: hidden;
         pointer-events: none;
