@@ -20,6 +20,14 @@
     border-radius: 3px;
     margin-right: 10px;
 
+    .photo-too-large {
+      display: flex;
+      flex-wrap: wrap;
+      p {
+        color: black;
+      }
+    }
+
     .photo-img {
       padding-bottom: 10px;
       display: flex;
