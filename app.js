@@ -1,10 +1,18 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
-const db = require("./config/keys_dev").MongoUri;
-const bodyParser = require("body-parser");
+const db = require('./config/keys').MongoUri;
+const bodyParser = require('body-parser');
+const path = require('path'); 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('frontend/build'));
+    app.get('/', (req, res) => {
+      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    });
+}
 
 //Routes
 const users = require("./routes/api/users");
