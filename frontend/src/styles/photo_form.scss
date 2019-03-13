@@ -1,7 +1,10 @@
 .photo-preview {
-  margin-top: 40px;
+  border: 1px solid white;
+  background: rgba(200, 200, 200, 0.4);
+  padding: 10px;
+  margin-top: 20px;
   max-width: 850px;
-  max-height: 50vh;
+  max-height: 45vh;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -16,6 +19,14 @@
     justify-content: space-between;
     border-radius: 3px;
     margin-right: 10px;
+
+    .photo-too-large {
+      display: flex;
+      flex-wrap: wrap;
+      p {
+        color: black;
+      }
+    }
 
     .photo-img {
       padding-bottom: 10px;
@@ -43,8 +54,8 @@
         line-height: 22px;
         font-size: 14px;
         color: black;
-        
-        &>* {
+
+        & > * {
           margin-bottom: 10px;
         }
       }

@@ -6,12 +6,14 @@ import Splash from './splash/splash';
 import ProfileContainer from './profile/profile_container';
 import "./App.scss";
 import NewJourneyFormContainer from './journey_form/new_journey_form_container';
-import Journeys from './journey/Journey';
+import About from '../components/about/abouts';
+import JourneyContainer from './journey/JourneyContainer';
 
 const App = () => {
     return (
         <>
             <Route path="/journeys" component={NavbarContainer}></Route>
+            <Route path="/journey" component={NavbarContainer}></Route>
             <Route path="/profile" component={NavbarContainer}></Route>
             <Route path="/map" component={NavbarContainer}></Route>
             <Switch>
@@ -19,7 +21,9 @@ const App = () => {
                 <ProtectedRoute exact path="/profile" component={ProfileContainer} />
                 <ProtectedRoute exact path="/journeys/new" component={NewJourneyFormContainer} />
             </Switch>
-            <Route exact path="/journeys" component={Journeys}></Route>
+            <About/>
+            <Route exact path="/journey/:journey_id" component={JourneyContainer}></Route>
+
         </>
     )
 };

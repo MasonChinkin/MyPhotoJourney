@@ -1,4 +1,3 @@
-
 .profile-content {
   display: flex;
   justify-content: space-around;
@@ -27,32 +26,34 @@
   }
 }
 
-.create:hover{
+.create:hover {
   background-color: $primary-cta-highlight;
 }
 
-.journey-list{
+.journey-list {
   width: 45%;
+  max-height: 60vh;
   margin-top: 140px;
   margin-left: 30px;
   padding: 25px;
-  overflow: hidden;
   padding-right: 17px;
   box-sizing: content-box;
   position: relative;
-  ul{
+  ul {
+    background: rgba(200, 200, 200, 0.2);
     height: 100%;
+    padding: 25px;
     position: absolute;
     overflow-y: scroll;
     top: 100px;
     left: 20px;
     right: -17px;
   }
-  div{ 
+  div {
     display: flex;
     align-items: center;
   }
-  h2{
+  h2 {
     font-size: 45px;
     color: white;
     font-weight: bold;
@@ -67,7 +68,11 @@
   justify-content: space-between;
   margin-bottom: 20px;
 
-  a{
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  a {
     text-decoration: none;
     padding: 15px;
     font-size: 20px;
@@ -85,13 +90,12 @@
       box-shadow: none;
     }
 
-    &:hover{
+    &:hover {
       background-color: $primary-cta-highlight;
     }
   }
 
-  
-  span:last-child{
+  span:last-child {
     padding-left: 20px;
   }
 
@@ -111,7 +115,7 @@
   flex-direction: column;
   justify-content: center;
 
-  &>a {
+  & > a {
     width: 500px;
   }
 }

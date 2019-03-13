@@ -34,7 +34,7 @@ router.post(
     const { errors, isValid } = await validatePhotoInput(photo);
 
     if (!isValid) {
-      return res.status(400).json({ photos: errors });
+      return res.status(400).json(errors);
     }
 
     let options = { city: photo.city, country: photo.country };

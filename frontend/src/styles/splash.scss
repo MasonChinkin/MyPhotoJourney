@@ -1,21 +1,20 @@
-#main-splash{
-  background-image: url(./splash_background.png);
-  background-size: cover; 
-  height: 1000px;
+#main-splash {
+  height: 100vh;
   width: 100%;
+  background-image: url(./splash_background.png);
+  background-size: cover;
 }
 
-#splash-nav{
+#splash-nav {
   display: flex;
+  justify-content: flex-end;
   width: 100%;
   height: 100px;
   top: 0;
   align-items: center;
-  justify-content: space-between;
-  padding-left: 20px;
 }
 
-#splash-nav button{
+#splash-nav button {
   position: relative;
   right: 30px;
   width: 120px;
@@ -27,8 +26,7 @@
   background: $secondary-cta;
 }
 
-
-#form-top{
+#form-top {
   background-color: $light-background;
   width: 550px;
   margin: -20px -20px 0;
@@ -43,10 +41,10 @@
   }
 }
 
-#form-container{
+#form-container {
   margin: 0 auto;
   width: 550px;
-  margin-top: 150px;
+  margin-top: 100px;
   border: 1px solid grey;
   border-radius: 6px;
   display: flex;
@@ -55,8 +53,8 @@
   padding: 20px;
   overflow: hidden;
   background: white;
-  box-shadow: 8px 10px 5px 0px rgba(0,0,0,0.19);
-  input{
+  box-shadow: 8px 10px 5px 0px rgba(0, 0, 0, 0.19);
+  input {
     margin-top: 10px;
     border: 1px solid grey;
     border-radius: 4px;
@@ -64,69 +62,60 @@
     width: 360px;
     padding: 5px 5px 5px 10px;
     outline: none;
-  } 
-  #form-inputs{
+    font-size: 16px;
+  }
+  #form-inputs {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
   }
-  
-  #login-form-inputs{
+
+  #login-form-inputs {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 74px;
-    margin-top: 60px;
+    margin-bottom: 10px;
   }
-  .input-halfline{
+  .input-halfline {
     width: 167px;
     margin: 0 5px;
   }
-  .submit{
+  .submit {
     width: 200px;
     height: 60px;
     color: white;
     background: $secondary-cta;
   }
-  input:focus{
+  input:focus {
     border-color: $secondary-cta;
   }
 }
 
-.session-form{
+.session-form {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 20px;
 }
 
-
-
-
-
-::placeholder{
+::placeholder {
   font-size: 14px;
   font-weight: 400;
 }
 
-
-
-
-.button:hover{
+.button:hover {
   background: $secondary-cta-highlight;
 }
 
-
-
-.error-container{
+.error-container {
   max-height: 0;
-  ul{
+  ul {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-  li{
+  li {
     font-weight: bold;
     color: $secondary-cta;
     margin: 5px 0;

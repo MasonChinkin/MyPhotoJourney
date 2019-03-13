@@ -1,17 +1,18 @@
-html{
+html {
   height: 100%;
 }
-body{
+body {
   font-family: $fonts;
   height: 100%;
+  background-image: url(./main_background.png);
+  background-size: cover;
 }
 
-#root{
+#root {
   height: 100%;
 }
 
-
-button{
+button {
   font-family: $fonts;
   border: 1px solid transparent;
   outline: none;
