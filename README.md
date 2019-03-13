@@ -6,8 +6,11 @@ Hello! Thanks for checking out our MERN stack project.
 
 The team:
 [Mason Chinkin, a.k.a. "The visualizer"](https://github.com/MasonChinkin)
+
 [Nick Howlette, a.k.a. "The authorizor"](https://github.com/Nick-Howlett)
+
 [Louis Leon, a.k.a. "The validator"](https://github.com/Louis-C-Leon)
+
 [Drew Engelstein, a.k.a. "The uploader"](https://github.com/ase1210)
 
 MyPhotoJourney is a MERN full stack app that lets you upload photos from a trip, visualize them on a map, and share it for all to see!
