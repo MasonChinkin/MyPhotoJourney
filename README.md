@@ -51,8 +51,8 @@ We conceived, designed, and built this app in 4 days, and plan on returning to i
 ### Photo Uploads
 ![](https://github.com/MasonChinkin/MyPhotoJourney/blob/dev/frontend/public/photoJourneyPhotoUpload.gif?raw=true)
 
-![] (https://github.com/MasonChinkin/MyPhotoJourney/blob/dev/frontend/public/photoJourneyUploadToMap.gif?raw=true)
+![](https://github.com/MasonChinkin/MyPhotoJourney/blob/dev/frontend/public/photoJourneyUploadToMap.gif?raw=true)
 
 ### d3.js Map
 
-![] (https://github.com/MasonChinkin/MyPhotoJourney/blob/dev/frontend/public/photoJourneyMapMousover.gif?raw=true)
+![](https://github.com/MasonChinkin/MyPhotoJourney/blob/dev/frontend/public/photoJourneyMapMousover.gif?raw=true)
