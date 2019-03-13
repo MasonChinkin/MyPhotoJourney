@@ -18,7 +18,11 @@ class Journey extends Component {
 
   render() {
     let title = this.props.journey ? <h1>{this.props.journey.name}</h1> : <></>;
-    let description = this.props.journey ? <h2>{this.props.journey.description}</h2> : <></>;
+    let description = this.props.journey ? (
+      <h2>{this.props.journey.description}</h2>
+    ) : (
+      <></>
+    );
     return (
       <div className="journey">
         {title}
@@ -28,7 +32,11 @@ class Journey extends Component {
           <input
             type="text"
             id="journey-url"
-            value={this.props.history.location.pathname}
+            disabled
+            value={
+              "https://myphotojourney.herokuapp.com/#/" +
+              this.props.history.location.pathname
+            }
           />
           <button onClick={this.copyURL}>copy url</button>
         </div>

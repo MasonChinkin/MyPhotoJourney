@@ -4,22 +4,22 @@
   justify-content: flex-start;
   align-items: center;
   background: rgb(45, 153, 76);
-  height: 1080px;;
+  height: 1080px;
   font-family: $fonts;
 
-  &>h1 {
+  & > h1 {
     margin: 100px 0 10px 0;
     font-size: 36px;
     color: white;
   }
 
-  &>h2 {
+  & > h2 {
     margin: 0 0 20px 0;
     font-size: 24px;
     color: white;
   }
 
-  &>.share {
+  & > .share {
     margin-top: 30px;
   }
 }
@@ -30,6 +30,7 @@
 
   & input {
     width: 500px;
+    padding-left: 10px;
     font-size: 16px;
     text-align: center;
   }
@@ -42,37 +43,37 @@
 }
 
 #tooltip {
-    position: fixed;
-    visibility: visible;
-    width: 300px;
-    height: auto;
-    transition: 0.5s all ease-out;
-    transform:scaleY(1);
-    transform-origin: top;
-    padding: 10px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
-    pointer-events: none;
-    overflow: hidden;
+  position: fixed;
+  visibility: visible;
+  width: 300px;
+  height: auto;
+  transition: 0.5s all ease-out;
+  transform: scaleY(1);
+  transform-origin: top;
+  padding: 10px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+  overflow: hidden;
 
-    &>* {
-      margin-bottom: 10px;
-    }
+  & > * {
+    margin-bottom: 10px;
+  }
 
-    &>*:last-child {
-      margin-bottom: 0;
-    }
+  & > *:last-child {
+    margin-bottom: 0;
+  }
 
-    & img {
-      width: 100%
-    }
+  & img {
+    width: 100%;
+  }
 }
 
 #tooltip.hidden {
-    visibility: hidden;
-    transform:scaleY(0);
-    border-radius: 50%;
-    transform-origin: top;
-    transition: visibility 0s 0.3s,all 0.3s;
+  visibility: hidden;
+  transform: scaleY(0);
+  border-radius: 50%;
+  transform-origin: top;
+  transition: visibility 0s 0.3s, all 0.3s;
 }
