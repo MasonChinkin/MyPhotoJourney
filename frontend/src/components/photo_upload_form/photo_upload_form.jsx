@@ -1,5 +1,5 @@
 import React from "react";
-import Loader from 'react-loader-spinner';
+import Loader from "react-loader-spinner";
 
 class PhotoUploadForm extends React.Component {
   constructor(props) {
@@ -23,7 +23,7 @@ class PhotoUploadForm extends React.Component {
 
   handleUpload(e) {
     e.preventDefault();
-    this.setState({status: "loading"})
+    this.setState({ status: "loading" });
     const formData = new FormData();
 
     formData.append("image", this.props.file.file);
@@ -43,7 +43,6 @@ class PhotoUploadForm extends React.Component {
   }
 
   render() {
-    console.log(this.props.file.file);
     let photoSubmitButton;
     if (this.state.status === "submitted") {
       photoSubmitButton = (
@@ -62,18 +61,11 @@ class PhotoUploadForm extends React.Component {
           value="Upload Photo!"
           onClick={this.handleUpload}
         />
-      )
-      } else if (this.state.status === "loading") {
-        photoSubmitButton = (
-          <Loader
-            color="#000000"
-            height={20}
-            width={100}
-            />
-        )
-      }
-    
-    console.log(this.state.date)
+      );
+    } else if (this.state.status === "loading") {
+      photoSubmitButton = <Loader color="#000000" height={20} width={100} />;
+    }
+
     return (
       <div className="photo-form">
         <div className="photo-img">
