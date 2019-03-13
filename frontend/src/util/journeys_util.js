@@ -7,3 +7,7 @@ export const fetchJourney = id => {
 export const postJourney = journey => {
   return axios.post(`/api/journeys`, journey);
 };
+
+export const getUserJourneys = userId => {
+  return axios.get(`/api/journeys/user/${userId}`);
+}
