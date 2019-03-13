@@ -1,4 +1,4 @@
-# MyPhoto Journey
+# MyPhotoJourney
 
 [Live Demo](https://myphotojourney.herokuapp.com "MyPhotoJourney")
 
