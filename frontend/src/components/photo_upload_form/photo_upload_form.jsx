@@ -9,7 +9,7 @@ class PhotoUploadForm extends React.Component {
       description: "",
       date: "",
       submitted: false,
-      errors: {},
+      errors: {}
     };
     this.handleUpload = this.handleUpload.bind(this);
   }
@@ -31,18 +31,18 @@ class PhotoUploadForm extends React.Component {
     formData.append("date", this.state.date);
     formData.append("journeyId", this.props.journeyId);
 
-    this.props.createPhoto(formData).then( () => {
-      if(Object.values(this.props.errors).length === 0) {
-        this.setState({submitted: true, errors: {}});
+    this.props.createPhoto(formData).then(() => {
+      if (Object.values(this.props.errors).length === 0) {
+        this.setState({ submitted: true, errors: {} });
       } else {
-        this.setState({errors: this.props.errors})
+        this.setState({ errors: this.props.errors });
       }
-    })
+    });
   }
 
   render() {
     let photoSubmitButton;
-    if(this.state.submitted) {
+    if (this.state.submitted) {
       photoSubmitButton = (
         <input
           className="button disabledButton"
@@ -50,7 +50,7 @@ class PhotoUploadForm extends React.Component {
           value="Photo Uploaded!"
           disabled
         />
-      )
+      );
     } else {
       photoSubmitButton = (
         <input
@@ -59,12 +59,12 @@ class PhotoUploadForm extends React.Component {
           value="Upload Photo!"
           onClick={this.handleUpload}
         />
-      )
+      );
     }
     return (
       <div className="photo-form">
         <div className="photo-img">
-          <img src={this.props.file.preview} />
+          <img src={this.props.file.preview} alt="your-upload" />
         </div>
         <div className="photo-data">
           <div className="photo-labels">
@@ -100,19 +100,20 @@ class PhotoUploadForm extends React.Component {
             />
           </div>
         </div>
-        <div style={{
-          "color": "red",
-          "display": "flex",
-          "flexDirection": "column",
-          "justifyContent": "center",
-          "fontSize": "12px"}}>
-        {Object.values(this.state.errors).map( (error) => {
-          return(<div style={{"marginBottom": "5px"}}>{error}</div>);
-        })}
+        <div
+          style={{
+            color: "red",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            fontSize: "12px"
+          }}
+        >
+          {Object.values(this.state.errors).map(error => {
+            return <div style={{ marginBottom: "5px" }}>{error}</div>;
+          })}
         </div>
-        <div className="photo-button">
-          {photoSubmitButton}
-        </div>
+        <div className="photo-button">{photoSubmitButton}</div>
       </div>
     );
   }
