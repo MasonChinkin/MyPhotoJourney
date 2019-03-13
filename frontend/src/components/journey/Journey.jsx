@@ -18,9 +18,11 @@ class Journey extends Component {
 
   render() {
     let title = this.props.journey ? <h1>{this.props.journey.name}</h1> : <></>;
+    let description = this.props.journey ? <h2>{this.props.journey.description}</h2> : <></>;
     return (
       <div className="journey">
         {title}
+        {description}
         <JourneyMapContainer />
         <div className="share">
           <input

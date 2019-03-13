@@ -39,10 +39,12 @@
   padding-right: 17px;
   box-sizing: content-box;
   position: relative;
+
   ul {
     background: rgba(200, 200, 200, 0.2);
+    border-radius: 4px;
     height: 100%;
-    padding: 25px;
+    padding: 15px;
     position: absolute;
     overflow-y: scroll;
     top: 100px;
@@ -102,6 +104,7 @@
   & i {
     cursor: pointer;
     color: white;
+    margin-left: 5px;
   }
 }
 
