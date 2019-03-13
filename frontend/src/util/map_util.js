@@ -43,7 +43,13 @@ export const bubbleMouseOver = function (d) {
 
   d3.select('#tooltip')
     .select('#description')
-    .text(d.description)
+    .text(() => {
+      return (d.description) ? d.description : '';
+    })
+
+  d3.select('#tooltip')
+    .select('#date')
+    .text(new Date(d.photoDateTime).toLocaleDateString());
 
   d3.select('#tooltip')
     .select('#pic')
