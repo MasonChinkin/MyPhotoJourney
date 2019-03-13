@@ -81,5 +81,3 @@ router.post("/", upload.single("image"), passport.authenticate("jwt", { session:
 After photos are validated, uploaded to AWS, and saved to MongoDB with their associated journey, the user is taken to the journey page, where we used params to fetch those photo URLs for the journey.
 
 ![](https://github.com/MasonChinkin/MyPhotoJourney/blob/dev/frontend/public/photoJourneyUploadToMap.gif?raw=true)
-
-![](https://github.com/MasonChinkin/MyPhotoJourney/blob/dev/frontend/public/photoJourneyMapMousover.gif?raw=true)
