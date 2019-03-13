@@ -79,7 +79,7 @@ class PhotoUploadForm extends React.Component {
         <div className="photo-img">
           <img src={this.props.file.preview} alt="your-upload" />
         </div>
-        {this.props.file.file.size > 1048576 ? (
+        {this.props.file.file.size > 10485760 ? (
           <div className="photo-too-large">
             <p>This photo is too large. 10MB max</p>
           </div>
