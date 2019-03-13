@@ -11,8 +11,13 @@
   flex-direction: column;
 }
 
+<<<<<<< HEAD
 .grow {
   max-height: 100vh;
+=======
+.grow{
+  max-height: 1000px;
+>>>>>>> a50e12689ffbc01877cd3763ecc87bb4b044bddf
   transition: max-height;
   transition-duration: 1500ms;
 }
