@@ -47,7 +47,7 @@ export const receiveUserJourneys = currentUserJourneys => ({
   currentUserJourneys
 });
 
-// export const fetchUserJourneys = userId => dispatch =>
-//   APIUtil.getUserJourneys(userId).then(currentUserJourneys =>
-//     dispatch(receiveUserJourneys(currentUserJourneys))
-//   );
+export const fetchUserJourneys = userId => dispatch =>
+  JourneysUtils.getUserJourneys(userId).then(currentUserJourneys =>
+    dispatch(receiveUserJourneys(currentUserJourneys))
+  );
