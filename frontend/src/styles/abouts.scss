@@ -25,10 +25,7 @@
     & h1 {
         visibility: hidden;
         pointer-events: none;
-    }
-
-    &:hover {
-        background: lightgray;
+        color: white;
     }
 
     &:hover h1 {
@@ -59,10 +56,7 @@
     & h1 {
         visibility: hidden;
         pointer-events: none;
-    }
-
-    &:hover {
-        background: lightgray;
+        color: white;
     }
 
     &:hover h1 {
