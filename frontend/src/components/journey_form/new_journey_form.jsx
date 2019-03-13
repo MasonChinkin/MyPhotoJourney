@@ -66,15 +66,15 @@ class NewJourneyForm extends React.Component {
     let nameInput, descriptionInput;
     if (this.props.currentJourneyId) {
       nameInput = (
-        <div>
-          <h2>Journey name: {this.state.name}</h2>
-          <h2>Description: {this.state.description}</h2>
+        <div className="submitted-journey-info">
+          <h2>{this.state.name}</h2>
+          <h3>{this.state.description}</h3>
         </div>
       );
       descriptionInput = <></>;
     } else {
       nameInput = (
-        <>
+        <div>
           <h2>Name</h2>
           <input
             id="journey-name"
@@ -82,17 +82,17 @@ class NewJourneyForm extends React.Component {
             value={this.state.name}
             onChange={this.handleChange("name")}
           />
-        </>
+        </div>
       );
       descriptionInput = (
-        <>
+        <div>
           <h2>Description</h2>
           <textarea
             id="journey-description"
             value={this.state.description}
             onChange={this.handleChange("description")}
           />
-        </>
+        </div>
       );
     }
     let journeyButton = this.props.currentJourneyId ? (
@@ -137,8 +137,8 @@ class NewJourneyForm extends React.Component {
         </div>
         <div id="new-journey-form">
           <div className="form-fields">
-            <div>{nameInput}</div>
-            <div>{descriptionInput}</div>
+            {nameInput}
+            {descriptionInput}
           </div>
           <div className="submit-button">
             <input
