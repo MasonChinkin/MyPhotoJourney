@@ -52,6 +52,8 @@ class JourneyMap extends Component {
       const zoom = d3.zoom()
         .scaleExtent([0.5, 8])
         .on('zoom', d => {
+          map.selectAll('circle').attr('r', 5 / d3.event.transform.k);
+          map.select('.line').attr('stroke-width', 1.5 / d3.event.transform.k);
           map.style('stroke-width', 1 / d3.event.transform.k + 'px');
           map.attr('transform', d3.event.transform);
         });
@@ -100,10 +102,27 @@ class JourneyMap extends Component {
       //draw line
       map.append('path')
         .datum(photos)
+        .attr('class', 'line')
         .attr('fill', 'none')
         .attr('stroke', 'blue')
         .attr('stroke-width', 1.5)
+        .attr('marker-mid', 'url(#arrowhead)')
+        .attr('marker-end', 'url(#arrowhead)')
         .attr('d', line);
+
+      map.append('defs').append('marker')
+        .attr('id', 'arrowhead')
+        .attr('viewBox', '-0 -5 10 10')
+        .attr('refX', 12)
+        .attr('refY', -0.5)
+        .attr('orient', 'auto')
+        .attr('markerWidth', 10)
+        .attr('markerHeight', 10)
+        .attr('xoverflow', 'visible')
+        .append('svg:path')
+        .attr('d', 'M 0,-5 L 10 ,0 L 0,5')
+        .attr('fill', 'blue')
+        .attr('class', 'arrowhead');
 
       //bubbles for visited cities
       map.selectAll('circle')
@@ -112,8 +131,8 @@ class JourneyMap extends Component {
         .append('circle')
         .attr('cx', d => projection([d.longitude, d.latitude])[0])
         .attr('cy', d => projection([d.longitude, d.latitude])[1])
-        .attr('r', 4)
-        .attr('class', d => d.city)
+        .attr('r', 5)
+        .attr('class', d => `${d.city} circle`)
         .attr('fill', 'black')
         .on('mouseover', MapUtils.bubbleMouseOver)
         .on('mouseout', MapUtils.bubbleMouseOut);
