@@ -1,29 +1,29 @@
-.flex{
+.flex {
   display: flex;
 }
 
-.center{
+.center {
   justify-content: center;
   align-items: center;
 }
 
-.column{
+.column {
   flex-direction: column;
 }
 
-.grow{
-  max-height: 1000px;
+.grow {
+  max-height: 100vh;
   transition: max-height;
   transition-duration: 1500ms;
 }
 
-.half{
+.half {
   width: 50%;
 }
 
-.background{
+.background {
   background-image: url(./main_background.png);
-  background-size: cover; 
-  height: 1000px;
+  background-size: cover;
+  height: 100vh;
   width: 100%;
 }

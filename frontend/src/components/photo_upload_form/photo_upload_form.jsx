@@ -41,6 +41,7 @@ class PhotoUploadForm extends React.Component {
   }
 
   render() {
+    console.log(this.props.file.file);
     let photoSubmitButton;
     if (this.state.submitted) {
       photoSubmitButton = (
@@ -66,54 +67,62 @@ class PhotoUploadForm extends React.Component {
         <div className="photo-img">
           <img src={this.props.file.preview} alt="your-upload" />
         </div>
-        <div className="photo-data">
-          <div className="photo-labels">
-            <label>City</label>
-            <label>Country</label>
-            <label>Description</label>
-            <label>Date</label>
+        {this.props.file.file.size > 1048576 ? (
+          <div className="photo-too-large">
+            <p>This photo is too large. 10MB max</p>
           </div>
-          <div className="photo-inputs">
-            <input
-              type="text"
-              value={this.state.city}
-              placeholder="Enter the city"
-              onChange={this.handleInput("city")}
-            />
-            <input
-              type="text"
-              value={this.state.country}
-              placeholder="Enter the country"
-              onChange={this.handleInput("country")}
-            />
-            <input
-              type="text"
-              value={this.state.description}
-              placeholder="Enter the description"
-              onChange={this.handleInput("description")}
-            />
-            <input
-              type="text"
-              value={this.state.date}
-              placeholder="Enter the date"
-              onChange={this.handleInput("date")}
-            />
-          </div>
-        </div>
-        <div
-          style={{
-            color: "red",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            fontSize: "12px"
-          }}
-        >
-          {Object.values(this.state.errors).map(error => {
-            return <div style={{ marginBottom: "5px" }}>{error}</div>;
-          })}
-        </div>
-        <div className="photo-button">{photoSubmitButton}</div>
+        ) : (
+          <>
+            <div className="photo-data">
+              <div className="photo-labels">
+                <label>City</label>
+                <label>Country</label>
+                <label>Description</label>
+                <label>Date</label>
+              </div>
+              <div className="photo-inputs">
+                <input
+                  type="text"
+                  value={this.state.city}
+                  placeholder="Enter the city"
+                  onChange={this.handleInput("city")}
+                />
+                <input
+                  type="text"
+                  value={this.state.country}
+                  placeholder="Enter the country"
+                  onChange={this.handleInput("country")}
+                />
+                <input
+                  type="text"
+                  value={this.state.description}
+                  placeholder="Enter the description"
+                  onChange={this.handleInput("description")}
+                />
+                <input
+                  type="text"
+                  value={this.state.date}
+                  placeholder="Enter the date"
+                  onChange={this.handleInput("date")}
+                />
+              </div>
+            </div>
+            <div
+              style={{
+                color: "red",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                fontSize: "12px"
+              }}
+            >
+              {Object.values(this.state.errors).map(error => {
+                return <div style={{ marginBottom: "5px" }}>{error}</div>;
+              })}
+            </div>
+            <div className="photo-button">{photoSubmitButton}</div>
+          </>
+        )}
       </div>
     );
   }

@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   color: white;
-  min-height: calc(100vh - 70px);
+  min-height: calc(100vh - 90px);
 
   h1 {
     padding-top: 20px;
@@ -33,6 +33,7 @@
     font-size: 20px;
     font-weight: bold;
     padding-bottom: 10px;
+    margin-bottom: 10px;
   }
 
   .submit-button {
@@ -59,6 +60,7 @@
       text-decoration: none;
       text-align: center;
       border-radius: 4px;
+      margin-top: 10px;
 
       &:hover {
         background-color: $primary-cta-highlight;
@@ -126,6 +128,7 @@
     text-decoration: none;
     text-align: center;
     border-radius: 4px;
+    margin-bottom: 10px;
   }
 
   h2 {
