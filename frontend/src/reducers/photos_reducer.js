@@ -6,7 +6,7 @@ const PhotosReducer = (state = {}, action) => {
   const newState = Object.assign({}, state)
   switch (action.type) {
     case PhotoActions.RECEIVE_PHOTO:
-      newState[action.photo.id] = action.photo;
+      newState[action.photo.data._id] = action.photo.data;
       return newState;
     case PhotoActions.RECEIVE_PHOTOS:
       return action.photos;
