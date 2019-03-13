@@ -6,7 +6,7 @@ import Splash from './splash/splash';
 import ProfileContainer from './profile/profile_container';
 import "./App.scss";
 import NewJourneyFormContainer from './journey_form/new_journey_form_container';
-import Journeys from './journey/Journey';
+import JourneyContainer from './journey/JourneyContainer';
 
 const App = () => {
     return (
@@ -20,8 +20,7 @@ const App = () => {
                 <ProtectedRoute exact path="/profile" component={ProfileContainer} />
                 <ProtectedRoute exact path="/journeys/new" component={NewJourneyFormContainer} />
             </Switch>
-            <Route exact path="/journey/:journey_id" component={Journeys}></Route>
-            {/* <Route exact path="/journeys" component={Journeys}></Route> */}
+            <Route exact path="/journey/:journey_id" component={JourneyContainer}></Route>
         </>
     )
 };
