@@ -56,16 +56,29 @@ We conceived, designed, and built this app in less than 4 days, and plan on retu
 ### Storing uploaded photos on AWS
 Storing uploaded photos on AWS was the biggest challenge faced by the team. Louis and Drew worked for over two days with multer.js to build bug free, reliable backend framework to validate and upload photos to AWS before saving the photo URL to our MongoDB database.
 
-BELOW IS CODE EXAMPLE OF HOW YOU ABSTRACTED SOMETHING TO GET IT WORKING
-
+Below is a code snippet of our backend route that first saves the image to AWS, validates the user inputs, and then fetches the geo-location for the provided city and country before saving the photo to our DB:
 ```Javascript
-code here
+router.post("/", upload.single("image"), passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+  ...
+  ...
+  const { errors, isValid } = await validatePhotoInput(photo);
+  ...
+  ...
+  let options = { city: photo.city, country: photo.country };
+  let data = await geocoder.geocode(options);
+
+  if (data.length === 0) {
+    errors.location = "Enter a valid city/country location";
+    return res.status(400).json(errors);
+  }
+
 ```
 
 ![](https://github.com/MasonChinkin/MyPhotoJourney/blob/dev/frontend/public/photoJourneyPhotoUpload.gif?raw=true)
 
 ### Making a journey
-After photos are validated, uploaded to AWS, and save to MongoDB with their associated journey, the user is taken to the journey page, where we used params to fetch those photo URLs for the journey.
+After photos are validated, uploaded to AWS, and saved to MongoDB with their associated journey, the user is taken to the journey page, where we used params to fetch those photo URLs for the journey.
 
 ![](https://github.com/MasonChinkin/MyPhotoJourney/blob/dev/frontend/public/photoJourneyUploadToMap.gif?raw=true)
 
