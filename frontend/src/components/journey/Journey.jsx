@@ -32,6 +32,7 @@ class Journey extends Component {
           <input
             type="text"
             id="journey-url"
+            disabled
             value={
               "https://myphotojourney.herokuapp.com/#/" +
               this.props.history.location.pathname
