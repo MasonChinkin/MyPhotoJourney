@@ -18,7 +18,7 @@ class JourneyMap extends Component {
       Accept: "application/json"
     });
 
-    fetch("http://localhost:5000/journeys", {
+    fetch("/journeys", {
       headers: myHeaders,
     })
       .then(response => {
