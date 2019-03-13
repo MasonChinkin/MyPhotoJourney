@@ -1,6 +1,7 @@
 import * as JourneysUtils from "../util/journeys_util";
 
 export const RECEIVE_JOURNEY = "RECEIVE_JOURNEY";
+export const CLEAR_UI_JOURNEY = "CLEAR_UI_JOURNEY";
 export const RECEIVE_CURRENT_JOURNEY = "RECEIVE_CURRENT_JOURNEY";
 export const RECEIVE_JOURNEY_ERRORS = "RECEIVE_JOURNEY_ERRORS";
 
@@ -19,6 +20,10 @@ export const receiveCurrentJourney = journeyPayload => ({
 export const receiveErrors = errs => ({
   type: RECEIVE_JOURNEY_ERRORS,
   errs
+});
+
+export const clearUIJourney = () => ({
+  type: CLEAR_UI_JOURNEY
 });
 
 export const requestJourney = id => dispatch => {
