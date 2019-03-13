@@ -9,6 +9,7 @@ class PhotoUploadForm extends React.Component {
       description: "",
       date: "",
       submitted: false,
+      errors: {},
     };
     this.handleUpload = this.handleUpload.bind(this);
   }
@@ -33,11 +34,14 @@ class PhotoUploadForm extends React.Component {
     this.props.createPhoto(formData).then( () => {
       if(Object.keys(this.props.errors).length === 0) {
         this.setState({submitted: true});
+      } else {
+        this.setState({errors: this.props.errors})
       }
     })
   }
 
   render() {
+    console.log(this.state.errors)
     let photoSubmitButton;
     if(this.state.submitted) {
       photoSubmitButton = (

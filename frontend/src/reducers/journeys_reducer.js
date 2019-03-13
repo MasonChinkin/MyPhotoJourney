@@ -6,7 +6,7 @@ const JourneysReducer = (state = {}, action) => {
   const newState = Object.assign({}, state)
   switch (action.type) {
     case RECEIVE_JOURNEY:
-      newState[action.journeyPayload.journey.id] = action.journeyPayload.journey;
+      newState[action.journeyPayload.journey.id] = action.journeyPayload.journey; 
       return newState;
     case RECEIVE_CURRENT_USER:
       return Object.assign({}, state, action.currentUser.journeys);
