@@ -7,6 +7,7 @@ import ProfileContainer from './profile/profile_container';
 import "./App.scss";
 import NewJourneyFormContainer from './journey_form/new_journey_form_container';
 import Journeys from './journey/Journey';
+import About from '../components/about/abouts';
 
 const App = () => {
     return (
@@ -22,6 +23,7 @@ const App = () => {
             </Switch>
             <Route exact path="/journey/:journey_id" component={Journeys}></Route>
             {/* <Route exact path="/journeys" component={Journeys}></Route> */}
+            <About/>
         </>
     )
 };
