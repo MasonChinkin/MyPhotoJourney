@@ -19,7 +19,7 @@ class Journey extends Component {
   render() {
     return (
       <div className="journey">
-        <h1>{this.props.journey.name}</h1>
+        <h1>Your Journey</h1>
         <JourneyMapContainer />
         <div className="share">
           <input
