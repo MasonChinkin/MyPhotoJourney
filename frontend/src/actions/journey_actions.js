@@ -2,6 +2,7 @@ import * as JourneysUtils from "../util/journeys_util";
 
 export const RECEIVE_JOURNEY = "RECEIVE_JOURNEY";
 export const CLEAR_UI_JOURNEY = "CLEAR_UI_JOURNEY";
+export const RECEIVE_USER_JOURNEYS = "RECEIVE_USER_JOURNEYS";
 export const RECEIVE_CURRENT_JOURNEY = "RECEIVE_CURRENT_JOURNEY";
 export const RECEIVE_JOURNEY_ERRORS = "RECEIVE_JOURNEY_ERRORS";
 
@@ -40,3 +41,13 @@ export const createJourney = JourneyPayload => dispatch =>
       dispatch(receiveCurrentJourney({ journey: journeyRes.data }))
     )
     .catch(err => dispatch(receiveErrors(err.response.data)));
+
+export const receiveUserJourneys = currentUserJourneys => ({
+  type: RECEIVE_USER_JOURNEYS,
+  currentUserJourneys
+});
+
+// export const fetchUserJourneys = userId => dispatch =>
+//   APIUtil.getUserJourneys(userId).then(currentUserJourneys =>
+//     dispatch(receiveUserJourneys(currentUserJourneys))
+//   );
