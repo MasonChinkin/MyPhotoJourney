@@ -10,6 +10,7 @@ We conceived, designed, and built this app in less than 4 days, and plan on retu
 
 ## Index
 
+* [The Team](https://github.com/MasonChinkin/MyPhotoJourney/blob/master/README.md#The-Team)
 * [Features](https://github.com/MasonChinkin/MyPhotoJourney/blob/master/README.md#features)
 * [Technologies](https://github.com/MasonChinkin/MyPhotoJourney/blob/master/README.md#technologies)
 * [Highlights](https://github.com/MasonChinkin/MyPhotoJourney/blob/master/README.md#highlights)
