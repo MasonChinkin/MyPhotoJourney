@@ -78,7 +78,6 @@ router.post('/login', (req, res) => {
         });
 });
 
-
 async function createLoginResponse(user, res){
     const journeyArray = await Journey.find({userId: user.id});
     const journeys = {};

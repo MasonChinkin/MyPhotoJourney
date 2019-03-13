@@ -3,6 +3,11 @@ import { Link } from "react-router-dom";
 import JourneyListItem from "./journey_list_item";
 
 class Profile extends React.Component {
+  componentDidMount() {
+    const userId = this.props.currentUser;
+    this.props.fetchUserJourneys(userId);
+  }
+
   render() {
     let journeys = this.props.journeys.map(journey => (
       <JourneyListItem key={journey._id} journey={journey} />

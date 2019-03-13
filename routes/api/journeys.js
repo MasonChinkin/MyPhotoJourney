@@ -40,6 +40,13 @@ router.post(
   }
 );
 
+// Get journeys by user for p rofile page
+router.get("/user/:user_id", async (req, res) => {
+  const user = req.params.user_id
+  const journeys = await Journey.find({userId: user})
+  return res.status(200).json(journeys);
+})
+
 router.get("/:journey_id", (req, res) => {
   Promise.all([
     Journey.findById(req.params.journey_id),

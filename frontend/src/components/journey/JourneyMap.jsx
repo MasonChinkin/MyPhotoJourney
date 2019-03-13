@@ -106,23 +106,23 @@ class JourneyMap extends Component {
         .attr('fill', 'none')
         .attr('stroke', 'blue')
         .attr('stroke-width', 1.5)
-        .attr('marker-mid', 'url(#arrowhead)')
-        .attr('marker-end', 'url(#arrowhead)')
+        // .attr('marker-mid', 'url(#arrowhead)')
+        // .attr('marker-end', 'url(#arrowhead)')
         .attr('d', line);
 
-      map.append('defs').append('marker')
-        .attr('id', 'arrowhead')
-        .attr('viewBox', '-0 -5 10 10')
-        .attr('refX', 12)
-        .attr('refY', -0.5)
-        .attr('orient', 'auto')
-        .attr('markerWidth', 10)
-        .attr('markerHeight', 10)
-        .attr('xoverflow', 'visible')
-        .append('svg:path')
-        .attr('d', 'M 0,-5 L 10 ,0 L 0,5')
-        .attr('fill', 'blue')
-        .attr('class', 'arrowhead');
+      // map.append('defs').append('marker')
+      //   .attr('id', 'arrowhead')
+      //   .attr('viewBox', '-0 -5 10 10')
+      //   .attr('refX', 12)
+      //   .attr('refY', -0.5)
+      //   .attr('orient', 'auto')
+      //   .attr('markerWidth', 10)
+      //   .attr('markerHeight', 10)
+      //   .attr('xoverflow', 'visible')
+      //   .append('svg:path')
+      //   .attr('d', 'M 0,-5 L 10 ,0 L 0,5')
+      //   .attr('fill', 'blue')
+      //   .attr('class', 'arrowhead');
 
       //bubbles for visited cities
       map.selectAll('circle')
@@ -148,8 +148,8 @@ class JourneyMap extends Component {
         <div id="tooltip" className="hidden">
           <h1 id="city">placeholder</h1>
           <img id="pic" alt="" />
+          <p id="date">placeholder</p>
           <p id="description">placeholder</p>
-          {/* <p id="date">placeholder</p> */}
         </div>
       </>
     );
