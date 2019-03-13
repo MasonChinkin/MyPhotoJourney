@@ -4,16 +4,6 @@
 
 Hello! Thanks for checking out our MERN stack project.
 
-The team:
-
-[Mason Chinkin, a.k.a. "The visualizer"](https://github.com/MasonChinkin)
-
-[Nick Howlette, a.k.a. "The authorizor"](https://github.com/Nick-Howlett)
-
-[Louis Leon, a.k.a. "The validator"](https://github.com/Louis-C-Leon)
-
-[Drew Engelstein, a.k.a. "The uploader"](https://github.com/ase1210)
-
 MyPhotoJourney is a MERN full stack app that lets you upload photos from a trip, visualize them on a map, and share it for all to see!
 
 We conceived, designed, and built this app in less than 4 days, and plan on returning to it after graduating App Academy (early April) to round out its features.
@@ -25,6 +15,20 @@ We conceived, designed, and built this app in less than 4 days, and plan on retu
 * [Highlights](https://github.com/MasonChinkin/MyPhotoJourney/blob/master/README.md#highlights)
   * [Storing uploaded photos on AWS](https://github.com/MasonChinkin/MyPhotoJourney/blob/master/README.md#Storing-uploaded-photos-on-AWS)
   * [Making a journey](https://github.com/MasonChinkin/MyPhotoJourney/blob/master/README.md#Making-a-journey)
+  
+## The Team
+
+[Mason Chinkin, a.k.a. "The visualizer"](https://github.com/MasonChinkin)
+* d3.js map, mongoose.js backend
+
+[Nick Howlette, a.k.a. "The authorizor"](https://github.com/Nick-Howlett)
+* End to end user auth, profile page
+
+[Louis Leon, a.k.a. "The validator"](https://github.com/Louis-C-Leon)
+* Photo uploading/validation, gps api
+
+[Drew Engelstein, a.k.a. "The uploader"](https://github.com/ase1210)
+* AWS, photo uploading, upload forms
   
 ## Features
 
