@@ -49,5 +49,5 @@ export const receiveUserJourneys = currentUserJourneys => ({
 
 export const fetchUserJourneys = userId => dispatch =>
   JourneysUtils.getUserJourneys(userId).then(currentUserJourneys =>
-    dispatch(receiveUserJourneys(currentUserJourneys))
+    dispatch(receiveUserJourneys(currentUserJourneys.data))
   );
