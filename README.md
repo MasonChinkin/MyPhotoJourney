@@ -5,6 +5,7 @@
 Hello! Thanks for checking out our MERN stack project.
 
 The team:
+
 [Mason Chinkin, a.k.a. "The visualizer"](https://github.com/MasonChinkin)
 
 [Nick Howlette, a.k.a. "The authorizor"](https://github.com/Nick-Howlett)
