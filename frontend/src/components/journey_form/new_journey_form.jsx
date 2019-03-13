@@ -15,6 +15,10 @@ class NewJourneyForm extends React.Component {
     this.handleCompleteJourney = this.handleCompleteJourney.bind(this);
   }
 
+  componentDidMount() {
+    this.props.clearUIJourney();
+  }
+
   handleChange(field) {
     return e => {
       this.setState({ [field]: e.target.value });
@@ -104,13 +108,13 @@ class NewJourneyForm extends React.Component {
         }}
       />
     ) : (
-        <input
-          className="upload-photos"
-          type="submit"
-          value="Save &amp; Continue"
-          onClick={this.handleSubmitJourney}
-        />
-      );
+      <input
+        className="upload-photos"
+        type="submit"
+        value="Save &amp; Continue"
+        onClick={this.handleSubmitJourney}
+      />
+    );
 
     let completeJourneyButton = this.state.uploadPhotos ? (
       <div className="complete-journey">
@@ -123,8 +127,8 @@ class NewJourneyForm extends React.Component {
         />
       </div>
     ) : (
-        <></>
-      );
+      <></>
+    );
 
     return (
       <div className="create-journey background">

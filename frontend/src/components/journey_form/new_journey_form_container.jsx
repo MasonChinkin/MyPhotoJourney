@@ -15,7 +15,8 @@ const mDTP = dispatch => {
   return {
     createJourney: journeyPayload => {
       dispatch(JourneyActions.createJourney(journeyPayload));
-    }
+    },
+    clearUIJourney: () => dispatch(JourneyActions.clearUIJourney())
   };
 };
 

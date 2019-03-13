@@ -28,12 +28,11 @@ export const bubbleMouseOver = function (d) {
   d3.select(this)
     .transition('orangeHover')
     .duration(75)
-    .attr('fill', 'orange')
-    .attr('r', 12)
+    .attr('fill', 'orange');
 
-  const photo = document.getElementsByClassName(`${d.city}`)[0]
-  const leftPos = photo.getBoundingClientRect().left
-  const topPos = photo.getBoundingClientRect().top
+  const photo = document.getElementsByClassName(`${d.city}`)[0];
+  const leftPos = photo.getBoundingClientRect().left;
+  const topPos = photo.getBoundingClientRect().top;
 
   //Update the tooltip position and value
   d3.select('#tooltip')
@@ -48,10 +47,10 @@ export const bubbleMouseOver = function (d) {
 
   d3.select('#tooltip')
     .select('#pic')
-    .attr('src', d.photoUrl)
+    .attr('src', d.photoUrl);
 
   //Show the tooltip
-  d3.select('#tooltip').classed('hidden', false)
+  d3.select('#tooltip').classed('hidden', false);
 }
 
 //properties of mouseout
@@ -60,7 +59,6 @@ export const bubbleMouseOut = function (d) {
     .transition('orangeHover')
     .duration(250)
     .attr('fill', 'black')
-    .attr('r', 4)
 
   //Hide the tooltip
   d3.select('#tooltip').classed('hidden', true)
