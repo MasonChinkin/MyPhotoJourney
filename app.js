@@ -15,7 +15,7 @@ const userPhotos = require("./routes/api/photos");
 app.use("/api/photos", userPhotos);
 
 //TESTING DATA
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Headers",
@@ -24,16 +24,16 @@ app.use(function(req, res, next) {
   next();
 });
 
-const photos = require("./testData/journey_map/map_test_data.json");
+// const photos = require("./testData/journey_map/map_test_data.json");
 const map = require("./testData/journey_map/world.json");
-app.get("/journeys", function(req, res, next) {
-  res.send({ photos, map });
+app.get("/journeys", function (req, res, next) {
+  res.send({ map });
 });
 //^^^TESTING DATA
 
 // TESTING AWS
-const fileRoutes = require("./routes/api/image-upload");
-app.use("/api", fileRoutes);
+// const fileRoutes = require("./routes/api/image-upload");
+// app.use("/api", fileRoutes);
 // TESTING AWS
 
 const passport = require("passport");

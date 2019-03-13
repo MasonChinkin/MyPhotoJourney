@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
 import JourneyMap from './JourneyMap';
+import { withRouter } from 'react-router-dom';
 import { requestJourney } from '../../actions/journey_actions';
 
 const mSP = ({ entities }, ownProps) => ({
   journey: entities.journeys[ownProps.match.params.journey_id],
-  photos: Object.values(entities.photos)
+  photos: entities.photos
 });
 
 const mDP = dispatch => ({
@@ -13,4 +14,4 @@ const mDP = dispatch => ({
 
 const JourneyMapContainer = connect(mSP, mDP)(JourneyMap);
 
-export default JourneyMapContainer;
+export default withRouter(JourneyMapContainer);

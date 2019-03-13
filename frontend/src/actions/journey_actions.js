@@ -4,10 +4,13 @@ export const RECEIVE_JOURNEY = "RECEIVE_JOURNEY";
 export const RECEIVE_CURRENT_JOURNEY = "RECEIVE_CURRENT_JOURNEY";
 export const RECEIVE_JOURNEY_ERRORS = "RECEIVE_JOURNEY_ERRORS";
 
-export const receiveJourney = journeyPayload => ({
-  type: RECEIVE_JOURNEY,
-  journeyPayload
-});
+export const receiveJourney = journeyPayload => {
+  // debugger
+  return {
+    type: RECEIVE_JOURNEY,
+    journeyPayload
+  }
+};
 
 export const receiveCurrentJourney = journeyPayload => ({
   type: RECEIVE_CURRENT_JOURNEY,
@@ -19,10 +22,14 @@ export const receiveErrors = errs => ({
   errs
 });
 
-export const requestJourney = id => dispatch =>
-  JourneysUtils.fetchJourney(id)
+export const requestJourney = id => dispatch => {
+  return JourneysUtils.fetchJourney(id)
     .then(journeyPayload => dispatch(receiveJourney(journeyPayload)))
-    .catch(err => dispatch(receiveErrors(err.response.data)));
+    .catch(err => {
+      debugger
+      dispatch(receiveErrors(err.response.data));
+    })
+}
 
 export const createJourney = JourneyPayload => dispatch =>
   JourneysUtils.postJourney(JourneyPayload)

@@ -12,6 +12,7 @@ const App = () => {
     return (
         <>
             <Route path="/journeys" component={NavbarContainer}></Route>
+            <Route path="/journey" component={NavbarContainer}></Route>
             <Route path="/profile" component={NavbarContainer}></Route>
             <Route path="/map" component={NavbarContainer}></Route>
             <Switch>
@@ -19,8 +20,8 @@ const App = () => {
                 <ProtectedRoute exact path="/profile" component={ProfileContainer} />
                 <ProtectedRoute exact path="/journeys/new" component={NewJourneyFormContainer} />
             </Switch>
-            {/* <Route exact path="/journeys/:journey_id" component={Journeys}></Route> */}
-            <Route exact path="/journeys" component={Journeys}></Route>
+            <Route exact path="/journey/:journey_id" component={Journeys}></Route>
+            {/* <Route exact path="/journeys" component={Journeys}></Route> */}
         </>
     )
 };

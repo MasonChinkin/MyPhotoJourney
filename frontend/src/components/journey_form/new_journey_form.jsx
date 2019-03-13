@@ -22,7 +22,7 @@ class NewJourneyForm extends React.Component {
   }
 
   handleCompleteJourney() {
-    let path = `/journeys/${this.props.currentJourneyId}`;
+    let path = `/journey/${this.props.currentJourneyId}`;
     this.props.history.push(path);
   }
 
@@ -104,13 +104,13 @@ class NewJourneyForm extends React.Component {
         }}
       />
     ) : (
-      <input
-        className="upload-photos"
-        type="submit"
-        value="Save &amp; Continue"
-        onClick={this.handleSubmitJourney}
-      />
-    );
+        <input
+          className="upload-photos"
+          type="submit"
+          value="Save &amp; Continue"
+          onClick={this.handleSubmitJourney}
+        />
+      );
 
     let completeJourneyButton = this.state.uploadPhotos ? (
       <div className="complete-journey">
@@ -123,8 +123,8 @@ class NewJourneyForm extends React.Component {
         />
       </div>
     ) : (
-      <></>
-    );
+        <></>
+      );
 
     return (
       <div className="create-journey background">

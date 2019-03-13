@@ -5,13 +5,14 @@ import configureStore from './store/store';
 import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './util/session_api_utils';
 import { logout, signup, login } from './actions/session_actions';
-import axios from 'axios';
+// import axios from 'axios';
 import * as JourneyActions from "./actions/journey_actions";
 import * as PhotoActions from "./actions/photo_actions";
+import { fetchJourney } from './util/journeys_util';
 
 document.addEventListener('DOMContentLoaded', () => {
     let store;
-    if (localStorage.jwtToken){
+    if (localStorage.jwtToken) {
         setAuthToken(localStorage.jwtToken);
         const decodedUser = jwt_decode(localStorage.jwtToken);
         const preloadedState = {
@@ -25,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         store = configureStore(preloadedState);
         const currentTime = Date.now() / 1000;
-        if(decodedUser.exp < currentTime){
+        if (decodedUser.exp < currentTime) {
             store.dispatch(logout());
             window.location.href = '/login';
         }
@@ -39,6 +40,9 @@ document.addEventListener('DOMContentLoaded', () => {
     window.dispatch = store.dispatch;
     window.JourneyActions = JourneyActions;
     window.PhotoActions = PhotoActions;
+
+    window.fetchJourney = fetchJourney;
+
     const root = document.getElementById('root');
     ReactDOM.render(<Root store={store} />, root);
 })

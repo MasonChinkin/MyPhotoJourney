@@ -30,7 +30,7 @@ router.post(
       newJourney.description = req.body.journey.description;
     }
 
-    newJourney.save(function(err, newJourney) {
+    newJourney.save(function (err, newJourney) {
       if (err) {
         return res.status(400).json(err);
       } else {
@@ -45,7 +45,7 @@ router.get("/:journey_id", (req, res) => {
     Journey.findById(req.params.journey_id),
     Photo.find({ journeyId: req.params.journey_id }).sort({ photoDateTime: 1 })
   ])
-    .then((journey, photos) => res.json({ journey, photos }))
+    .then((response) => res.status(200).json(response))
     .catch(err => res.status(400).json(err));
 });
 
