@@ -151,11 +151,15 @@ class NewJourneyForm extends React.Component {
             {journeyButton}
           </div>
         </div>
-        <div className="photo-preview">
-          {this.state.files.map((file, idx) => {
-            return <PhotoUploadFormContainer key={idx} file={file} />;
-          })}
-        </div>
+        {this.state.files.length === 0 ? (
+          <></>
+        ) : (
+          <div className="photo-preview">
+            {this.state.files.map((file, idx) => {
+              return <PhotoUploadFormContainer key={idx} file={file} />;
+            })}
+          </div>
+        )}
         {completeJourneyButton}
       </div>
     );
