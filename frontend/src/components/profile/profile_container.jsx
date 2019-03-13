@@ -1,7 +1,7 @@
-import {connect} from 'react-redux';
-import {getUserJourneys} from '../../actions/selectors';
-import Profile from './profile';
-
+import { connect } from "react-redux";
+import { getUserJourneys } from "../../actions/selectors";
+import Profile from "./profile";
+import { fetchUserJourneys } from "../../actions/journey_actions";
 
 const msp = state => ({
   currentUser: state.session.user.id,
@@ -9,8 +9,10 @@ const msp = state => ({
 });
 
 const mdp = dispatch => ({
-
+  fetchUserJourneys: userId => dispatch(fetchUserJourneys(userId))
 });
 
-
-export default connect(msp, mdp)(Profile);
+export default connect(
+  msp,
+  mdp
+)(Profile);
