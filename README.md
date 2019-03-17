@@ -38,7 +38,6 @@ We conceived, designed, and built this app in less than 4 days, and plan on retu
 * Map your journey, and see your photos by hovering over photo locations
 * See your journeys from the profile page
 * Anyone can see your journey if you share the url
-
 * Coming soon- delete journeys
 * Coming soon- Streamlined, better-validated location input
 * Coming soon- Multiple photos for one location, multiple locations per date
