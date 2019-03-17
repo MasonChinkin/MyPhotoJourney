@@ -46,7 +46,7 @@ We conceived, designed, and built this app in less than 4 days, and plan on retu
 
 * MERN stack: MongoDB, Express.js, React/Redux, Node.js
 * d3.js for mapping the journey
-* AWS with multer.js for uploading and storing user's photos
+* AWS with multer.js for uploading and storing users' photos
 * node-geocoder.js + OpenStreetMap to fetch gps locations based on user input
 * End to end user auth with BCrypt and passport
 
