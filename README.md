@@ -55,7 +55,7 @@ We conceived, designed, and built this app in less than 4 days, and plan on retu
 ### Storing uploaded photos on AWS
 Storing uploaded photos on AWS was the biggest challenge faced by the team. Louis and Drew worked for over two days with multer.js to build a bug free, reliable backend framework to validate and upload photos to AWS before saving the photo URL to our MongoDB database.
 
-Below is a code snippet of our backend route that first saves the image to AWS, validates the user inputs, and then fetches the geo-location for the provided city and country before saving the photo to our DB:
+Below is a code snippet of our backend route that first uploads the image to AWS, validates the user inputs, and then fetches the geo-location for the provided city and country before saving the photo url to MongoDB:
 ```Javascript
 router.post("/", upload.single("image"), passport.authenticate("jwt", { session: false }),
   async (req, res) => {
