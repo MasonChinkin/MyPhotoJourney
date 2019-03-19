@@ -10,4 +10,8 @@ export const postJourney = journey => {
 
 export const getUserJourneys = userId => {
   return axios.get(`/api/journeys/user/${userId}`);
-}
+};
+
+export const destroyJourney = journeyId => {
+  return axios.delete(`/api/journeys/${journeyId}`);
+};
