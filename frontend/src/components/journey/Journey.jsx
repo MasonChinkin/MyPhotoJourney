@@ -12,7 +12,7 @@ class Journey extends Component {
   copyURL() {
     let url = document.getElementById("journey-url");
     url.select();
-    document.execCommand("copy");
+    console.log(document.execCommand("copy"));
     alert(`URL copied to clipboard!`);
   }
 
