@@ -18,7 +18,8 @@ const mDTP = dispatch => {
       dispatch(JourneyActions.createJourney(journeyPayload));
     },
     clearUIJourney: () => dispatch(JourneyActions.clearUIJourney()),
-    deleteJourney: journeyId => dispatch(deleteJourney(journeyId))
+    deleteJourney: journeyId =>
+      dispatch(JourneyActions.deleteJourney(journeyId))
   };
 };
 
