@@ -28,8 +28,9 @@ export const clearUIJourney = () => ({
   type: CLEAR_UI_JOURNEY
 });
 
-export const receieveJourneyDelete = journeyId => ({
-  type: RECEIVE_JOURNEY_DELETE
+export const receiveJourneyDelete = journeyId => ({
+  type: RECEIVE_JOURNEY_DELETE,
+  journeyId
 });
 
 export const requestJourney = id => dispatch => {
@@ -57,6 +58,6 @@ export const fetchUserJourneys = userId => dispatch =>
     dispatch(receiveUserJourneys(currentUserJourneys.data))
   );
 
-export const  deleteJourney = journeyId => dispatch => (
+export const deleteJourney = journeyId => dispatch => (
   JourneysUtils.destroyJourney(journeyId).then(journeyId => dispatch(receiveJourneyDelete(journeyId)))
 );
