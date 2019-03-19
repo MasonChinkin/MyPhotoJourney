@@ -37,8 +37,11 @@ router.post(
       return res.status(400).json(errors);
     }
 
-    let options = { city: photo.city, country: photo.country };
-    let data = await geocoder.geocode(options);
+    let data = await geocoder.geocode(photo.city);
+
+    filteredData = data.filter(function(entry) {
+      return entry.country === photo.city;  
+    });
 
     if (data.length === 0) {
       errors.location = "Enter a valid city/country location";
@@ -58,6 +61,8 @@ router.post(
       longitude: firstResult.longitude,
       journeyId: photo.journeyId
     });
+
+    debugger;
 
     newPhoto.save(function(err, newPhoto) {
       if (err) {
