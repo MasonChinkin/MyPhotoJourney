@@ -26,7 +26,7 @@ router.post(
     let photo = {};
     photo.city = req.body.city;
     photo.country = req.body.country;
-    photo.date = req.body.date;
+    photo.photoDateTime = new Date(req.body.date);
     photo.journeyId = req.body.journeyId;
     photo.description = req.body.description;
     photo.url = req.file.location;
@@ -56,7 +56,10 @@ router.post(
       if (currPhoto.longitude === firstResult.longitude && currPhoto.latitude === firstResult.latitude) {
         errors.location = "Only one picture per city in a photo journey!"
       }
-      if (currPhoto.photoDateTime === new Date(photo.date)) {
+      debugger;
+      if (currPhoto.photoDateTime.getDate() === photo.photoDateTime.getDate() &&
+          currPhoto.photoDateTime.getMonth() === photo.photoDateTime.getMonth() &&
+          currPhoto.photoDateTime.getYear() === photo.photoDateTime.getYear()) {
             errors.date = "Only one picture per day in a photo journey!"
       }
     });
@@ -69,7 +72,7 @@ router.post(
       city: photo.city,
       region: photo.province || null,
       country: photo.country,
-      photoDateTime: new Date(photo.date),
+      photoDateTime: photo.photoDateTime,
       description: photo.description,
       latitude: firstResult.latitude,
       longitude: firstResult.longitude,
