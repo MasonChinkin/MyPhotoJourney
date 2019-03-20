@@ -6,7 +6,7 @@ Hello! Thanks for checking out our MERN stack project.
 
 MyPhotoJourney is a MERN full stack app that lets you upload photos from a trip, visualize them on a map, and share it for all to see!
 
-We conceived, designed, and built this app in less than 4 days, and plan on returning to it after graduating App Academy (April) to round out its features.
+We conceived, designed, and built this app in less than 4 days, and plan on will continue rounding out its features.
 
 ## Index
 
