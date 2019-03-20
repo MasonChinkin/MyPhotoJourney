@@ -1,84 +1,101 @@
-#abouts{
-    margin-bottom: -100px;
-    &>* {
-        margin-right: 30px !important;
-    }
+#abouts {
+  margin-bottom: -100px;
+  & > * {
+    margin-right: 30px !important;
+  }
 }
 
-#git-list{
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    display: flex;
-    margin: 0 5px;
-    flex-direction: column;
-    overflow: hidden;
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 30px;
-    max-height: 140px;
-    width: 80px;
-    transition: max-height, ease-in-out, 300ms;
-    margin-bottom: -100px;
-    border-radius: 4px;
+#git-list {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  margin: 0 5px;
+  flex-direction: column;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 30px;
+  padding-left: 8px;
+  max-height: 140px;
+  width: 80px;
+  transition: max-height, ease-in-out, 300ms;
+  margin-bottom: -100px;
+  border-radius: 4px;
 
-    & h1 {
-        visibility: hidden;
-        pointer-events: none;
-    }
+  & h1 {
+    visibility: hidden;
+    pointer-events: none;
+  }
 
-    &:hover {
-        background: lightgray;
+  div {
+    padding: 5px 0;
+    a {
+      text-decoration: none;
+      color: black;
     }
+  }
 
-    &:hover h1 {
-        visibility: visible;
-        overflow: visible;
-        margin-top: 10px;
-        margin-bottom: 3px;
-    }
+  &:hover {
+    background: lightgray;
+  }
+
+  &:hover h1 {
+    visibility: visible;
+    overflow: visible;
+    margin-top: 10px;
+    margin-bottom: 3px;
+  }
 }
 
-#linkedin-list{
-    position: fixed;
-    bottom: 0;
-    right: 90px;
-    display: flex;
-    margin: 0 5px;
-    flex-direction: column;
-    overflow: hidden;
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 30px;
-    max-height: 130px;
-    width: 80px;
-    transition: max-height, ease-in-out, 300ms;
-    margin-bottom: -100px;
-    border-radius: 4px;
-    
-    & h1 {
-        visibility: hidden;
-        pointer-events: none;
-    }
+#linkedin-list {
+  position: fixed;
+  bottom: 5px;
+  right: 90px;
+  display: flex;
+  margin: 0 5px;
+  flex-direction: column;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 30px;
+  padding-left: 8px;
+  max-height: 130px;
+  width: 80px;
+  transition: max-height, ease-in-out, 300ms;
+  margin-bottom: -100px;
+  border-radius: 4px;
 
-    &:hover {
-        background: lightgray;
+  & h1 {
+    visibility: hidden;
+    pointer-events: none;
+  }
+  div {
+    padding: 5px 0;
+    a {
+      text-decoration: none;
+      color: black;
     }
+  }
 
-    &:hover h1 {
-        visibility: visible;
-        overflow: visible;
-        margin-top: 10px;
-        margin-bottom: 3px;
-    }
+  &:hover {
+    background: lightgray;
+  }
+
+  &:hover h1 {
+    visibility: visible;
+    overflow: visible;
+    margin-top: 10px;
+    margin-bottom: 3px;
+  }
 }
 
-#linkedin-list:hover{
-    max-height: 1000px;
-    margin-bottom: -30px;
+#linkedin-list:hover {
+  max-height: 1000px;
+  margin-bottom: -30px;
 }
 
-#git-list:hover{
-    max-height: 1000px;
-    margin-bottom: -30px;
+#git-list:hover {
+  max-height: 1000px;
+  margin-bottom: -30px;
 }
