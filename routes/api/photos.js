@@ -26,7 +26,7 @@ router.post(
     let photo = {};
     photo.city = req.body.city;
     photo.country = req.body.country;
-    photo.date = req.body.date;
+    photo.photoDateTime = new Date(req.body.date);
     photo.journeyId = req.body.journeyId;
     photo.description = req.body.description;
     photo.url = req.file.location;
@@ -49,17 +49,30 @@ router.post(
       errors.location = "Enter a valid city/country location";
       return res.status(400).json(errors);
     }
-
-    const journeyPhotos = await Photo.find({journeyId: photo.journeyId});
-
     const firstResult = data[0];
+      
+    const journeyPhotos = await Photo.find({journeyId: photo.journeyId});
+    journeyPhotos.forEach( (currPhoto) => { 
+      if (currPhoto.longitude === firstResult.longitude && currPhoto.latitude === firstResult.latitude) {
+        errors.location = "Only one picture per city in a photo journey!"
+      }
+      debugger;
+      if (currPhoto.photoDateTime.getDate() === photo.photoDateTime.getDate() &&
+          currPhoto.photoDateTime.getMonth() === photo.photoDateTime.getMonth() &&
+          currPhoto.photoDateTime.getYear() === photo.photoDateTime.getYear()) {
+            errors.date = "Only one picture per day in a photo journey!"
+      }
+    });
+    if (Object.keys(errors).length > 0) {
+      return res.status(400).json(errors);
+    }
 
     const newPhoto = new Photo({
       photoUrl: photo.url,
       city: photo.city,
       region: photo.province || null,
       country: photo.country,
-      photoDateTime: new Date(photo.date),
+      photoDateTime: photo.photoDateTime,
       description: photo.description,
       latitude: firstResult.latitude,
       longitude: firstResult.longitude,
