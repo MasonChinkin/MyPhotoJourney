@@ -40,13 +40,17 @@ router.post(
     let data = await geocoder.geocode(photo.city);
 
     filteredData = data.filter(function(entry) {
-      return entry.country === photo.city;  
+      return entry.country === photo.country;  
     });
 
+    // Use filteredData once we ensure that the country (or country code) is being 
+    // sent correctly from the frontend.
     if (data.length === 0) {
       errors.location = "Enter a valid city/country location";
       return res.status(400).json(errors);
     }
+
+    const journeyPhotos = await Photo.find({journeyId: photo.journeyId});
 
     const firstResult = data[0];
 

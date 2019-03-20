@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import JourneyListItem from "./journey_list_item";
+import JourneyListItemContainer from "./journey_list_item_container";
 
 class Profile extends React.Component {
   componentDidMount() {
@@ -10,7 +10,7 @@ class Profile extends React.Component {
 
   render() {
     let journeys = this.props.journeys.map(journey => (
-      <JourneyListItem key={journey._id} journey={journey} />
+      <JourneyListItemContainer key={journey._id} journey={journey} />
     ));
 
     if (this.props.journeys.length === 0) {

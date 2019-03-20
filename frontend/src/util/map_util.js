@@ -69,3 +69,46 @@ export const bubbleMouseOut = function (d) {
   //Hide the tooltip
   d3.select('#tooltip').classed('hidden', true)
 }
+
+// https://blockbuilder.org/veltman/fc1af365f62c0121b47fd414bf08a3d7
+// draws arrows alongside journey line
+export function draw(d) {
+
+  let path = document.getElementById("line")
+  let str = path.getAttribute("d")
+  let length = path.getTotalLength();
+
+  let g = d3.select(this)
+  let l = 20 + length * d / 8 // must match number in d3.range
+  let angle = angleAtLength(l)
+  let end = pointAtLength(l + 20)
+  let endAngle = angleAtLength(l + 20)
+  let offset = [
+    8 * Math.cos(angle - Math.PI / 2),
+    8 * Math.sin(angle - Math.PI / 2)
+  ];
+
+  g.attr("transform", "translate(" + offset + ")")
+    .append("path")
+    .attr("d", str)
+    .attr("stroke-dasharray", "0," + Math.max(0, l - 5) + ",20," + length);
+
+  g.append("use")
+    .attr("xlink:href", "#arrowhead")
+    .attr("transform", "translate(" + end + ") rotate(" + (endAngle * 180 / Math.PI) + ")");
+}
+
+function pointAtLength(l) {
+  let path = document.getElementById("line")
+  let xy = path.getPointAtLength(l);
+  return [xy.x, xy.y];
+}
+
+// Approximate tangent
+function angleAtLength(l) {
+
+  let a = pointAtLength(Math.max(l - 0.01, 0)) // this could be slightly negative
+  let b = pointAtLength(l + 0.01); // browsers cap at total length
+
+  return Math.atan2(b[1] - a[1], b[0] - a[0]);
+}

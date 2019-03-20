@@ -67,9 +67,7 @@ class JourneyMap extends Component {
         .append('svg')
         .attr('width', w)
         .attr('height', h)
-        .style('background', '#a6d0ef')
-        .style('border-style', 'solid')
-        .style('border-color', 'grey');
+        .attr('class', 'svg');
 
       //create container for all pannable/zoomable elements
       const map = svg.append('g');
@@ -89,9 +87,8 @@ class JourneyMap extends Component {
         .data(this.state.map.features)
         .enter()
         .append('path')
+        .attr('class', 'map-feature')
         .attr('d', path)
-        .style('fill', 'beige')
-        .style('stroke', 'grey')
 
       //define travel line
       const line = d3.line()
@@ -103,26 +100,21 @@ class JourneyMap extends Component {
       map.append('path')
         .datum(photos)
         .attr('class', 'line')
-        .attr('fill', 'none')
-        .attr('stroke', 'blue')
-        .attr('stroke-width', 1.5)
-        // .attr('marker-mid', 'url(#arrowhead)')
-        // .attr('marker-end', 'url(#arrowhead)')
+        .attr('id', 'line')
         .attr('d', line);
 
-      // map.append('defs').append('marker')
-      //   .attr('id', 'arrowhead')
-      //   .attr('viewBox', '-0 -5 10 10')
-      //   .attr('refX', 12)
-      //   .attr('refY', -0.5)
-      //   .attr('orient', 'auto')
-      //   .attr('markerWidth', 10)
-      //   .attr('markerHeight', 10)
-      //   .attr('xoverflow', 'visible')
-      //   .append('svg:path')
-      //   .attr('d', 'M 0,-5 L 10 ,0 L 0,5')
-      //   .attr('fill', 'blue')
-      //   .attr('class', 'arrowhead');
+      // arrows
+      map.append('defs')
+        .append('svg:path')
+        .attr('id', 'arrowhead')
+        .attr('d', 'M5,0 L-5,-3 L-5,3 Z')
+
+      map.selectAll('.arrow')
+        .data(d3.range(8)) // argument is number of arrows
+        .enter()
+        .append('g')
+        .attr('class', 'arrow')
+        .each(MapUtils.draw)
 
       //bubbles for visited cities
       map.selectAll('circle')

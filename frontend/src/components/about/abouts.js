@@ -6,7 +6,7 @@ export default () => {
       <div id="git-list" className="about-list">
         <div>
           <a href="https://github.com/Nick-Howlett">
-            Nick Howlette
+            Nick Howlett
             <img src="./GitHub-Mark-64px.png" alt="Github Logo" />
           </a>
         </div>
@@ -32,7 +32,7 @@ export default () => {
       <div id="linkedin-list" className="about-list">
         <div>
           <a href="https://www.linkedin.com/in/nick-howlett/">
-            Nick Howlette
+            Nick Howlett
             <img src="./linkedin_logo.png" height="64" alt="LinkedIn Logo" />
           </a>
         </div>

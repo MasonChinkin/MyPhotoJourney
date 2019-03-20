@@ -59,5 +59,5 @@ export const fetchUserJourneys = userId => dispatch =>
   );
 
 export const deleteJourney = journeyId => dispatch => (
-  JourneysUtils.destroyJourney(journeyId).then(journeyId => dispatch(receiveJourneyDelete(journeyId)))
+  JourneysUtils.destroyJourney(journeyId).then(({data}) => dispatch(receiveJourneyDelete(data.id)))
 );

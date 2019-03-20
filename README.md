@@ -8,7 +8,7 @@ The team:
 
 [Mason Chinkin, a.k.a. "The visualizer"](https://github.com/MasonChinkin)
 
-[Nick Howlette, a.k.a. "The authorizor"](https://github.com/Nick-Howlett)
+[Nick Howlett, a.k.a. "The authorizor"](https://github.com/Nick-Howlett)
 
 [Louis Leon, a.k.a. "The validator"](https://github.com/Louis-C-Leon)
 

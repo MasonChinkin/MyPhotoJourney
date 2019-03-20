@@ -7,21 +7,27 @@
   height: 1080px;
   font-family: $fonts;
 
-  & > h1 {
+  &>h1 {
     margin: 100px 0 10px 0;
     font-size: 36px;
     color: white;
   }
 
-  & > h2 {
+  &>h2 {
     margin: 0 0 20px 0;
     font-size: 24px;
     color: white;
   }
 
-  & > .share {
+  &>.share {
     margin-top: 30px;
   }
+}
+
+.svg {
+  background: #a6d0ef;
+  border-style: solid;
+  border-color: grey;
 }
 
 .share {
@@ -57,11 +63,11 @@
   pointer-events: none;
   overflow: hidden;
 
-  & > * {
+  &>* {
     margin-bottom: 10px;
   }
 
-  & > *:last-child {
+  &>*:last-child {
     margin-bottom: 0;
   }
 
@@ -76,4 +82,25 @@
   border-radius: 50%;
   transform-origin: top;
   transition: visibility 0s 0.3s, all 0.3s;
+}
+
+.line {
+  fill: none;
+  stroke: blue;
+  stroke-width: 1.5;
+}
+
+.map-feature {
+  fill: beige;
+  stroke: grey;
+}
+
+.arrow path {
+  fill: none;
+  stroke: black;
+}
+
+#arrowhead {
+  stroke: none;
+  fill: black;
 }
