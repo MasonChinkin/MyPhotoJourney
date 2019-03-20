@@ -62,8 +62,6 @@ router.post(
       journeyId: photo.journeyId
     });
 
-    debugger;
-
     newPhoto.save(function(err, newPhoto) {
       if (err) {
         return res.status(400).json(err);

@@ -16,11 +16,24 @@ class JourneyListItem extends React.Component{
         },
       {
         label: 'No',
-        onClick: () => {}
+        onClick: () => {} 
         }
       ]
     });
   }
+
+  copyURL() {
+    let el = document.createElement("textarea");
+    document.body.appendChild(el);
+    el.value = `https://myphotojourney.herokuapp.com/#/journey/${
+      this.props.journey._id
+    }`;
+    el.select();
+    document.execCommand("copy");
+    document.body.removeChild(el);
+    alert(`URL copied to clipboard!`);
+  }
+
 
   render(){
     const journey = this.props.journey;
@@ -29,7 +42,7 @@ class JourneyListItem extends React.Component{
         <Link to={`/journey/${journey._id}`}>
           <span>{journey.name}</span>
         </Link>
-        <i className="fa fa-clipboard"/>
+        <i className="fa fa-clipboard" onClick={this.copyURL.bind(this)}/>
         <i className="fa fa-remove" style={{marginLeft: "5px", fontSize: "26px", color: "red"}} onClick={this.deleteJourney.bind(this)}/>
       </div>
     )
