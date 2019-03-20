@@ -11,7 +11,6 @@ We conceived, designed, and built this app in less than 4 days, and plan on retu
 ## Index
 
 * [The Team](https://github.com/MasonChinkin/MyPhotoJourney/blob/master/README.md#The-Team)
-* [Features](https://github.com/MasonChinkin/MyPhotoJourney/blob/master/README.md#features)
 * [Technologies](https://github.com/MasonChinkin/MyPhotoJourney/blob/master/README.md#technologies)
 * [Highlights](https://github.com/MasonChinkin/MyPhotoJourney/blob/master/README.md#highlights)
   * [Storing uploaded photos on AWS](https://github.com/MasonChinkin/MyPhotoJourney/blob/master/README.md#Storing-uploaded-photos-on-AWS)
@@ -30,17 +29,6 @@ We conceived, designed, and built this app in less than 4 days, and plan on retu
 
 [Drew Engelstein, a.k.a. "The uploader"](https://github.com/ase1210)
 * AWS, photo uploading, upload forms
-  
-## Features
-
-* Secure user auth with BCrypt
-* Create journeys and upload photos for that journey
-* Map your journey, and see your photos by hovering over photo locations
-* See your journeys from the profile page
-* Anyone can see your journey if you share the url
-* Coming soon- delete journeys
-* Coming soon- Streamlined, better-validated location input
-* Coming soon- Multiple photos for one location, multiple locations per date
 
 ## Technologies
 
@@ -49,6 +37,7 @@ We conceived, designed, and built this app in less than 4 days, and plan on retu
 * AWS with multer.js for uploading and storing users' photos
 * node-geocoder.js + OpenStreetMap to fetch gps locations based on user input
 * End to end user auth with BCrypt and passport
+* mongoose.js backend schema
 
 ## Highlights
 
