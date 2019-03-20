@@ -19,6 +19,7 @@
     justify-content: space-between;
     border-radius: 3px;
     margin-right: 10px;
+    width: 250px;
 
     .photo-too-large {
       display: flex;
@@ -34,8 +35,8 @@
       flex-direction: column;
       justify-content: flex-end;
       img {
-        max-height: 250px;
-        max-width: 250px;
+        max-height: 200px;
+        max-width: 100%;
         vertical-align: bottom;
         border-radius: 3px;
       }
