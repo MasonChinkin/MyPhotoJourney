@@ -19,6 +19,12 @@ class NewJourneyForm extends React.Component {
     this.props.clearUIJourney();
   }
 
+  componentWillUnmount() {
+    if (!this.props.photoUpload) {
+      this.props.deleteJourney(this.props.currentJourneyId);
+    }
+  }
+
   handleChange(field) {
     return e => {
       this.setState({ [field]: e.target.value });

@@ -12,12 +12,12 @@ module.exports = async function validatePhotoInput(data) {
   if (data.country === undefined || Validator.isEmpty(data.country)) {
     errors.country = "Country field is required";
   }
-  if (data.date === undefined) {
+  if (data.photoDateTime === undefined) {
     errors.dateTime = "Date/Time is required";
   }
 
-  const dateObj = new Date(data.date);
-  if (isNaN(dateObj.getTime())) {
+  
+  if (isNaN(data.photoDateTime.getTime())) {
     errors.dateTime = "Enter a valid date";
   }
 

@@ -42,10 +42,10 @@ router.post(
 
 // Get journeys by user for p rofile page
 router.get("/user/:user_id", async (req, res) => {
-  const user = req.params.user_id
-  const journeys = await Journey.find({userId: user})
+  const user = req.params.user_id;
+  const journeys = await Journey.find({userId: user});
   return res.status(200).json(journeys);
-})
+});
 
 router.get("/:journey_id", (req, res) => {
   Promise.all([
@@ -54,6 +54,15 @@ router.get("/:journey_id", (req, res) => {
   ])
     .then((response) => res.status(200).json(response))
     .catch(err => res.status(400).json(err));
+});
+
+router.delete("/:journey_id", async (req, res) => {
+  const del = await Journey.deleteOne({_id: req.params.journey_id});
+  if(del.n){
+    return res.status(200).json({id: req.params.journey_id});
+  } else{
+    return res.status(400).json({});
+  }
 });
 
 module.exports = router;

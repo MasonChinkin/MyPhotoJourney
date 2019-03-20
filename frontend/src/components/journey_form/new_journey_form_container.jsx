@@ -7,7 +7,8 @@ const mSTP = state => {
     journeys: state.entities.journeys,
     photos: state.entities.photos,
     currUser: state.session.user,
-    currentJourneyId: state.ui.currentJourneyId
+    currentJourneyId: state.ui.currentJourneyId,
+    photoUpload: state.ui.photoUpload
   };
 };
 
@@ -16,7 +17,9 @@ const mDTP = dispatch => {
     createJourney: journeyPayload => {
       dispatch(JourneyActions.createJourney(journeyPayload));
     },
-    clearUIJourney: () => dispatch(JourneyActions.clearUIJourney())
+    clearUIJourney: () => dispatch(JourneyActions.clearUIJourney()),
+    deleteJourney: journeyId =>
+      dispatch(JourneyActions.deleteJourney(journeyId))
   };
 };
 

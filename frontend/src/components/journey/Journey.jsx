@@ -11,7 +11,9 @@ class Journey extends Component {
 
   copyURL() {
     let url = document.getElementById("journey-url");
+    url.disabled = false;
     url.select();
+    url.disabled = true;
     document.execCommand("copy");
     alert(`URL copied to clipboard!`);
   }
