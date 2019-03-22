@@ -4,15 +4,13 @@ const Schema = mongoose.Schema;
 
 const PhotoSchema = new Schema({
   city: {
-    type: String,
-    required: true
+    type: String  
   },
   region: {
     type: String
   },
   country: {
-    type: String,
-    required: true
+    type: String
   },
   latitude: {
     type: Number,

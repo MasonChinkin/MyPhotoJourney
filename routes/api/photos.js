@@ -26,6 +26,8 @@ router.post(
     let photo = {};
     photo.city = req.body.city;
     photo.country = req.body.country;
+    photo.lat = req.body.lat;
+    photo.long = req.body.long;
     photo.photoDateTime = new Date(req.body.date);
     photo.journeyId = req.body.journeyId;
     photo.description = req.body.description;
@@ -37,30 +39,33 @@ router.post(
       return res.status(400).json(errors);
     }
 
-    let data = await geocoder.geocode(photo.city);
+    if(photo.city){
+      let data = await geocoder.geocode(photo.city);
 
-    filteredData = data.filter(function(entry) {
-      return entry.country === photo.country;  
-    });
-
-    // Use filteredData once we ensure that the country (or country code) is being 
-    // sent correctly from the frontend.
-    if (data.length === 0) {
-      errors.location = "Enter a valid city/country location";
-      return res.status(400).json(errors);
+      filteredData = data.filter(function(entry) {
+        return entry.country === photo.country;  
+      });
+  
+      // Use filteredData once we ensure that the country (or country code) is being 
+      // sent correctly from the frontend.
+      if (data.length === 0) {
+        errors.location = "Enter a valid city/country location";
+        return res.status(400).json(errors);
+      }
+      const firstResult = data[0];
     }
-    const firstResult = data[0];
-      
+    const lat = photo.lat || firstResult.longitude;
+    const long = photo.long || firstResult.latitude;
+
     const journeyPhotos = await Photo.find({journeyId: photo.journeyId});
     journeyPhotos.forEach( (currPhoto) => { 
-      if (currPhoto.longitude === firstResult.longitude && currPhoto.latitude === firstResult.latitude) {
+      if (currPhoto.longitude === long && currPhoto.latitude === lat) {
         errors.location = "Only one picture per city in a photo journey!"
       }
-      debugger;
       if (currPhoto.photoDateTime.getDate() === photo.photoDateTime.getDate() &&
           currPhoto.photoDateTime.getMonth() === photo.photoDateTime.getMonth() &&
           currPhoto.photoDateTime.getYear() === photo.photoDateTime.getYear()) {
-            errors.date = "Only one picture per day in a photo journey!"
+            errors.date = "Only one picture per day in a photo journey!";
       }
     });
     if (Object.keys(errors).length > 0) {
@@ -74,8 +79,8 @@ router.post(
       country: photo.country,
       photoDateTime: photo.photoDateTime,
       description: photo.description,
-      latitude: firstResult.latitude,
-      longitude: firstResult.longitude,
+      latitude: lat,
+      longitude: long,
       journeyId: photo.journeyId
     });
 
