@@ -61,8 +61,8 @@ class NewJourneyForm extends React.Component {
         time: null
       };
       EXIF.getData(file, function(){
-        console.log(EXIF.getAllTags(this));
-        metaData.time = EXIF.getTag(this, "DateTime").split(" ")[0].split(":").join("-");
+        const time = EXIF.getTag(this, "DateTime");
+        if(time) metaData.time = time.split(" ")[0].split(":").join("-");
       });
       reader.onloadend = () => {
         files.push({ preview: reader.result, file, metaData});
