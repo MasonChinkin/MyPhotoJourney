@@ -8,7 +8,8 @@ class NewJourneyForm extends React.Component {
       name: "",
       description: "",
       files: [],
-      uploadPhotos: false
+      uploadPhotos: false,
+      numSelections: 0
     };
     this.handleFile = this.handleFile.bind(this);
     this.handleSubmitJourney = this.handleSubmitJourney.bind(this);
@@ -51,6 +52,7 @@ class NewJourneyForm extends React.Component {
   }
 
   handleFile(e) {
+    this.setState({numSelections: this.state.numSelections + 1})
     const upload = Array.from(e.currentTarget.files);
     const files = [];
 
@@ -162,7 +164,7 @@ class NewJourneyForm extends React.Component {
         ) : (
           <div className="photo-preview">
             {this.state.files.map((file, idx) => {
-              return <PhotoUploadFormContainer key={idx} file={file} />;
+              return <PhotoUploadFormContainer key={`sel#${this.state.numSelections}idx#${idx}`} file={file} />;
             })}
           </div>
         )}

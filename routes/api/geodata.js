@@ -3,8 +3,7 @@ const router = express.Router();
 const NodeGeocoder = require('node-geocoder');
 const geocoder = NodeGeocoder({provider: "openstreetmap"});
 
-router.get("/", (req, res) => {
-  debugger;
+router.post("/", (req, res) => {
   geocoder.geocode(req.body.location).then( (data) => {
     if (data.length === 0) {
       return res.status(400).json({location: "Location can't be found"});
