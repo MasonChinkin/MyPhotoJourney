@@ -20,6 +20,13 @@
     border-radius: 3px;
     width: 250px;
 
+    h2{
+      color: black;
+      display: flex;
+      text-align: center;
+      font-weight: 500;
+    }
+
     .photo-too-large {
       display: flex;
       flex-wrap: wrap;

@@ -21,6 +21,30 @@ class PhotoUploadForm extends React.Component {
     };
   }
 
+
+  is_gps_prefilled(){
+    if(this.props.file.metaData.lat !== null && this.props.file.metaData.long !== null){
+      return("")
+    } else {
+      return(
+        <>
+          <input
+          type="text"
+          value={this.state.city}
+          placeholder="Enter the city"
+          onChange={this.handleInput("city")}
+        />
+        <input
+          type="text"
+          value={this.state.country}
+          placeholder="Enter the country"
+          onChange={this.handleInput("country")}
+        />
+      </>
+      )
+    }
+  }
+
  
 
   handleUpload(e) {
@@ -78,26 +102,21 @@ class PhotoUploadForm extends React.Component {
           </div>
         ) : (
           <>
+            {this.props.file.metaData.lat !== null ? <h2>Location automatically determined</h2> : ""}
             <div className="photo-data">
               <div className="photo-labels">
+                {this.props.file.metaData.lat === null ? 
+                <>                
                 <label>City</label>
                 <label>Country</label>
+                </> :
+                ""
+              }
                 <label>Description</label>
                 <label>Date</label>
               </div>
               <div className="photo-inputs">
-                <input
-                  type="text"
-                  value={this.state.city}
-                  placeholder="Enter the city"
-                  onChange={this.handleInput("city")}
-                />
-                <input
-                  type="text"
-                  value={this.state.country}
-                  placeholder="Enter the country"
-                  onChange={this.handleInput("country")}
-                />
+                {this.is_gps_prefilled()}
                 <input
                   type="text"
                   value={this.state.description}

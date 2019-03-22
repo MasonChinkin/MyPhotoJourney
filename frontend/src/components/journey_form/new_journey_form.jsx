@@ -1,5 +1,6 @@
 import React from "react";
 import PhotoUploadFormContainer from "../photo_upload_form/photo_upload_form_container";
+import {convertDate, convertLatLong} from '../../util/metadata_utils';
 const EXIF = require('exif-js');
 
 class NewJourneyForm extends React.Component {
@@ -58,12 +59,21 @@ class NewJourneyForm extends React.Component {
     upload.forEach(file => {
       const reader = new FileReader();
       const metaData = {
-        time: null
+        time: null,
+        lat: null,
+        long: null
       };
       EXIF.getData(file, function(){
         const time = EXIF.getTag(this, "DateTime");
-        if(time) metaData.time = time.split(" ")[0].split(":").join("-");
+        const long = EXIF.getTag(this, "GPSLongitude");
+        const lat = EXIF.getTag(this, "GPSLatitude");
+        if(time) metaData.time = convertDate(time);
+        if(long !== undefined && lat !== undefined){
+          metaData.lat = convertLatLong(lat);
+          metaData.long = convertLatLong(long);
+        }
       });
+      console.log(metaData);
       reader.onloadend = () => {
         files.push({ preview: reader.result, file, metaData});
         if (files.length === upload.length) {
