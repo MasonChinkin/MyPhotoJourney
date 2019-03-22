@@ -8,7 +8,7 @@ class PhotoUploadForm extends React.Component {
       city: "",
       country: "",
       description: "",
-      date: "",
+      date: this.props.file.metaData.time || "",
       status: "ready",
       errors: {}
     };
@@ -20,6 +20,8 @@ class PhotoUploadForm extends React.Component {
       this.setState({ [field]: e.target.value });
     };
   }
+
+ 
 
   handleUpload(e) {
     e.preventDefault();
@@ -65,7 +67,6 @@ class PhotoUploadForm extends React.Component {
     } else if (this.state.status === "loading") {
       photoSubmitButton = <Loader color="#000000" height={20} width={100} />;
     }
-
     return (
       <div className="photo-form">
         <div className="photo-img">

@@ -1,5 +1,6 @@
 import React from "react";
 import PhotoUploadFormContainer from "../photo_upload_form/photo_upload_form_container";
+const EXIF = require('exif-js');
 
 class NewJourneyForm extends React.Component {
   constructor(props) {
@@ -56,8 +57,15 @@ class NewJourneyForm extends React.Component {
 
     upload.forEach(file => {
       const reader = new FileReader();
+      const metaData = {
+        time: null
+      };
+      EXIF.getData(file, function(){
+        console.log(EXIF.getAllTags(this));
+        metaData.time = EXIF.getTag(this, "DateTime").split(" ")[0].split(":").join("-");
+      });
       reader.onloadend = () => {
-        files.push({ preview: reader.result, file: file });
+        files.push({ preview: reader.result, file, metaData});
         if (files.length === upload.length) {
           this.setState({ files: files });
         }
@@ -152,7 +160,7 @@ class NewJourneyForm extends React.Component {
               id="photo-upload"
               multiple
               accept="image/*"
-              onChange={this.handleFile}
+              onChange={this.handleFile.bind(this)}
             />
             {journeyButton}
           </div>
