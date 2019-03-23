@@ -67,10 +67,13 @@ class NewJourneyForm extends React.Component {
         const time = EXIF.getTag(this, "DateTime");
         const long = EXIF.getTag(this, "GPSLongitude");
         const lat = EXIF.getTag(this, "GPSLatitude");
+        const latRef = EXIF.getTag(this, "GPSLatitudeRef");
+        const longRef = EXIF.getTag(this, "GPSLongitudeRef");
+        console.log(EXIF.getAllTags(this));
         if(time) metaData.time = convertDate(time);
         if(long !== undefined && lat !== undefined){
-          metaData.lat = convertLatLong(lat);
-          metaData.long = convertLatLong(long);
+          metaData.lat = convertLatLong(lat, latRef === "S" ? -1 : 1);
+          metaData.long = convertLatLong(long, longRef === "W" ? -1 : 1);
         }
       });
       console.log(metaData);

@@ -38,7 +38,7 @@ router.post(
     if (!isValid) {
       return res.status(400).json(errors);
     }
-
+    let firstResult;
     if(photo.city){
       let data = await geocoder.geocode(photo.city);
 
@@ -52,15 +52,15 @@ router.post(
         errors.location = "Enter a valid city/country location";
         return res.status(400).json(errors);
       }
-      const firstResult = data[0];
+      firstResult = data[0];
     }
-    const lat = photo.lat || firstResult.longitude;
-    const long = photo.long || firstResult.latitude;
+    const lat = photo.lat || firstResult.latitude;
+    const long = photo.long || firstResult.longitude;
 
     const journeyPhotos = await Photo.find({journeyId: photo.journeyId});
     journeyPhotos.forEach( (currPhoto) => { 
       if (currPhoto.longitude === long && currPhoto.latitude === lat) {
-        errors.location = "Only one picture per city in a photo journey!"
+        errors.location = "Only one picture per city in a photo journey!";
       }
       if (currPhoto.photoDateTime.getDate() === photo.photoDateTime.getDate() &&
           currPhoto.photoDateTime.getMonth() === photo.photoDateTime.getMonth() &&

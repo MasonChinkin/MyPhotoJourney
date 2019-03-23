@@ -54,12 +54,15 @@ class PhotoUploadForm extends React.Component {
 
     formData.append("image", this.props.file.file);
     formData.append("city", this.state.city);
-    formData.append("lat", this.props.file.metaData.lat);
-    formData.append("long", this.props.file.metaData.long);
+    formData.append("lat", this.props.file.metaData.lat || "");
+    formData.append("long", this.props.file.metaData.long || "");
     formData.append("country", this.state.country);
     formData.append("description", this.state.description);
     formData.append("date", this.state.date);
     formData.append("journeyId", this.props.journeyId);
+
+    console.log(this.props.file.metaData.lat);
+    console.log(this.props.file.metaData.long);
 
     this.props.createPhoto(formData).then(() => {
       if (Object.values(this.props.errors).length === 0) {
