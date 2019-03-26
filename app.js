@@ -21,6 +21,8 @@ const journeys = require("./routes/api/journeys");
 app.use("/api/journeys", journeys);
 const userPhotos = require("./routes/api/photos");
 app.use("/api/photos", userPhotos);
+const geodata = require("./routes/api/geodata");
+app.use("/api/geodata", geodata);
 
 //TESTING DATA
 app.use(function (req, res, next) {
