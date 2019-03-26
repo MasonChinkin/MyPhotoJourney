@@ -60,7 +60,7 @@ class NewJourneyForm extends React.Component {
       const reader = new FileReader();
       const metaData = {
         time: null,
-        lat: null,
+      lat: null,
         long: null
       };
       EXIF.getData(file, function(){
