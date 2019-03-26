@@ -44,9 +44,11 @@ class JourneyMap extends Component {
       let photos = this.state.data[1];
 
       //define projection
+      console.log(MapUtils.getScale(photos));
       const projection = d3.geoEquirectangular()
         .scale(MapUtils.getScale(photos))
-        .center(MapUtils.getCenterLatLong(photos));
+        .center(MapUtils.getCenterLatLong(photos))
+      // .fitExtent([[-500, -500], [2400, 1600]], this.state.map);
 
       //define drag behavior
       const zoom = d3.zoom()
