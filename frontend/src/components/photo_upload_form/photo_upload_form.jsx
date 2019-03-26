@@ -61,9 +61,6 @@ class PhotoUploadForm extends React.Component {
     formData.append("date", this.state.date);
     formData.append("journeyId", this.props.journeyId);
 
-    console.log(this.props.file.metaData.lat);
-    console.log(this.props.file.metaData.long);
-
     this.props.createPhoto(formData).then(() => {
       if (Object.values(this.props.errors).length === 0) {
         this.setState({ status: "submitted", errors: {} });

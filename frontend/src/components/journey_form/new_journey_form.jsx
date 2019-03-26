@@ -69,14 +69,12 @@ class NewJourneyForm extends React.Component {
         const lat = EXIF.getTag(this, "GPSLatitude");
         const latRef = EXIF.getTag(this, "GPSLatitudeRef");
         const longRef = EXIF.getTag(this, "GPSLongitudeRef");
-        console.log(EXIF.getAllTags(this));
         if(time) metaData.time = convertDate(time);
         if(long !== undefined && lat !== undefined){
           metaData.lat = convertLatLong(lat, latRef === "S" ? -1 : 1);
           metaData.long = convertLatLong(long, longRef === "W" ? -1 : 1);
         }
       });
-      console.log(metaData);
       reader.onloadend = () => {
         files.push({ preview: reader.result, file, metaData});
         if (files.length === upload.length) {
