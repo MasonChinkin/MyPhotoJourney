@@ -107,7 +107,7 @@ class PhotoUploadForm extends React.Component {
           </div>
         ) : (
           <>
-            {this.props.file.metaData.lat !== null ? <h2>Location automatically determined</h2> : ""}
+            {this.props.file.metaData.lat !== null ? <h2>Location automatically determined using metadata</h2> : ""}
             <div className="photo-data">
               <div className="photo-labels">
                 {this.props.file.metaData.lat === null ? 
