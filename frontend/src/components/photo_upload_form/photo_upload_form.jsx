@@ -8,7 +8,7 @@ class PhotoUploadForm extends React.Component {
       city: "",
       country: "",
       description: "",
-      date: "",
+      date: this.props.file.metaData.time || "",
       status: "ready",
       errors: {}
     };
@@ -21,6 +21,32 @@ class PhotoUploadForm extends React.Component {
     };
   }
 
+
+  is_gps_prefilled(){
+    if(this.props.file.metaData.lat !== null && this.props.file.metaData.long !== null){
+      return("")
+    } else {
+      return(
+        <>
+          <input
+          type="text"
+          value={this.state.city}
+          placeholder="Enter the city"
+          onChange={this.handleInput("city")}
+        />
+        <input
+          type="text"
+          value={this.state.country}
+          placeholder="Enter the country"
+          onChange={this.handleInput("country")}
+        />
+      </>
+      )
+    }
+  }
+
+ 
+
   handleUpload(e) {
     e.preventDefault();
     this.setState({ status: "loading" });
@@ -28,6 +54,8 @@ class PhotoUploadForm extends React.Component {
 
     formData.append("image", this.props.file.file);
     formData.append("city", this.state.city);
+    formData.append("lat", this.props.file.metaData.lat || "");
+    formData.append("long", this.props.file.metaData.long || "");
     formData.append("country", this.state.country);
     formData.append("description", this.state.description);
     formData.append("date", this.state.date);
@@ -65,7 +93,6 @@ class PhotoUploadForm extends React.Component {
     } else if (this.state.status === "loading") {
       photoSubmitButton = <Loader color="#000000" height={20} width={100} />;
     }
-
     return (
       <div className="photo-form">
         <div className="photo-img">
@@ -77,26 +104,21 @@ class PhotoUploadForm extends React.Component {
           </div>
         ) : (
           <>
+            {this.props.file.metaData.lat !== null ? <h2>Location automatically determined using metadata</h2> : ""}
             <div className="photo-data">
               <div className="photo-labels">
+                {this.props.file.metaData.lat === null ? 
+                <>                
                 <label>City</label>
                 <label>Country</label>
+                </> :
+                ""
+              }
                 <label>Description</label>
                 <label>Date</label>
               </div>
               <div className="photo-inputs">
-                <input
-                  type="text"
-                  value={this.state.city}
-                  placeholder="Enter the city"
-                  onChange={this.handleInput("city")}
-                />
-                <input
-                  type="text"
-                  value={this.state.country}
-                  placeholder="Enter the country"
-                  onChange={this.handleInput("country")}
-                />
+                {this.is_gps_prefilled()}
                 <input
                   type="text"
                   value={this.state.description}
