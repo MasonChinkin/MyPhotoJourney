@@ -6,17 +6,18 @@ const geocoder = NodeGeocoder({ provider: "openstreetmap" });
 module.exports = async function validatePhotoInput(data) {
   let errors = {};
 
-  if (data.city === undefined || Validator.isEmpty(data.city)) {
-    errors.city = "City field is required";
-  }
-  if (data.country === undefined || Validator.isEmpty(data.country)) {
-    errors.country = "Country field is required";
+  if(data.lat === undefined && data.long === undefined){
+    if (data.city === undefined || Validator.isEmpty(data.city)) {
+      errors.city = "City field is required";
+    }
+    if (data.country === undefined || Validator.isEmpty(data.country)) {
+      errors.country = "Country field is required";
+    }
   }
   if (data.photoDateTime === undefined) {
     errors.dateTime = "Date/Time is required";
   }
 
-  
   if (isNaN(data.photoDateTime.getTime())) {
     errors.dateTime = "Enter a valid date";
   }

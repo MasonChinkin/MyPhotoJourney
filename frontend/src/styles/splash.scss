@@ -1,7 +1,6 @@
 #main-splash {
   height: 100vh;
   width: 100%;
-  background-image: url(./splash_background.png);
   background-size: cover;
 }
 
@@ -44,7 +43,7 @@
 #form-container {
   margin: 0 auto;
   width: 550px;
-  margin-top: 100px;
+  margin-top: 50px;
   border: 1px solid grey;
   border-radius: 6px;
   display: flex;
@@ -54,6 +53,7 @@
   overflow: hidden;
   background: white;
   box-shadow: 8px 10px 5px 0px rgba(0, 0, 0, 0.19);
+
   input {
     margin-top: 10px;
     border: 1px solid grey;
@@ -64,6 +64,7 @@
     outline: none;
     font-size: 16px;
   }
+
   #form-inputs {
     display: flex;
     flex-direction: column;
@@ -77,16 +78,19 @@
     align-items: center;
     margin-bottom: 10px;
   }
+
   .input-halfline {
     width: 167px;
     margin: 0 5px;
   }
+
   .submit {
     width: 200px;
     height: 60px;
     color: white;
     background: $secondary-cta;
   }
+
   input:focus {
     border-color: $secondary-cta;
   }
@@ -110,11 +114,13 @@
 
 .error-container {
   max-height: 0;
+
   ul {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
+
   li {
     font-weight: bold;
     color: $secondary-cta;

@@ -1,5 +1,7 @@
 import React from "react";
 import PhotoUploadFormContainer from "../photo_upload_form/photo_upload_form_container";
+import {convertDate, convertLatLong} from '../../util/metadata_utils';
+const EXIF = require('exif-js');
 
 class NewJourneyForm extends React.Component {
   constructor(props) {
@@ -8,7 +10,8 @@ class NewJourneyForm extends React.Component {
       name: "",
       description: "",
       files: [],
-      uploadPhotos: false
+      uploadPhotos: false,
+      numSelections: 0
     };
     this.handleFile = this.handleFile.bind(this);
     this.handleSubmitJourney = this.handleSubmitJourney.bind(this);
@@ -51,13 +54,31 @@ class NewJourneyForm extends React.Component {
   }
 
   handleFile(e) {
+    this.setState({numSelections: this.state.numSelections + 1})
     const upload = Array.from(e.currentTarget.files);
     const files = [];
 
     upload.forEach(file => {
       const reader = new FileReader();
+      const metaData = {
+        time: null,
+      lat: null,
+        long: null
+      };
+      EXIF.getData(file, function(){
+        const time = EXIF.getTag(this, "DateTime");
+        const long = EXIF.getTag(this, "GPSLongitude");
+        const lat = EXIF.getTag(this, "GPSLatitude");
+        const latRef = EXIF.getTag(this, "GPSLatitudeRef");
+        const longRef = EXIF.getTag(this, "GPSLongitudeRef");
+        if(time) metaData.time = convertDate(time);
+        if(long !== undefined && lat !== undefined){
+          metaData.lat = convertLatLong(lat, latRef === "S" ? -1 : 1);
+          metaData.long = convertLatLong(long, longRef === "W" ? -1 : 1);
+        }
+      });
       reader.onloadend = () => {
-        files.push({ preview: reader.result, file: file });
+        files.push({ preview: reader.result, file, metaData});
         if (files.length === upload.length) {
           this.setState({ files: files });
         }
@@ -152,7 +173,7 @@ class NewJourneyForm extends React.Component {
               id="photo-upload"
               multiple
               accept="image/*"
-              onChange={this.handleFile}
+              onChange={this.handleFile.bind(this)}
             />
             {journeyButton}
           </div>
@@ -162,7 +183,7 @@ class NewJourneyForm extends React.Component {
         ) : (
           <div className="photo-preview">
             {this.state.files.map((file, idx) => {
-              return <PhotoUploadFormContainer key={idx} file={file} />;
+              return <PhotoUploadFormContainer key={`sel#${this.state.numSelections}idx#${idx}`} file={file} />;
             })}
           </div>
         )}

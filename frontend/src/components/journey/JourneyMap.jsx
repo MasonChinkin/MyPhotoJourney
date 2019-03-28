@@ -37,23 +37,30 @@ class JourneyMap extends Component {
 
   componentDidUpdate() {
     if (this.state.data && this.state.map) {
-      //Width and height
       const w = 1200;
       const h = 600;
 
       let photos = this.state.data[1];
 
       //define projection
-      const projection = d3.geoEquirectangular()
+      let projection = d3.geoEquirectangular()
         .scale(MapUtils.getScale(photos))
-        .center(MapUtils.getCenterLatLong(photos));
+        .center(MapUtils.getCenterLatLong(photos))
+
+      // const extentTopLeft = projection(MapUtils.getTopLeft(photos)).map(el => Math.floor(-el))
+      // const extentBottomRight = projection(MapUtils.getBottomRight(photos)).map(el => Math.floor(el))
+      // console.log('left: ', extentTopLeft);
+      // console.log('right: ', extentBottomRight);
+
+      // projection = d3.geoEquirectangular()
+      //   .fitExtent([[0, 0], [1200, 600]], this.state.map);
 
       //define drag behavior
       const zoom = d3.zoom()
         .scaleExtent([0.5, 8])
         .on('zoom', d => {
           map.selectAll('circle').attr('r', 5 / d3.event.transform.k);
-          map.select('.line').attr('stroke-width', 1.5 / d3.event.transform.k);
+          map.select('.line').attr('stroke-width', 1 / d3.event.transform.k);
           map.style('stroke-width', 1 / d3.event.transform.k + 'px');
           map.attr('transform', d3.event.transform);
         });

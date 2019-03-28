@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('frontend/build'));
-    app.get('/', (req, res) => {
+    app.get('/', (req, res) => {  
       res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     });
 }
@@ -21,6 +21,8 @@ const journeys = require("./routes/api/journeys");
 app.use("/api/journeys", journeys);
 const userPhotos = require("./routes/api/photos");
 app.use("/api/photos", userPhotos);
+const geodata = require("./routes/api/geodata");
+app.use("/api/geodata", geodata);
 
 //TESTING DATA
 app.use(function (req, res, next) {
