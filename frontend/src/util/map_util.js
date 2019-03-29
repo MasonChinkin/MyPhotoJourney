@@ -24,6 +24,32 @@ export const getScale = photos => {
   return d3.max([longDiff, latDiff]) * 30;
 }
 
+// export const getTopLeft = photos => {
+//   let longs = [];
+//   photos.forEach(photo => longs.push(photo.longitude));
+//   let topLong = d3.max(longs);
+
+//   let lats = [];
+//   photos.forEach(photo => lats.push(photo.latitude));
+//   let leftLat = d3.min(lats);
+
+//   console.log([topLong, leftLat]);
+
+//   return [leftLat, topLong];
+// }
+
+// export const getBottomRight = photos => {
+//   let longs = [];
+//   photos.forEach(photo => longs.push(photo.longitude));
+//   let bottomLong = d3.min(longs);
+
+//   let lats = [];
+//   photos.forEach(photo => lats.push(photo.latitude));
+//   let rightLat = d3.max(lats);
+
+//   return [rightLat, bottomLong];
+// }
+
 export const bubbleMouseOver = function (d) {
   d3.select(this)
     .transition('orangeHover')
