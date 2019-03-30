@@ -21,8 +21,8 @@ We conceived, designed, and built this app in less than 4 days, and will continu
 [Mason Chinkin, a.k.a. "The visualizer"](https://github.com/MasonChinkin)
 * d3.js map, mongoose.js backend
 
-[Nick Howlette, a.k.a. "The authorizor"](https://github.com/Nick-Howlett)
-* End to end user auth, profile page, Heroku
+[Nick Howlett, a.k.a. "The authorizor"](https://github.com/Nick-Howlett)
+* Photo Metadata, End to end user auth, profile page, Heroku
 
 [Louis Leon, a.k.a. "The validator"](https://github.com/Louis-C-Leon)
 * Photo uploading/validation, gps api
