@@ -7,12 +7,15 @@ class PhotoUploadForm extends React.Component {
     this.state = {
       city: "",
       country: "",
+      state: "",
       description: "",
       date: this.props.file.metaData.time || "",
       status: "ready",
+      enterState: false,
       errors: {}
     };
     this.handleUpload = this.handleUpload.bind(this);
+    this.updateLocation = this.updateLocation.bind(this);
   }
 
   handleInput(field) {
@@ -21,24 +24,49 @@ class PhotoUploadForm extends React.Component {
     };
   }
 
+  updateLocation(field) {
+    if (field) {
+      this.handleInput(field)();
+    }
+    this.props.fetchLocationData({
+      location: this.state.city,
+      country: this.state.country,
+      state: this.state.state,
+    })
+  }
 
   is_gps_prefilled(){
     if(this.props.file.metaData.lat !== null && this.props.file.metaData.long !== null){
-      return("")
+      return null;
     } else {
       return(
         <>
+        <div className="cityUpload">
           <input
-          type="text"
-          value={this.state.city}
-          placeholder="Enter the city"
-          onChange={this.handleInput("city")}
-        />
-        {this.props.locations.length > 0 ?
-          <select className="locationSelect">
+            className="cityInput"
+            type="text"
+            value={this.state.city}
+            placeholder="Enter the city"
+            onChange={this.handleInput("city")}
+          />
+          
+        </div>
+        {this.props.locations.length > 1 ?
+          <select className="locationSelect" onChange={this.handleInput("country")}>
+            <option value="" disabled selected>Select the Country</option>
             {[...new Set(this.props.locations.map( location => location.country ))].map(
               (country) => { return (
                 <option value={country}>{country}</option>
+              ) }
+            )}
+          </select>
+        : null}
+        {this.props.locations.length > 1 && this.state.country.length > 0 ?
+          <select className="locationSelect">
+            <option value="" disabled selected>Select the State</option>
+            {[...new Set(this.props.locations.map( location => location.state ))].map(
+              (state) => { return (
+                <option value={state}>{state}</option>
               ) }
             )}
           </select>
@@ -52,26 +80,25 @@ class PhotoUploadForm extends React.Component {
 
   handleUpload(e) {
     e.preventDefault();
-    this.props.fetchLocationData({location: this.state.city});
-    // this.setState({ status: "loading" });
-    // const formData = new FormData();
+    this.setState({ status: "loading" });
+    const formData = new FormData();
 
-    // formData.append("image", this.props.file.file);
-    // formData.append("city", this.state.city);
-    // formData.append("lat", this.props.file.metaData.lat || "");
-    // formData.append("long", this.props.file.metaData.long || "");
-    // formData.append("country", this.state.country);
-    // formData.append("description", this.state.description);
-    // formData.append("date", this.state.date);
-    // formData.append("journeyId", this.props.journeyId);
+    formData.append("image", this.props.file.file);
+    formData.append("city", this.state.city);
+    formData.append("lat", this.props.file.metaData.lat || "");
+    formData.append("long", this.props.file.metaData.long || "");
+    formData.append("country", this.state.country);
+    formData.append("description", this.state.description);
+    formData.append("date", this.state.date);
+    formData.append("journeyId", this.props.journeyId);
 
-    // this.props.createPhoto(formData).then(() => {
-    //   if (Object.values(this.props.errors).length === 0) {
-    //     this.setState({ status: "submitted", errors: {} });
-    //   } else {
-    //     this.setState({ status: "ready", errors: this.props.errors });
-    //   }
-    // });
+    this.props.createPhoto(formData).then(() => {
+      if (Object.values(this.props.errors).length === 0) {
+        this.setState({ status: "submitted", errors: {} });
+      } else {
+        this.setState({ status: "ready", errors: this.props.errors });
+      }
+    });
   }
 
   render() {
@@ -116,10 +143,12 @@ class PhotoUploadForm extends React.Component {
                 <label>City</label>
                 {this.props.locations.length > 0 ?
                   <label>Country</label>
-                : null
-                }
+                : null}
+                {this.state.country.length > 0 && this.props.locations.length > 1 ? 
+                  <label>State</label>
+                : null}
                 </> :
-                ""
+                null
               }
                 <label>Description</label>
                 <label>Date</label>
@@ -153,7 +182,13 @@ class PhotoUploadForm extends React.Component {
                 return <div style={{ marginBottom: "5px" }}>{error}</div>;
               })}
             </div>
+            <input
+              className="button locationButton"
+              type="submit"
+              value="Check Location"
+            />
             <div className="photo-button">{photoSubmitButton}</div>
+            
           </>
         )}
       </div>

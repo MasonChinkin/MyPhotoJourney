@@ -54,6 +54,7 @@ router.post(
       }
       firstResult = data[0];
     }
+    debugger;
     const lat = photo.lat || firstResult.latitude;
     const long = photo.long || firstResult.longitude;
 

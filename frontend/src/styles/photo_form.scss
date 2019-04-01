@@ -80,3 +80,23 @@
     }
   }
 }
+
+.cityUpload {
+  display: flex;
+  flex-direction: column;
+  width: 160px;
+}
+
+.cityInput {
+  width: 100%;
+}
+
+.locationButton:hover {
+  background-color: blue;
+}
+
+.locationButton {
+  background-color: rgb(2, 2, 82);
+  width: 126px;
+  font-size: 12px;
+}
