@@ -6,7 +6,7 @@ const geocoder = NodeGeocoder({ provider: "openstreetmap" });
 module.exports = async function validatePhotoInput(data) {
   let errors = {};
 
-  if(data.lat === undefined && data.long === undefined){
+  if(data.lat === undefined || data.long === undefined || Validator.isEmpty(data.lat) || Validator.isEmpty(data.long)){
     if (data.city === undefined || Validator.isEmpty(data.city)) {
       errors.city = "City field is required";
     }
@@ -27,6 +27,9 @@ module.exports = async function validatePhotoInput(data) {
   } catch (err) {
     errors.journey = "Journey id is invalid";
   }
+
+  console.log(errors);
+
 
   return {
     errors,
