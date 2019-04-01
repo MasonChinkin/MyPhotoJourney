@@ -39,6 +39,7 @@ router.post(
       return res.status(400).json(errors);
     }
     let firstResult;
+    console.log(errors, isValid);
     if(photo.city){
       let data = await geocoder.geocode(photo.city);
 
