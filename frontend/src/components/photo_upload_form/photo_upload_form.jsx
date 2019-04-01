@@ -24,10 +24,12 @@ class PhotoUploadForm extends React.Component {
     };
   }
 
-  updateLocation(field) {
+  updateLocation(e, field) {
+    // debugger;
     if (field) {
       this.handleInput(field)();
     }
+    console.log(this.state);
     this.props.fetchLocationData({
       location: this.state.city,
       country: this.state.country,
@@ -52,7 +54,7 @@ class PhotoUploadForm extends React.Component {
           
         </div>
         {this.props.locations.length > 1 ?
-          <select className="locationSelect" onChange={this.handleInput("country")}>
+          <select className="locationSelect" onInput={this.updateLocation("country")}>
             <option value="" disabled selected>Select the Country</option>
             {[...new Set(this.props.locations.map( location => location.country ))].map(
               (country) => { return (
@@ -182,11 +184,14 @@ class PhotoUploadForm extends React.Component {
                 return <div style={{ marginBottom: "5px" }}>{error}</div>;
               })}
             </div>
-            <input
-              className="button locationButton"
-              type="submit"
-              value="Check Location"
-            />
+            <div className="photo-button">
+              <input
+                onClick={this.updateLocation}
+                className="button locationButton"
+                type="submit"
+                value="Check Location"
+              />
+            </div>
             <div className="photo-button">{photoSubmitButton}</div>
             
           </>
