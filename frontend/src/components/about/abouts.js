@@ -49,7 +49,7 @@ export default () => {
           </a>
         </div>
         <div>
-          <a href="https://www.linkedin.com/in/andrew-engelstein-01938911/">
+          <a href="https://www.linkedin.com/in/andrew-engelstein/">
             Drew Engelstein
             <img src="./linkedin_logo.png" height="64" alt="LinkedIn Logo" />
           </a>
