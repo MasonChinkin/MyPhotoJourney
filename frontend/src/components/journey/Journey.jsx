@@ -15,7 +15,6 @@ class Journey extends Component {
     url.select();
     url.disabled = true;
     document.execCommand("copy");
-    alert(`URL copied to clipboard!`);
   }
 
   render() {
@@ -36,7 +35,7 @@ class Journey extends Component {
             id="journey-url"
             disabled
             value={
-              "https://myphotojourney.herokuapp.com/#/" +
+              "https://myphotojourney.herokuapp.com/#" +
               this.props.history.location.pathname
             }
           />
