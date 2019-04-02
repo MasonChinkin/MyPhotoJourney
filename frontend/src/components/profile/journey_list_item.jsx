@@ -1,22 +1,20 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
-import { confirmAlert } from 'react-confirm-alert';
-import 'react-confirm-alert/src/react-confirm-alert.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
 
-class JourneyListItem extends React.Component{
-
-
-   deleteJourney(){
+class JourneyListItem extends React.Component {
+  deleteJourney() {
     confirmAlert({
-       message: 'Are you sure to delete this journey?',
+      message: "Are you sure to delete this journey?",
       buttons: [
-      {
-        label: 'Yes',
-        onClick: () => this.props.deleteJourney(this.props.journey._id)
+        {
+          label: "Yes",
+          onClick: () => this.props.deleteJourney(this.props.journey._id)
         },
-      {
-        label: 'No',
-        onClick: () => {} 
+        {
+          label: "No",
+          onClick: () => {}
         }
       ]
     });
@@ -31,22 +29,24 @@ class JourneyListItem extends React.Component{
     el.select();
     document.execCommand("copy");
     document.body.removeChild(el);
-    alert(`URL copied to clipboard!`);
   }
 
-
-  render(){
+  render() {
     const journey = this.props.journey;
     return (
       <div className="journey-list-item">
         <Link to={`/journey/${journey._id}`}>
           <span>{journey.name}</span>
         </Link>
-        <i className="fa fa-clipboard" onClick={this.copyURL.bind(this)}/>
-        <i className="fa fa-remove" style={{marginLeft: "5px", fontSize: "26px", color: "red"}} onClick={this.deleteJourney.bind(this)}/>
+        <i className="fa fa-clipboard" onClick={this.copyURL.bind(this)} />
+        <i
+          className="fa fa-remove"
+          style={{ marginLeft: "5px", fontSize: "26px", color: "red" }}
+          onClick={this.deleteJourney.bind(this)}
+        />
       </div>
-    )
+    );
   }
 }
 
-export default JourneyListItem
+export default JourneyListItem;
