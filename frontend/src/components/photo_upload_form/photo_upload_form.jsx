@@ -6,16 +6,22 @@ class PhotoUploadForm extends React.Component {
     super(props);
     this.state = {
       city: "",
+      pendingCity: "",
       country: "",
       state: "",
       description: "",
       date: this.props.file.metaData.time || "",
       status: "ready",
-      enterState: false,
+      countries: new Set(),
+      states: new Set(),
       errors: {}
     };
     this.handleUpload = this.handleUpload.bind(this);
     this.updateLocation = this.updateLocation.bind(this);
+    this.handleInput = this.handleInput.bind(this);
+    this.typingTimer = null;
+
+    this.is_gps_prefilled = this.is_gps_prefilled.bind(this);
   }
 
   handleInput(field) {
@@ -25,16 +31,14 @@ class PhotoUploadForm extends React.Component {
   }
 
   updateLocation(e, field) {
-    // debugger;
-    if (field) {
-      this.handleInput(field)();
+    if (this.state[field] !== e.target.value) {
+      this.setState({[field]: e.target.value}, () => {
+        this.props.fetchLocationData({
+        location: this.state.city,
+        country: this.state.country,
+        state: this.state.state,
+      })})
     }
-    console.log(this.state);
-    this.props.fetchLocationData({
-      location: this.state.city,
-      country: this.state.country,
-      state: this.state.state,
-    })
   }
 
   is_gps_prefilled(){
@@ -47,38 +51,40 @@ class PhotoUploadForm extends React.Component {
           <input
             className="cityInput"
             type="text"
-            value={this.state.city}
+            value={this.state.pendingCity }
             placeholder="Enter the city"
-            onChange={this.handleInput("city")}
+            onChange={this.handleInput("pendingCity")}
+            onKeyPress={(e) => {
+              e.persist();
+              clearTimeout(this.typingTimer);
+              if (e.target.value) {
+                this.typingTimer = setTimeout(() => {
+                  this.updateLocation(e, "city");
+                }, 400)
+              }
+            }}
           />
-          
         </div>
+        
         {this.props.locations.length > 1 ?
-          <select className="locationSelect" onInput={this.updateLocation("country")}>
+          <select className="locationSelect" onChange={(e) => {
+            this.updateLocation(e, "country");
+          }}>
             <option value="" disabled selected>Select the Country</option>
-            {[...new Set(this.props.locations.map( location => location.country ))].map(
-              (country) => { return (
-                <option value={country}>{country}</option>
-              ) }
-            )}
+            {this.props.countries.map(country => <option value={country}>{country}</option>)}
           </select>
         : null}
-        {this.props.locations.length > 1 && this.state.country.length > 0 ?
-          <select className="locationSelect">
+
+        {this.props.states.length > 1 && this.state.country.length > 0 ?
+          <select className="locationSelect" onChange={this.handleInput("state")}>
             <option value="" disabled selected>Select the State</option>
-            {[...new Set(this.props.locations.map( location => location.state ))].map(
-              (state) => { return (
-                <option value={state}>{state}</option>
-              ) }
-            )}
+            {this.props.states.map(state => <option value={state}>{state}</option>)}
           </select>
         : null}
       </>
       )
     }
   }
-
- 
 
   handleUpload(e) {
     e.preventDefault();
@@ -184,16 +190,7 @@ class PhotoUploadForm extends React.Component {
                 return <div style={{ marginBottom: "5px" }}>{error}</div>;
               })}
             </div>
-            <div className="photo-button">
-              <input
-                onClick={this.updateLocation}
-                className="button locationButton"
-                type="submit"
-                value="Check Location"
-              />
-            </div>
             <div className="photo-button">{photoSubmitButton}</div>
-            
           </>
         )}
       </div>

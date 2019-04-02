@@ -10,6 +10,8 @@ const mSTP = state => {
     currUser: state.session.user,
     errors: state.errors.photos,
     locations: state.ui.locationData,
+    states: [...new Set(state.ui.locationData.map( location => location.state ))],
+    countries: [...new Set(state.ui.locationData.map( location => location.country ))],
   };
 };
 
