@@ -39,6 +39,7 @@ router.post(
       return res.status(400).json(errors);
     }
     let firstResult;
+    console.log(errors, isValid);
     if(photo.city){
       let data = await geocoder.geocode(photo.city);
 
@@ -54,6 +55,7 @@ router.post(
       }
       firstResult = data[0];
     }
+    debugger;
     const lat = photo.lat || firstResult.latitude;
     const long = photo.long || firstResult.longitude;
 

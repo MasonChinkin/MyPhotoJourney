@@ -6,13 +6,18 @@ class PhotoUploadForm extends React.Component {
     super(props);
     this.state = {
       city: "",
+      pendingCity: "",
       country: "",
+      state: "",
       description: "",
       date: this.props.file.metaData.time || "",
       status: "ready",
-      errors: {}
+      enterState: false,
+      errors: {},
     };
     this.handleUpload = this.handleUpload.bind(this);
+    this.updateLocation = this.updateLocation.bind(this);
+    this.typingTimer = null;
   }
 
   handleInput(field) {
@@ -21,31 +26,85 @@ class PhotoUploadForm extends React.Component {
     };
   }
 
+  updateLocation(e, field) {
+    let newState;
+    if (this.state[field] !== e.target.value) {
+      if (field === "city") {
+        newState = {city: e.target.value, country: "", state: "", enterState: false}
+      } else {
+        newState = {[field]: e.target.value}
+      }
+      this.setState(newState, () => {
+        this.props.fetchLocationData({
+        location: this.state.city,
+        country: this.state.country,
+        state: this.state.state,
+      }).then(() => {if(Object.values(this.props.errors).length > 0) {
+        this.setState({errors: this.props.errors})
+      } else {
+        if(field === "country") {
+          this.setState({enterState: true})
+        }
+        this.setState({errors: {}})
+      }})
+    })
+    }
+  }
+
+  locationPrompt() {
+    if (this.state.country.length > 0 && 
+        this.props.locations.length > 0 && 
+        this.props.states.length === 1 &&
+        this.props.countries.length === 1) {
+          return (<div className="locationPrompt" id="locationDetected">Location Detected!</div>)
+        } else {
+          return (<div className="locationPrompt">Type a city or location name to search for a new location!</div>)
+        }
+  }
 
   is_gps_prefilled(){
     if(this.props.file.metaData.lat !== null && this.props.file.metaData.long !== null){
-      return("")
+      return <div className="locationPrompt" id="locationDetected">Location Detected!</div>;
     } else {
       return(
         <>
+        <div className="cityUpload">
           <input
-          type="text"
-          value={this.state.city}
-          placeholder="Enter the city"
-          onChange={this.handleInput("city")}
-        />
-        <input
-          type="text"
-          value={this.state.country}
-          placeholder="Enter the country"
-          onChange={this.handleInput("country")}
-        />
+            className="cityInput"
+            type="text"
+            disabled={this.state.status !== "ready"}
+            value={this.state.pendingCity }
+            placeholder="Enter the city"
+            onChange={this.handleInput("pendingCity")}
+            onKeyDown={(e) => {
+              e.persist();
+              clearTimeout(this.typingTimer);
+              if (e.target.value) {
+                this.typingTimer = setTimeout(() => {
+                  this.updateLocation(e, "city");
+                }, 400)
+              }
+            }}
+          />
+        </div>
+        
+        {this.props.locations.length > 1 && this.props.countries.length > 1 ?
+          <select className="locationSelect" defaultValue="default" onChange={(e) => {this.updateLocation(e, "country")}}>
+            <option value="default" disabled >Select the Country</option>
+            {this.props.countries.map((country, i) => <option key={`country#${i}`} value={country}>{country}</option>)}
+          </select>
+        : null}
+
+        {this.props.states.length > 1 && this.state.country.length > 0 && this.state.enterState ?
+          <select className="locationSelect" defaultValue="default" onChange={(e) => {this.updateLocation(e, "state")}}>
+            <option value="default" disabled >Select the State</option>
+            {this.props.states.map((state, i) => <option key={`state#${i}`} value={state}>{state}</option>)}
+          </select>
+        : null}
       </>
       )
     }
   }
-
- 
 
   handleUpload(e) {
     e.preventDefault();
@@ -71,6 +130,7 @@ class PhotoUploadForm extends React.Component {
   }
 
   render() {
+    console.log(this.state.enterState)
     let photoSubmitButton;
     if (this.state.status === "submitted") {
       photoSubmitButton = (
@@ -104,15 +164,21 @@ class PhotoUploadForm extends React.Component {
           </div>
         ) : (
           <>
+            {this.locationPrompt()}
             {this.props.file.metaData.lat !== null ? <h2>Location automatically determined using metadata</h2> : ""}
             <div className="photo-data">
               <div className="photo-labels">
                 {this.props.file.metaData.lat === null ? 
                 <>                
                 <label>City</label>
-                <label>Country</label>
+                {this.props.locations.length > 0 && this.props.countries.length > 1 ?
+                  <label>Country</label>
+                : null}
+                {this.state.country.length > 0 && this.props.states.length > 1 && this.state.enterState ? 
+                  <label>State</label>
+                : null}
                 </> :
-                ""
+                null
               }
                 <label>Description</label>
                 <label>Date</label>
@@ -120,6 +186,7 @@ class PhotoUploadForm extends React.Component {
               <div className="photo-inputs">
                 {this.is_gps_prefilled()}
                 <input
+                  disabled={this.state.status !== "ready"}
                   type="text"
                   value={this.state.description}
                   placeholder="Enter the description"
@@ -127,6 +194,7 @@ class PhotoUploadForm extends React.Component {
                 />
                 <input
                   type="date"
+                  disabled={this.state.status !== "ready"}
                   value={this.state.date}
                   placeholder="Enter the date"
                   onChange={this.handleInput("date")}
@@ -142,8 +210,8 @@ class PhotoUploadForm extends React.Component {
                 fontSize: "12px"
               }}
             >
-              {Object.values(this.state.errors).map(error => {
-                return <div style={{ marginBottom: "5px" }}>{error}</div>;
+              {Object.values(this.state.errors).map((error, i) => {
+                return <div key={`error#${i}`} style={{ marginBottom: "5px" }}>{error}</div>;
               })}
             </div>
             <div className="photo-button">{photoSubmitButton}</div>
