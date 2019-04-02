@@ -3,7 +3,7 @@ import {
   CLEAR_UI_JOURNEY
 } from "../actions/journey_actions";
 import { RECEIVE_PHOTO } from "../actions/photo_actions";
-import { RECEIVE_LOCATION_DATA } from "../actions/location_actions";
+import { RECEIVE_LOCATION_DATA, RECEIVE_LOCATION_ERRORS } from "../actions/location_actions";
 
 const initialState = { currentJourneyId: null, photoUpload: false, locationData: [] };
 
@@ -23,6 +23,9 @@ export default function(state = initialState, action) {
       return newState;
     case RECEIVE_LOCATION_DATA:
       newState.locationData = action.data;
+      return newState;
+    case RECEIVE_LOCATION_ERRORS:
+      newState.locationData = [];
       return newState;
     default:
       return state;

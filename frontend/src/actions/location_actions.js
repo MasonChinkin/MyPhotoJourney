@@ -18,10 +18,7 @@ export const receiveLocationErrors = (errors) => {
 }
 
 export const fetchLocationData = data => dispatch => {
-  getLocationData(data).then( (res) => {
-      dispatch(receiveLocationData(res.data));
-  })
-  .catch( (err) => {
-    dispatch(receiveLocationErrors(err.response.data));
-  })
+  return getLocationData(data)
+    .then( (res) => {dispatch(receiveLocationData(res.data));})
+    .catch( (err) => {dispatch(receiveLocationErrors(err.response.data));})
 }
