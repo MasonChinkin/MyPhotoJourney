@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const NodeGeocoder = require('node-geocoder');
-const geocoder = NodeGeocoder({provider: "openstreetmap"});
+const geocoder = NodeGeocoder({provider: "openstreetmap", language: "en"});
 
 router.post("/", (req, res) => {
   geocoder.geocode(req.body.location).then( (data) => {
