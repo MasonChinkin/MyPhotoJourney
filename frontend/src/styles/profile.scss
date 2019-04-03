@@ -30,8 +30,6 @@
   background-color: $primary-cta-highlight;
 }
 
-
-
 .journey-list {
   width: 45%;
   max-height: 60vh;
@@ -46,13 +44,13 @@
   ul {
     background: rgba(200, 200, 200, 0.2);
     border-radius: 4px;
-    height: 100%;
+    height: calc(100% - 140px);
     padding: 15px;
     position: absolute;
     overflow-y: scroll;
     top: 100px;
     left: 20px;
-    right: -17px;
+    right: 17px;
   }
   div {
     display: flex;
@@ -71,11 +69,7 @@
 .journey-list-item {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
+  padding-bottom: 20px;
 
   a {
     text-decoration: none;
@@ -126,11 +120,11 @@
   }
 }
 
-.react-confirm-alert-body{
+.react-confirm-alert-body {
   display: flex;
   flex-direction: column;
   align-items: center;
   font-weight: bold;
   padding: 20px;
   width: 300px;
-};
+}
