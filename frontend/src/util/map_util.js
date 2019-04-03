@@ -155,9 +155,20 @@ export const bubbleMouseOver = function (d) {
   const leftPos = photo.getBoundingClientRect().left;
   const topPos = photo.getBoundingClientRect().top;
 
+  // const tooltipHeight = document.getElementById('tooltip')
+  //   .getBoundingClientRect().height;
+
+  // const tooltipWidth = document.getElementById('tooltip')
+  //   .getBoundingClientRect().width;
+
+  // // turnery flips tooltip to not dissapear off of screen
+  // const xpos = (d3.event.clientX > d3.event.view.innerWidth / 2) ? leftPos - tooltipWidth : leftPos;
+  // const ypos = (d3.event.clientY > d3.event.view.innerHeight / 2) ? topPos - tooltipHeight : topPos;
+
+
   //Update the tooltip position and value
   d3.select("#tooltip")
-    .style("left", leftPos - 150 + "px")
+    .style("left", leftPos - 100 + "px") // 100 is half of tooltip width
     .style("top", topPos + 10 + "px")
     .select("#city")
     .text(d.city);
@@ -197,9 +208,6 @@ export function drawArrow(d) {
   let path = document.getElementById("line");
   let str = path.getAttribute("d");
   let length = path.getTotalLength();
-
-  console.log(d);
-  console.log(this);
 
   let g = d3.select(this);
   let l = 20 + (length * d) / numArrows; // must match number in d3.range
