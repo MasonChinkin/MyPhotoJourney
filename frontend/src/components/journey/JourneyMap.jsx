@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import * as d3 from "d3";
 import * as MapUtils from "../../util/map_util";
 
 class JourneyMap extends Component {
