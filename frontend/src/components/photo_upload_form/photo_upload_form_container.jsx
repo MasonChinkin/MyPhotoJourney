@@ -20,6 +20,9 @@ const mDTP = dispatch => {
     createPhoto: photo => {
       return dispatch(PhotoActions.createPhoto(photo));
     },
+    validatePhoto: photo => {
+      return dispatch(PhotoActions.validatePhoto(photo));
+    },
     fetchLocationData: data => {
       return dispatch(LocationActions.fetchLocationData(data));
     }
