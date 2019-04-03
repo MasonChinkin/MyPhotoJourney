@@ -27,7 +27,7 @@ module.exports = async function validatePhotoInput(data) {
     }
   }
 
-  photoDateTime = new Date(data.date)
+  let photoDateTime = new Date(data.date)
 
   if (photoDateTime === undefined) {
     errors.dateTime = "Date/Time is required";
@@ -48,9 +48,9 @@ module.exports = async function validatePhotoInput(data) {
     if (currPhoto.longitude === data.long && currPhoto.latitude === data.lat) {
       errors.location = "Only one picture per city in a photo journey!";
     }
-    if (currPhoto.photoDateTime.getDate() === data.photoDateTime.getDate() &&
-        currPhoto.photoDateTime.getMonth() === data.photoDateTime.getMonth() &&
-        currPhoto.photoDateTime.getYear() === data.photoDateTime.getYear()) {
+    if (currPhoto.photoDateTime.getDate() === photoDateTime.getDate() &&
+        currPhoto.photoDateTime.getMonth() === photoDateTime.getMonth() &&
+        currPhoto.photoDateTime.getYear() === photoDateTime.getYear()) {
           errors.date = "Only one picture per day in a photo journey!";
     }
   });

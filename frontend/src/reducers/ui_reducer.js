@@ -3,7 +3,7 @@ import {
   CLEAR_UI_JOURNEY
 } from "../actions/journey_actions";
 import { RECEIVE_PHOTO } from "../actions/photo_actions";
-import { RECEIVE_LOCATION_DATA, RECEIVE_LOCATION_ERRORS } from "../actions/location_actions";
+import { RECEIVE_LOCATION_DATA, RECEIVE_LOCATION_ERRORS, CLEAR_LOCATION_DATA } from "../actions/location_actions";
 
 // Use proxy and handler to simulate default value for locationData (empty array)
 const handler = {
@@ -32,8 +32,11 @@ export default function(state = initialState, action) {
     case RECEIVE_LOCATION_DATA:
       newState.locationData[action.idx] = action.data;
       return newState;
-    case RECEIVE_LOCATION_ERRORS:
+    case CLEAR_LOCATION_DATA:
       newState.locationData = defaultLocationData;
+      return newState;
+    case RECEIVE_LOCATION_ERRORS:
+      newState.locationData[action.idx] = [];
       return newState;
     default:
       return state;

@@ -42,7 +42,7 @@ router.post(
       longitude: req.body.long,
       journeyId: req.body.journeyId
     });
-
+    
     newPhoto.save(function(err, newPhoto) {
       if (err) {
         return res.status(400).json(err);
