@@ -57,15 +57,11 @@ class JourneyMap extends Component {
 
       // Scale should range between 1.25 (min zoom of 1 where .8 * 1.25 = 1), with a max zoom of 10x
       let scale = Math.max(Math.min(MapUtils.getScale(photos), 10), 1.25);
-      // let [wScale, hScale, wPercent, hPercent] = getScale(photos);
-      console.log(scale);
-      console.log(MapUtils.getScale(photos));
 
       let center = MapUtils.getCenterLatLong(photos);
 
       // If scale is 1.25, show the whole map and center at 0,0
       if (scale === 1.25) center = [0, 0];
-      console.log(center);
 
       //define projection
       let projection = d3
