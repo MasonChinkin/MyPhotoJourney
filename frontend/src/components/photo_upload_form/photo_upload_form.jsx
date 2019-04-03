@@ -54,16 +54,20 @@ class PhotoUploadForm extends React.Component {
   }
 
   locationPrompt() {
-    if (this.props.states.length === 1 && this.props.countries.length === 1) {
+    if ((this.props.states.length === 1 && this.props.countries.length === 1)
+          || (this.props.file.metaData.lat !== null && this.props.file.metaData.long !== null)
+          || this.state.status === "submitted") {
           return (<div className="locationPrompt" id="locationDetected">Location Found</div>)
+        } else if (this.state.city.length > 0) {
+          return (<div className="locationPrompt" id="locationSearching">Searching for Location</div>)
         } else {
           return (<div className="locationPrompt">Start typing to search for a location</div>)
         }
   }
 
   is_gps_prefilled(){
-    if(this.props.file.metaData.lat !== null && this.props.file.metaData.long !== null){
-      return <div className="locationPrompt" id="locationDetected">Location Found</div>;
+    if((this.props.file.metaData.lat !== null && this.props.file.metaData.long !== null)){
+      return null;
     } else {
       return(
         <>
