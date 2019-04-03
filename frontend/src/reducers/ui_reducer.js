@@ -11,9 +11,8 @@ const handler = {
     return target.hasOwnProperty(name) ? target[name] : []
   }
 }
-const defaultLocationData = new Proxy({}, handler);
 
-const initialState = { currentJourneyId: null, photoUpload: false, locationData: defaultLocationData };
+const initialState = { currentJourneyId: null, photoUpload: false, locationData: new Proxy({}, handler) };
 
 export default function(state = initialState, action) {
   Object.freeze(state);
@@ -27,13 +26,13 @@ export default function(state = initialState, action) {
       return initialState;
     case RECEIVE_PHOTO:
       newState.photoUpload = true;
-      newState.locationData = defaultLocationData;
+      newState.locationData = new Proxy({}, handler);;
       return newState;
     case RECEIVE_LOCATION_DATA:
       newState.locationData[action.idx] = action.data;
       return newState;
     case CLEAR_LOCATION_DATA:
-      newState.locationData = defaultLocationData;
+      newState.locationData = new Proxy({}, handler);;
       return newState;
     case RECEIVE_LOCATION_ERRORS:
       newState.locationData[action.idx] = [];

@@ -89,6 +89,13 @@ class NewJourneyForm extends React.Component {
     });
   }
 
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (this.state.files !== prevState.files) {
+      this.props.clearLocationData();
+    }
+  }
+
+
   render() {
     let nameInput, descriptionInput;
     if (this.props.currentJourneyId) {
