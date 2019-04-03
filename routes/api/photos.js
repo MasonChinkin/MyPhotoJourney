@@ -30,10 +30,9 @@ router.post(
   upload.single("image"),
   passport.authenticate("jwt", { session: false }),
   async (req, res) => {
-    console.log(req.body)
 
     const newPhoto = new Photo({
-      photoUrl: req.body.image.location,
+      photoUrl: req.file.location,
       city: req.body.city,
       region: req.body.state,
       country: req.body.country,
