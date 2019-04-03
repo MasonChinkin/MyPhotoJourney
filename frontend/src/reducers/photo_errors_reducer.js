@@ -13,6 +13,8 @@ const PhotoErrorsReducer = (state = {}, action) => {
       return {};
     case PhotoActions.RECEIVE_PHOTO:
       return {};
+    case PhotoActions.CLEAR_PHOTO_ERRORS:
+      return {};
     case PhotoActions.RECEIVE_PHOTOS:
       return {};
     default:

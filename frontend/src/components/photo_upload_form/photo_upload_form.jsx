@@ -42,8 +42,10 @@ class PhotoUploadForm extends React.Component {
       }).then(() => {if(Object.values(this.props.errors).length > 0) {
         this.setState({errors: this.props.errors})
       } else {
-        if(field === "country") {
+        if (field === "country") {
           this.setState({enterState: true})
+        } else if (this.props.countries.length === 1) {
+          this.setState({enterState: true, country: this.props.countries[0]});
         }
         this.setState({errors: {}})
       }})
@@ -52,19 +54,20 @@ class PhotoUploadForm extends React.Component {
   }
 
   locationPrompt() {
-    if (this.state.country.length > 0 && 
-        this.props.locations.length > 0 && 
-        this.props.states.length === 1 &&
-        this.props.countries.length === 1) {
-          return (<div className="locationPrompt" id="locationDetected">Location Detected!</div>)
+    if ((this.props.states.length === 1 && this.props.countries.length === 1)
+          || (this.props.file.metaData.lat !== null && this.props.file.metaData.long !== null)
+          || this.state.status === "submitted") {
+          return (<div className="locationPrompt" id="locationDetected">Location Found</div>)
+        } else if (this.state.city.length > 0) {
+          return (<div className="locationPrompt" id="locationSearching">Searching for Location</div>)
         } else {
-          return (<div className="locationPrompt">Type a city or location name to search for a new location!</div>)
+          return (<div className="locationPrompt">Start typing to search for a location</div>)
         }
   }
 
   is_gps_prefilled(){
-    if(this.props.file.metaData.lat !== null && this.props.file.metaData.long !== null){
-      return <div className="locationPrompt" id="locationDetected">Location Detected!</div>;
+    if((this.props.file.metaData.lat !== null && this.props.file.metaData.long !== null)){
+      return null;
     } else {
       return(
         <>
@@ -109,20 +112,44 @@ class PhotoUploadForm extends React.Component {
   handleUpload(e) {
     e.preventDefault();
     this.setState({ status: "loading" });
-    const formData = new FormData();
+    if (this.props.file.metaData.lat === null) {
+      if (this.city === "" || this.props.states.length > 1 || this.props.countries.length > 1 || this.props.locations.length === 0) {
+        this.setState({ status: "ready", errors: {location: "Enter a complete location"}});
+        return;
+      }
+    }
 
-    formData.append("image", this.props.file.file);
-    formData.append("city", this.state.city);
-    formData.append("lat", this.props.file.metaData.lat || "");
-    formData.append("long", this.props.file.metaData.long || "");
-    formData.append("country", this.state.country);
-    formData.append("description", this.state.description);
-    formData.append("date", this.state.date);
-    formData.append("journeyId", this.props.journeyId);
+    const validationData = {
+      city: this.state.city,
+      state: this.state.state,
+      country: this.state.country,
+      lat: this.props.file.metaData.lat || this.props.locations[0].latitude,
+      long: this.props.file.metaData.long || this.props.locations[0].longitude,
+      description: this.state.description,
+      date: this.state.date,
+      journeyId: this.props.journeyId
+    }
 
-    this.props.createPhoto(formData).then(() => {
+    this.props.validatePhoto(validationData).then(() => {
       if (Object.values(this.props.errors).length === 0) {
-        this.setState({ status: "submitted", errors: {} });
+        const formData = new FormData();
+
+        formData.append("image", this.props.file.file);
+        formData.append("city", this.state.city);
+        formData.append("lat", this.props.file.metaData.lat || this.props.locations[0].latitude);
+        formData.append("long", this.props.file.metaData.long || this.props.locations[0].longitude);
+        formData.append("country", this.state.country);
+        formData.append("description", this.state.description);
+        formData.append("date", this.state.date);
+        formData.append("journeyId", this.props.journeyId);
+        
+        this.props.createPhoto(formData).then(() => {
+          if (Object.values(this.props.errors).length === 0) {
+            this.setState({status: "submitted", errors: {}})
+          } else {
+            this.setState({ status: "ready", errors: this.props.errors });
+          }
+        });
       } else {
         this.setState({ status: "ready", errors: this.props.errors });
       }
@@ -130,7 +157,6 @@ class PhotoUploadForm extends React.Component {
   }
 
   render() {
-    console.log(this.state.enterState)
     let photoSubmitButton;
     if (this.state.status === "submitted") {
       photoSubmitButton = (

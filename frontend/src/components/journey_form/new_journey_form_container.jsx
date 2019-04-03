@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import NewJourneyForm from "./new_journey_form";
 import * as JourneyActions from "../../actions/journey_actions";
+import { clearLocationData } from "../../actions/location_actions";
 
 const mSTP = state => {
   return {
@@ -19,7 +20,8 @@ const mDTP = dispatch => {
     },
     clearUIJourney: () => dispatch(JourneyActions.clearUIJourney()),
     deleteJourney: journeyId =>
-      dispatch(JourneyActions.deleteJourney(journeyId))
+      dispatch(JourneyActions.deleteJourney(journeyId)),
+    clearLocationData: () => dispatch(clearLocationData())
   };
 };
 
