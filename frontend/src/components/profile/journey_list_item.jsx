@@ -38,10 +38,14 @@ class JourneyListItem extends React.Component {
         <Link to={`/journey/${journey._id}`}>
           <span>{journey.name}</span>
         </Link>
-        <i className="fa fa-clipboard" onClick={this.copyURL.bind(this)} />
+        <i
+          className="fa fa-clipboard"
+          onClick={this.copyURL.bind(this)}
+          style={{ marginLeft: "20px" }}
+        />
         <i
           className="fa fa-remove"
-          style={{ marginLeft: "5px", fontSize: "26px", color: "red" }}
+          style={{ marginLeft: "20px", fontSize: "26px", color: "red" }}
           onClick={this.deleteJourney.bind(this)}
         />
       </div>
