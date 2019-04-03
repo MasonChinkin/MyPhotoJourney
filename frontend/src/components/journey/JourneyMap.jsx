@@ -75,13 +75,6 @@ class JourneyMap extends Component {
         .scale(153 * 0.8 * scale)
         .center(center);
 
-      // const extentTopLeft = projection(MapUtils.getTopLeft(photos)).map(el => Math.floor(-el))
-      // const extentBottomRight = projection(MapUtils.getBottomRight(photos)).map(el => Math.floor(el))
-      // console.log('left: ', extentTopLeft);
-      // console.log('right: ', extentBottomRight);
-
-      // projection = d3.geoEquirectangular()
-
       //define drag behavior
       const zoom = d3
         .zoom()
