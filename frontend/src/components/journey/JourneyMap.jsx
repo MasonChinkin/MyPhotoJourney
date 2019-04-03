@@ -3,21 +3,6 @@ import { withRouter } from "react-router-dom";
 import * as d3 from "d3";
 import * as MapUtils from "../../util/map_util";
 
-// const getScale = photos => {
-//   let longs = [];
-//   photos.forEach(photo => longs.push(photo.longitude));
-//   let widthPercent = (d3.max(longs) - d3.min(longs)) / 360;
-
-//   let lats = [];
-//   photos.forEach(photo => lats.push(photo.latitude));
-//   let heightPercent = (d3.max(lats) - d3.min(lats)) / 180;
-
-//   let scale = widthPercent * 2 > heightPercent ? "width" : "height";
-//   let widthScale = 1 / widthPercent / 2;
-//   let heightScale = 1 / heightPercent;
-
-//   return scale === "width" ? widthScale : heightScale;
-// };
 class JourneyMap extends Component {
   constructor(props) {
     super(props);
