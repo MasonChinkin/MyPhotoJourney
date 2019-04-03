@@ -9,7 +9,7 @@ export function drawMap(state, anchor) {
   const h = 491;
 
   let photos = state.data[1];
-  numArrows = (photos.length - 1) * 2
+  numArrows = photos.length > 1 ? photos.length : 0
 
   // Scale should range between 1.25 (min zoom of 1 where .8 * 1.25 = 1), with a max zoom of 10x
   let scale = Math.max(Math.min(getScale(photos), 10), 1.25);
