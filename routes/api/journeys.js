@@ -4,8 +4,6 @@ const passport = require("passport");
 const Journey = require("../../models/Journey");
 const Photo = require("../../models/Photo");
 const validateJourneyInput = require("../../validation/journeys");
-const NodeGeocoder = require("node-geocoder");
-const geocoder = NodeGeocoder({ provider: "openstreetmap" });
 
 router.get("/test", (req, res) =>
   res.json({ msg: "This is the journeys route" })

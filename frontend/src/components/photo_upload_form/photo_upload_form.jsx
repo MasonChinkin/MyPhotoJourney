@@ -177,7 +177,10 @@ class PhotoUploadForm extends React.Component {
         />
       );
     } else if (this.state.status === "loading") {
-      photoSubmitButton = <Loader color="#000000" height={20} width={100} />;
+      photoSubmitButton = 
+        <>
+          <Loader type="ThreeDots" color="#008000" width="100" height="50" />;
+        </>
     }
     return (
       <div className="photo-form">
@@ -247,5 +250,4 @@ class PhotoUploadForm extends React.Component {
     );
   }
 }
-
 export default PhotoUploadForm;

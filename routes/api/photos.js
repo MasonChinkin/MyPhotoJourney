@@ -1,11 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const passport = require("passport");
-const Journey = require("../../models/Journey");
 const Photo = require("../../models/Photo");
 const validatePhotoInput = require("../../validation/photos");
-const NodeGeocoder = require("node-geocoder");
-const geocoder = NodeGeocoder({ provider: "openstreetmap" });
 const upload = require("../../services/file-upload");
 
 router.get("/test", async (req, res) =>
@@ -42,7 +39,7 @@ router.post(
       longitude: req.body.long,
       journeyId: req.body.journeyId
     });
-    
+
     newPhoto.save(function(err, newPhoto) {
       if (err) {
         return res.status(400).json(err);

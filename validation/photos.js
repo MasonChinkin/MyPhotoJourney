@@ -1,8 +1,6 @@
-const NodeGeocoder = require("node-geocoder");
 const Validator = require("validator");
 const Journey = require("../models/Journey");
 const Photo = require("../models/Photo");
-const geocoder = NodeGeocoder({ provider: "openstreetmap" });
 
 module.exports = async function validatePhotoInput(data) {
   let errors = {};
