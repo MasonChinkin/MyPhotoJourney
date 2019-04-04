@@ -1,7 +1,7 @@
 .profile-content {
   display: flex;
   justify-content: space-around;
-  height: 100%;
+  // height: 100%;
 }
 
 .create {
@@ -52,10 +52,12 @@
     left: 20px;
     right: 17px;
   }
+
   div {
     display: flex;
     align-items: center;
   }
+
   h2 {
     font-size: 45px;
     color: white;
@@ -115,7 +117,7 @@
   flex-direction: column;
   justify-content: center;
 
-  & > a {
+  &>a {
     width: 500px;
   }
 }
