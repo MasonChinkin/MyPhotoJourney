@@ -80,3 +80,37 @@
     }
   }
 }
+
+.cityUpload {
+  display: flex;
+  flex-direction: column;
+  width: 160px;
+}
+
+.cityInput {
+  width: 100%;
+}
+
+.locationButton:hover {
+  background-color: blue;
+}
+
+.locationButton {
+  background-color: rgb(2, 2, 82);
+}
+
+.locationPrompt {
+  width: 100%;
+  display: flex;
+  text-align: center;
+  font-size: 12px;
+  color: red;
+}
+
+#locationDetected {
+  color: blue;
+}
+
+#locationSearching {
+  color: green;
+}

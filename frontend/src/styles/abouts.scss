@@ -1,6 +1,7 @@
 #abouts {
-  margin-bottom: -100px;
-  & > * {
+
+  // margin-bottom: -100px;
+  &>* {
     margin-right: 30px !important;
   }
 }
@@ -30,6 +31,7 @@
 
   div {
     padding: 5px 0;
+
     a {
       text-decoration: none;
       color: black;
@@ -58,9 +60,9 @@
   overflow: hidden;
   align-items: center;
   justify-content: center;
-  padding-bottom: 30px;
+  padding-bottom: 22px;
   padding-left: 8px;
-  max-height: 130px;
+  max-height: 145px;
   width: 80px;
   transition: max-height, ease-in-out, 300ms;
   margin-bottom: -100px;
@@ -70,8 +72,10 @@
     visibility: hidden;
     pointer-events: none;
   }
+
   div {
     padding: 5px 0;
+
     a {
       text-decoration: none;
       color: black;

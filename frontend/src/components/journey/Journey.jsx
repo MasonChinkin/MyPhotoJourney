@@ -15,7 +15,6 @@ class Journey extends Component {
     url.select();
     url.disabled = true;
     document.execCommand("copy");
-    alert(`URL copied to clipboard!`);
   }
 
   render() {
@@ -23,24 +22,26 @@ class Journey extends Component {
     let description = this.props.journey ? (
       <h2>{this.props.journey.description}</h2>
     ) : (
-      <></>
-    );
+        <></>
+      );
     return (
-      <div className="journey">
-        {title}
-        {description}
-        <JourneyMapContainer />
-        <div className="share">
-          <input
-            type="text"
-            id="journey-url"
-            disabled
-            value={
-              "https://myphotojourney.herokuapp.com/#/" +
-              this.props.history.location.pathname
-            }
-          />
-          <button onClick={this.copyURL}>copy url</button>
+      <div className="journey-wrapper">
+        <div className="journey">
+          {title}
+          {description}
+          <JourneyMapContainer />
+          <div className="share">
+            <input
+              type="text"
+              id="journey-url"
+              disabled
+              value={
+                "https://myphotojourney.herokuapp.com/#" +
+                this.props.history.location.pathname
+              }
+            />
+            <button onClick={this.copyURL}>copy url</button>
+          </div>
         </div>
       </div>
     );

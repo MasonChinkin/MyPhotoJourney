@@ -4,8 +4,6 @@ const passport = require("passport");
 const Journey = require("../../models/Journey");
 const Photo = require("../../models/Photo");
 const validateJourneyInput = require("../../validation/journeys");
-const NodeGeocoder = require("node-geocoder");
-const geocoder = NodeGeocoder({ provider: "openstreetmap" });
 
 router.get("/test", (req, res) =>
   res.json({ msg: "This is the journeys route" })
@@ -40,7 +38,7 @@ router.post(
   }
 );
 
-// Get journeys by user for p rofile page
+// Get journeys by user for profile page
 router.get("/user/:user_id", async (req, res) => {
   const user = req.params.user_id;
   const journeys = await Journey.find({userId: user});
