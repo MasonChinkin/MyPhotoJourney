@@ -15,7 +15,6 @@ class Journey extends Component {
     url.select();
     url.disabled = true;
     document.execCommand("copy");
-    alert(`URL copied to clipboard!`);
   }
 
   render() {

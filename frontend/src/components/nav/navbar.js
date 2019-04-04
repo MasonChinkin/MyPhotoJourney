@@ -17,14 +17,14 @@ class NavBar extends React.Component {
   renderButtons(){ 
     if(this.props.loggedIn){
       return(
-        <button className="button" onClick={this.logoutUser}>Log Out</button>
+        <button className="button" onClick={this.logoutUser}>Sign Out</button>
       )
     } else {
       return(
         <Link className="button" 
               to={{pathname: "/", 
                   state: {form: "login"}
-        }}>Log In</Link>    
+        }}>Sign In</Link>    
       )
     }
   }

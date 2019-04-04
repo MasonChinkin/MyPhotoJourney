@@ -6,7 +6,7 @@ class SplashPage extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = this.props.location.state || { form: "signup" };
+    this.state = this.props.location.state || { form: "login" };
     this.loginOrSignup = this.loginOrSignup.bind(this);
     this.toggleForm = this.toggleForm.bind(this);
   }
