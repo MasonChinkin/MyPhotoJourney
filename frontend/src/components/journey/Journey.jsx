@@ -26,21 +26,23 @@ class Journey extends Component {
       <></>
     );
     return (
-      <div className="journey">
-        {title}
-        {description}
-        <JourneyMapContainer />
-        <div className="share">
-          <input
-            type="text"
-            id="journey-url"
-            disabled
-            value={
-              "https://myphotojourney.herokuapp.com/#/" +
-              this.props.history.location.pathname
-            }
-          />
-          <button onClick={this.copyURL}>copy url</button>
+      <div className="journey-wrapper">
+        <div className="journey">
+          {title}
+          {description}
+          <JourneyMapContainer />
+          <div className="share">
+            <input
+              type="text"
+              id="journey-url"
+              disabled
+              value={
+                "https://myphotojourney.herokuapp.com/#/" +
+                this.props.history.location.pathname
+              }
+            />
+            <button onClick={this.copyURL}>copy url</button>
+          </div>
         </div>
       </div>
     );
