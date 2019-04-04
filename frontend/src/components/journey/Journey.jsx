@@ -22,8 +22,8 @@ class Journey extends Component {
     let description = this.props.journey ? (
       <h2>{this.props.journey.description}</h2>
     ) : (
-      <></>
-    );
+        <></>
+      );
     return (
       <div className="journey-wrapper">
         <div className="journey">
@@ -36,7 +36,7 @@ class Journey extends Component {
               id="journey-url"
               disabled
               value={
-                "https://myphotojourney.herokuapp.com/#/" +
+                "https://myphotojourney.herokuapp.com/#" +
                 this.props.history.location.pathname
               }
             />
