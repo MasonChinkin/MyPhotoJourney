@@ -9,7 +9,7 @@ export function drawMap(state, anchor) {
   const h = 491;
 
   let photos = state.data[1];
-  numArrows = photos.length > 1 ? photos.length : 0
+  // numArrows = photos.length > 1 ? photos.length : 0
 
   // Scale should range between 1.25 (min zoom of 1 where .8 * 1.25 = 1), with a max zoom of 10x
   let scale = Math.max(Math.min(getScale(photos), 10), 1.25);
@@ -24,6 +24,7 @@ export function drawMap(state, anchor) {
     .geoEquirectangular()
 
     // scale of 153 shows the entirety of the map
+    // 0.8 is padding
     .scale(153 * 0.8 * scale)
     .center(center);
 
@@ -86,6 +87,9 @@ export function drawMap(state, anchor) {
     .attr("class", "line")
     .attr("id", "line")
     .attr("d", line);
+
+  let lineForLength = document.getElementById("line")
+  numArrows = Math.floor(lineForLength.getTotalLength() / 70)
 
   // arrows
   map
