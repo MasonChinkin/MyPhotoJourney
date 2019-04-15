@@ -17,7 +17,11 @@ const JourneySchema = new Schema({
     required: true,
     index: true
   },
+  dateCreated: {
+    type: Date,
+    default: Date.now
+  }
 });
 
 
-module.exports = Journey = mongoose.model('journeys' , JourneySchema);
+module.exports = Journey = mongoose.model('journeys', JourneySchema);

@@ -96,7 +96,7 @@ export function drawMap(state, anchor) {
     .append("defs")
     .append("svg:path")
     .attr("id", "arrowhead")
-    .attr("d", "M5,0 L-5,-3 L-5,3 Z");
+    .attr("d", "M3,0 L-3,-3 L-3,3 Z");
 
   map
     .selectAll(".arrow")
@@ -214,10 +214,10 @@ export function drawArrow(d) {
   let length = path.getTotalLength();
 
   let g = d3.select(this);
-  let l = 20 + (length * d) / numArrows; // must match number in d3.range
+  let l = 20 + (length * d) / numArrows;
   let angle = angleAtLength(l);
-  let end = pointAtLength(l + 20);
-  let endAngle = angleAtLength(l + 20);
+  let end = pointAtLength(l + 15);
+  let endAngle = angleAtLength(l + 15);
   let offset = [
     numArrows * Math.cos(angle - Math.PI / 2),
     numArrows * Math.sin(angle - Math.PI / 2)
@@ -226,7 +226,7 @@ export function drawArrow(d) {
   g.attr("transform", "translate(" + offset + ")")
     .append("path")
     .attr("d", str)
-    .attr("stroke-dasharray", "0," + Math.max(0, l - 5) + ",20," + length);
+    .attr("stroke-dasharray", "0," + Math.max(0, l - 5) + `,${20},` + length);
 
   g.append("use")
     .attr("xlink:href", "#arrowhead")
