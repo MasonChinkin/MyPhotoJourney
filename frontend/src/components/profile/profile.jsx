@@ -9,7 +9,10 @@ class Profile extends React.Component {
   }
 
   render() {
-    let journeys = this.props.journeys.map(journey => (
+    // most recently created at top
+    let journeys = this.props.journeys.sort((a, b) => new Date(b.dateCreated) - new Date(a.dateCreated))
+
+    journeys = journeys.map(journey => (
       <JourneyListItemContainer key={journey._id} journey={journey} />
     ));
 
