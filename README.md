@@ -6,8 +6,6 @@ Hello! Thanks for checking out our MERN stack project.
 
 MyPhotoJourney is a MERN full stack app that lets you upload photos from a trip, visualize them on a map, and share it for all to see!
 
-We conceived, designed, and built this app in less than 4 days, and will continue rounding out its features.
-
 ## Index
 
 * [The Team](https://github.com/MasonChinkin/MyPhotoJourney/blob/master/README.md#The-Team)
@@ -19,7 +17,7 @@ We conceived, designed, and built this app in less than 4 days, and will continu
 ## The Team
 
 [Mason Chinkin, a.k.a. "The visualizer"](https://github.com/MasonChinkin)
-* d3.js map, mongoose.js backend
+* d3.js map, mongoose.js backend, express.js map api
 
 [Nick Howlett, a.k.a. "The authorizer"](https://github.com/Nick-Howlett)
 * Photo Metadata, End to end user auth, profile page, Heroku
